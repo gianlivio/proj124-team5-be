@@ -37,17 +37,17 @@
                                 <td>{{ $curApartment->beds }}</td>
                                 <td>{{ $curApartment->square_mt }}</td>
                                 <td>{{ $curApartment->available }}</td>
-                                {{-- <td>
+                                <td>
                                     <div class="d-flex gap-2">
-                                        <a href="{{ route('admin.projects.show',['project'=>$curProject->slug])  }}" class="btn btn-success fw-bold text-light">Details</a>
-                                        <a href="{{ route('admin.projects.edit',['project'=>$curProject->slug])  }}" class="btn btn-warning fw-bold text-light">Edit</a>
-                                        <form action="{{ route('admin.projects.destroy', ['project' => $curProject->slug]) }}" method="POST">
+                                        <a href="{{ route('admin.apartments.show',['apartment'=>$curApartment->slug])  }}" class="btn btn-success fw-bold text-light">Dettagli</a>
+                                        <a href="{{ route('admin.apartments.edit',['apartment'=>$curApartment->slug])  }}" class="btn btn-warning fw-bold text-light">Modifica</a>
+                                        <form action="{{ route('admin.apartments.destroy', ['apartment' => $curApartment->slug]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn fw-bold btn-danger" onclick="return confirm('Are you sure you want to delete this comic?')">Delete</button>
+                                            <button type="submit" class="btn fw-bold btn-danger" onclick="return confirm('Sei sicuro di voler procedere?')">Elimina</button>
                                         </form>
                                     </div>
-                                </td> --}}
+                                </td>
                             </tr>
                         @endforeach
 
