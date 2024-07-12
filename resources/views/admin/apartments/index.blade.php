@@ -4,7 +4,7 @@
     <div class="container">
         <div class="ms-table-container mt-5">
             <div class="d-flex justify-content-between align-items-center">
-                <h1 class="fw-bold">Apartmens</h1>
+                <h1 class="fw-bold">Appartamenti</h1>
                 
                 <div class="d-flex flex-column">
                     <a href="{{route('admin.apartments.create')}}" class="btn btn-primary fw-bold">Add New </a>
