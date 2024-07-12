@@ -7,6 +7,7 @@ use App\Models\Apartment;
 use App\Models\Service;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class ApartmentController extends Controller
@@ -38,6 +39,13 @@ class ApartmentController extends Controller
         $data = $request->all();
         $apartment = new Apartment();
         $apartment->fill($data);
+        $apartment->user_id = Auth::id();
+
+        //solo per test
+        $apartment->sponsorship_id = 1;
+        $apartment->latitude = 'prova';
+        $apartment->longitude = 'prova';
+        
         $apartment->slug = Str::slug($request->title);
         $apartment->save();
 
