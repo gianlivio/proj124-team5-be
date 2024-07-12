@@ -3,3 +3,5 @@
 @section('content')
 
 <h1>sono la show</h1>
+
+@endsection
