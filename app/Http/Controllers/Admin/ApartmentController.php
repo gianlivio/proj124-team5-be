@@ -27,7 +27,7 @@ class ApartmentController extends Controller
     {
         $services = Service::all();
         $sponsorships = Sponsorship::all();
-        return view('admin.apartments.create',compact('services', 'sponsorships'));
+        return view('admin.apartments.create', compact('services', 'sponsorships'));
     }
 
     /**
@@ -50,7 +50,8 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         $services = Service::all();
-        return view('admin.apartments.show', compact('apartment', 'services'));
+        $sponsorships = Sponsorship::all();
+        return view('admin.apartments.show', compact('apartment', 'services','sponsorships'));
     }
 
     /**
@@ -71,7 +72,7 @@ class ApartmentController extends Controller
     {
         $data = $request->validated();
         $apartment->slug = Str::slug($apartment->title);
-
+        
         $apartment->update($data);
         return redirect()->route('admin.apartments.show', ['apartment' => $apartment->slug])->with('message', 'apartment ' . $apartment->title . '  è stato modificato');
     }
