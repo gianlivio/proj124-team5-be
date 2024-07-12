@@ -80,9 +80,9 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        $apartment->sponsorships()->detach();
-        $apartment->services()->detach();
+        // $apartment->sponsorships()->detach();
+        // $apartment->services()->detach();
         $apartment->delete();
-        return redirect()->route('admin.apartments.edit')->with('message', 'apartment ' . $apartment->title . ' è stato cancellato');
+        return redirect()->route('admin.apartments.index')->with('message', 'apartment ' . $apartment->title . ' è stato cancellato');
     }
 }
