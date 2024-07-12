@@ -7,7 +7,7 @@
     <p><span class="fw-bold">Appartamento:</span> {{ $apartment->title }}</p>
     <p><span class="fw-bold">Descrizione Appartamento:</span> {{ $apartment->apartment_description }}</p>
     <p><span class="fw-bold">Numero stanze:</span> {{ $apartment->rooms }}</p>
-    {{-- <img class="w-25" src="{{asset('storage/' . $apartment->cover_img) }}" alt="{{ $apartment->title }}"> --}}
+    <img class="w-25" src="{{asset('storage/' . $apartment->img_path) }}" alt="{{ $apartment->title }}">
 
     <h4>I nostri servizi</h4>
     @foreach ($services as $service)              
