@@ -45,7 +45,7 @@
         </div>
         <div class="form-group">
             <label for="square_mt">Metri Quadrati:</label>
-            <input type="text" class="form-control" id="square_mt" name="square_mt" required>
+            <input type="number" class="form-control" id="square_mt" name="square_mt" required>
         </div>
         
         

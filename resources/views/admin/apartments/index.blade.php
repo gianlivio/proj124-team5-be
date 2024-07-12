@@ -37,7 +37,7 @@
                                 <td>{{ $curApartment->beds }}</td>
                                 <td>{{ $curApartment->bathrooms }}</td>
                                 <td>{{ $curApartment->square_mt }}</td>
-                                <td>{{ $curApartment->available }}</td>
+                                <td>{{ $curApartment->available ? 'si' : 'no' }}</td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <a href="{{ route('admin.apartments.show',['apartment'=>$curApartment->slug])  }}" class="btn btn-success fw-bold text-light">Dettagli</a>

@@ -43,9 +43,9 @@ class ApartmentController extends Controller
 
         //solo per test
         $apartment->sponsorship_id = 1;
-        $apartment->latitude = 'prova';
-        $apartment->longitude = 'prova';
-        
+        $apartment->latitude = 23212;
+        $apartment->longitude = 23212;
+        $apartment->available = true;
         $apartment->slug = Str::slug($request->title);
         $apartment->save();
 
