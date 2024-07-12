@@ -26,7 +26,7 @@ Route::middleware('auth')
     ->name('admin.') // inizio di ogni nome delle rotte del gruppo
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('apartments', ApartmentController::class);
+        Route::resource('apartments', ApartmentController::class)->parameters(['apartments'=>'apartment:slug']);
     });
 
 require __DIR__ . '/auth.php';
