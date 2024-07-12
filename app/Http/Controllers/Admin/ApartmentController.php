@@ -7,6 +7,7 @@ use App\Models\Apartment;
 use App\Models\Service;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ApartmentController extends Controller
 {
@@ -34,7 +35,13 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $apartment = new Apartment();
+        $apartment->fill($data);
+        $apartment->slug = Str::slug($request->title);
+        $apartment->save();
+
+        return redirect()->route('admin.apartments.show', compact('apartment'));
     }
 
     /**
@@ -48,24 +55,34 @@ class ApartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Apartment $apartment)
     {
-        //
+        $apartments = Apartment::all();
+        $services = Service::all();
+        $sponsorships = Sponsorship::all();
+        return view('admin.apartments.edit', compact('apartments', 'services', 'sponsorships'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Apartment $apartment)
     {
-        //
+        $data = $request->validated();
+        $apartment->slug = Str::slug($apartment->title);
+
+        $apartment->update($data);
+        return redirect()->route('admin.apartments.show', ['apartment' => $apartment->slug])->with('message', 'apartment ' . $apartment->title . '  è stato modificato');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Apartment $apartment)
     {
-        //
+        $apartment->sponsorships()->detach();
+        $apartment->services()->detach();
+        $apartment->delete();
+        return redirect()->route('admin.apartments.edit')->with('message', 'apartment ' . $apartment->title . ' è stato cancellato');
     }
 }
