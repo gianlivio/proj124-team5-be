@@ -20,8 +20,8 @@ return new class extends Migration
             $table->tinyInteger('beds');
             $table->tinyInteger('bathroom');
             $table->bigInteger('square_mt');
-            $table->decimal('latitude');
-            $table->decimal('longitude');
+            $table->double('latitude', 10,6);
+            $table->double('longitude',10,6);
             $table->string('img_path')->nullable();
             $table->boolean('available');
             $table->timestamps();
