@@ -17,5 +17,6 @@ class Sponsorship extends Model
         'type',
         'duration',
         'price',
+        'sponsorship_description'
     ];
 }
