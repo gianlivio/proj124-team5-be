@@ -31,6 +31,11 @@
             </div>
 
             <div class="form-group">
+                <label for="address">Indirizzo:</label>
+                <input type="text" class="form-control" id="address" name="address">
+            </div>
+
+            <div class="form-group">
                 <label for="rooms">Stanze:</label>
                 <input type="number" class="form-control" id="rooms" name="rooms" required>
             </div>
@@ -85,9 +90,6 @@
                 <span>Slug:</span>
                 <p class="fw-bold" id="slug"></p>
             </div> --}}
-
-
-
 
             <button type="submit" class="btn btn-primary mt-2">Add</button>
             <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary mt-2">Cancel</a>

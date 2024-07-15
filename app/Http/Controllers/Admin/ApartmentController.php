@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Api\ApartmentController as ApiController;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use App\Models\Service;
@@ -34,22 +35,40 @@ class ApartmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, ApiController $apiController)
     {
+
         $data = $request->all();
-        $apartment = new Apartment();
-        $apartment->fill($data);
-        $apartment->user_id = Auth::id();
 
-        //solo per test
-        $apartment->sponsorship_id = 1;
-        $apartment->latitude = 23212;
-        $apartment->longitude = 23212;
-        $apartment->available = true;
-        $apartment->slug = Str::slug($request->title);
-        $apartment->save();
+        //? Metto due commenti :-)
 
-        return redirect()->route('admin.apartments.show', compact('apartment'));
+        // prendo il valore dell'indirizzo dall'input del form
+        $address = $request->input('address');
+
+        //chiamo la funzione dell'api che ho creato in Api/ApartmentController
+        //restituisce le coordinate utilizzando l'indirizzo
+        $coordinates = $apiController->getCoordinatesForAddress($address);
+
+        //se esistono le coordinate salvo i dati e mostro la show
+        if ($coordinates && isset($coordinates['latitude']) && isset($coordinates['longitude'])) {
+
+            $apartment = new Apartment();
+            $apartment->fill($data);
+            
+            $apartment->available = true; //solo per test
+
+            $apartment->latitude = $coordinates['latitude'];
+            $apartment->longitude = $coordinates['longitude'];
+            $apartment->user_id = Auth::id();
+            $apartment->slug = Str::slug($request->title);
+            $apartment->save();
+            return redirect()->route('admin.apartments.show', compact('apartment'));
+        } 
+        //altrimenti ritorno alla pagina del create con tutti i dati (questo poi non dovrebbe essere necessario con il Request Validation)
+        else {
+            return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
+        }
+
     }
 
     /**
@@ -59,7 +78,7 @@ class ApartmentController extends Controller
     {
         $services = Service::all();
         $sponsorships = Sponsorship::all();
-        return view('admin.apartments.show', compact('apartment', 'services','sponsorships'));
+        return view('admin.apartments.show', compact('apartment', 'services', 'sponsorships'));
     }
 
     /**
@@ -80,7 +99,7 @@ class ApartmentController extends Controller
     {
         $data = $request->validated();
         $apartment->slug = Str::slug($apartment->title);
-        
+
         $apartment->update($data);
         return redirect()->route('admin.apartments.show', ['apartment' => $apartment->slug])->with('message', 'apartment ' . $apartment->title . '  è stato modificato');
     }

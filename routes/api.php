@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/apartment/{id}/address', [ApartmentController::class, 'getAddressFromCoordinates']);
+Route::get('/apartment/{slug}/address', [ApartmentController::class, 'getAddressFromCoordinates']);
+Route::put('/apartments/{slug}/update-coordinates', [ApartmentController::class, 'updateCoordinates']);
