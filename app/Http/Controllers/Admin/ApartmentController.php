@@ -94,13 +94,26 @@ class ApartmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Apartment $apartment)
+    public function update(Request $request, Apartment $apartment, ApiController $apiController)
     {
         $data = $request->validated();
-        $apartment->slug = Str::slug($apartment->title);
+        
+        $address = $request->input('address');
+        $coordinates = $apiController->getCoordinatesForAddress($address);
+        
+        if ($coordinates && isset($coordinates['latitude']) && isset($coordinates['longitude'])) {
+            $apartment->slug = Str::slug($apartment->title);
+            $apartment->latitude = $coordinates['latitude'];
+            $apartment->longitude = $coordinates['longitude'];
 
-        $apartment->update($data);
-        return redirect()->route('admin.apartments.show', ['apartment' => $apartment->slug])->with('message', 'apartment ' . $apartment->title . '  è stato modificato');
+            $apartment->update($data);
+            return redirect()->route('admin.apartments.show', ['apartment' => $apartment->slug])->with('message', 'apartment ' . $apartment->title . '  è stato modificato');
+        }
+        else {
+            return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
+        }
+
+
     }
 
     /**
