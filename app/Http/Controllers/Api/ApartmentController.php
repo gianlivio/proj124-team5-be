@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
-    public function getAddressFromCoordinates($id){
-        $apartment = Apartment::find($id);
+    public function getAddressFromCoordinates($slug){
+        $apartment = Apartment::where('slug',$slug)->first();
 
         if (!$apartment) {
             return response()->json(['error' => 'Appartamento non trovato'], 404);
