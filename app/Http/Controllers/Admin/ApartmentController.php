@@ -47,7 +47,14 @@ class ApartmentController extends Controller
 
         //chiamo la funzione dell'api che ho creato in Api/ApartmentController
         //restituisce le coordinate utilizzando l'indirizzo
-        $coordinates = $apiController->getCoordinatesForAddress($address);
+        // $coordinates = $apiController->getCoordinatesForAddress($address);
+
+        try {
+            // Chiamata alla funzione che restituisce le coordinate utilizzando l'indirizzo
+            $coordinates = $apiController->getCoordinatesForAddress($address);
+        } catch (\Exception $e) {
+            return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato. Riprova più tardi.']);
+        }
 
         //se esistono le coordinate salvo i dati e mostro la show
         if ($coordinates && isset($coordinates['latitude']) && isset($coordinates['longitude'])) {
