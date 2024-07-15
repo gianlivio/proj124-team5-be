@@ -16,14 +16,6 @@ class ApartmentsTableSeeder extends Seeder
         $apartmentsData = config('seeder-data');
         foreach ($apartmentsData as $apartmentData) {
             $newApartment = new Apartment();
-            // $newApartment->title = $apartmentData["title"];
-            // $newApartment->rooms = $apartmentData["rooms"];
-            // $newApartment->beds = $apartmentData["beds"];
-            // $newApartment->bathroom = $apartmentData["bathroom"];
-            // $newApartment->square_mt = $apartmentData["square_mt"];
-            // $newApartment->available = $apartmentData["available"];
-            // $newApartment->latitude = $apartmentData["latitude"];
-            // $newApartment->longitude = $apartmentData["longitude"];
             $newApartment->fill($apartmentData);
             $newApartment->save();
         }
