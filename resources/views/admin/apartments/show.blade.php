@@ -7,7 +7,11 @@
             <h1><span class="fw-bold"></span> {{ $apartment->title }}</h1>
             <div class="row">
                 <div class="col-8">
-                    <img class="w-25" src="{{ asset('storage/' . $apartment->img_path) }}" alt="{{ $apartment->title }}">
+                    @if ($apartment->img_path)
+                    <img class="h-25" src="{{ asset('storage/' . $apartment->img_path) }}" alt="{{ $apartment->title }}">                 
+                    @else
+                    <img class="img-fluid" src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png" alt="{{ $apartment->title }}">                 
+                    @endif
                 </div>
                 <div class="col-4">
                     <h4>I nostri servizi</h4>
