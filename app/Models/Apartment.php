@@ -21,7 +21,8 @@ class Apartment extends Model
         'latitude',
         'longitude',
         'sponsorship_id',
-        'slug'
+        'slug',
+        'img_path'
     ];
 
     public function user(){

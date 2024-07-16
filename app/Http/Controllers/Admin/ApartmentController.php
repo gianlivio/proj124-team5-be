@@ -89,7 +89,6 @@ class ApartmentController extends Controller
             $apartment->longitude = $coordinates['longitude'];
             $apartment->user_id = Auth::id();
             $apartment->slug = Str::slug($request->title);
-            $apartment->img_path = $data['img_path']; // Set the image path to the img_path column
             $apartment->save();
             return redirect()->route('admin.apartments.show', compact('apartment'));
         }
