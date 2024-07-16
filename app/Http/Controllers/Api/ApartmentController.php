@@ -46,7 +46,13 @@ class ApartmentController extends Controller
 
         $url = "https://api.tomtom.com/search/2/reverseGeocode/{$lat},{$lon}.json?key={$apiKey}";
 
-        $response = Http::get($url);
+        // $response = Http::get($url);
+
+
+        $response = Http::withOptions([
+            'verify' => false, // Disabilita la verifica del certificato SSL
+        ])
+        ->get($url);
 
         if ($response->failed()) {
             return response()->json(['error' => 'Errore nell\'ottenimento dell\'indirizzo'], 500);
@@ -99,8 +105,11 @@ class ApartmentController extends Controller
         try {
             
             $response = Http::get($url);
+            $response = Http::withOptions([
+                'verify' => false, // Disabilita la verifica del certificato SSL
+            ])
+            ->get($url);
 
-            
             if ($response->successful()) {
                 
                 $data = $response->json();
