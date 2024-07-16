@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container">
-        <h1 class="mt-4 fw-bold">Aggiungi Appartamento</h1>
+        <h1 class="mt-4 fw-bold">Modifica il tuo appartamento</h1>
 
         @if (session('success'))
             <div class="alert alert-success">
@@ -55,20 +55,8 @@
             </div>
 
             <div class="form-group">
-                <label for="sponsorship_id">Sponsorship:</label>
-                <select class="form-select" name="sponsorship_id" id="sponsorship_id">
-                    <option value=""></option>
-                    @foreach ($sponsorships as $sponsorship)
-                        <option value="{{ $sponsorship->id }}" {{ old('sponsorship_id') == $sponsorship->id ? 'selected' : '' }}>
-                            {{ $sponsorship->type }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-group">
                 <label for="description">Description:</label>
-                {{-- <textarea class="form-control" id="description" name="description">{{ old('apartment_description', $apartment_description) }}</textarea> --}}
+                <textarea class="form-control" id="description" name="description">{{ old('apartment_description', $apartment->apartment_description) }}</textarea>
             </div>
 
             <div class="form-check">

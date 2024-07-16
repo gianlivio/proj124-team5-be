@@ -54,14 +54,6 @@
                 <input type="number" class="form-control" id="square_mt" name="square_mt" required>
             </div>
 
-            <span>Sponsorship:</span>
-            <select class="form-select" name="sponsorship_id" id="sponsorship_id">
-                <option value=""></option>
-                @foreach ($sponsorships as $sponsorship)
-                    <option value="{{ $sponsorship->id }}">{{ $sponsorship->type }}</option>
-                @endforeach
-            </select>
-
             <div class="form-group">
                 <label for="description">Descrizione:</label>
                 <textarea class="form-control" id="description" name="description"></textarea>
