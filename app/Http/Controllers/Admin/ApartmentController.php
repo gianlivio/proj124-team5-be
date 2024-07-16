@@ -104,7 +104,8 @@ class ApartmentController extends Controller
     public function update(Request $request, Apartment $apartment, ApiController $apiController)
     {
         $data = $request->validated();
-        
+        $apartment->slug = Str::slug($apartment->title);
+
         $address = $request->input('address');
         $coordinates = $apiController->getCoordinatesForAddress($address);
         
