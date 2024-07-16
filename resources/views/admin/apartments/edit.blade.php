@@ -22,7 +22,8 @@
             </div>
         @endif
 
-        <form action="{{ route('admin.apartments.store') }}" method="POST">
+        <form action="{{ route('admin.apartments.update') }}" method="POST">
+            @method('PUT')
             @csrf
 
             <div class="form-group">
