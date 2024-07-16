@@ -12,7 +12,7 @@ return [
         'latitude' => 45.4642,
         'longitude' => 9.1900,
         'user_id' => 1,
-        'sponsorship_id' => 1,
+        'sponsorship_id' => 4,
         'slug' => 'appartamento-nel-cuore-di-milano'
     ],
     [
@@ -68,7 +68,7 @@ return [
         'latitude' => 45.0703,
         'longitude' => 7.6869,
         'user_id' => 5,
-        'sponsorship_id' => 2,
+        'sponsorship_id' => 4,
         'slug' => 'villa-con-giardino-a-torino'
     ],
     [
@@ -110,7 +110,7 @@ return [
         'latitude' => 45.4408,
         'longitude' => 12.3155,
         'user_id' => 8,
-        'sponsorship_id' => 2,
+        'sponsorship_id' => 4,
         'slug' => 'trilocale-centrale-a-venezia'
     ],
     [
@@ -208,7 +208,7 @@ return [
         'latitude' => 41.1171,
         'longitude' => 16.8719,
         'user_id' => 15,
-        'sponsorship_id' => 3,
+        'sponsorship_id' => 4,
         'slug' => 'bilocale-in-centro-a-bari'
     ]
 ];

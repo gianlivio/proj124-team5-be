@@ -4,6 +4,12 @@ use Carbon\Carbon;
 
 return [
     [
+        'type' => 'Free',
+        'duration' => Carbon::now()->addDays(7)->toDateTimeString(), // 7 giorni
+        'price' => 0.00,
+        'sponsorship_description' => 'Nessuna sponsorizzazione attiva, non avrai nessun vantaggio'
+    ],
+    [
         'type' => 'Basic',
         'duration' => Carbon::now()->addDays(7)->toDateTimeString(), // 7 giorni
         'price' => 19.99,
