@@ -61,7 +61,7 @@ class ApartmentController extends Controller
 
             $apartment = new Apartment();
             $apartment->fill($data);
-            
+
             $apartment->available = true; //solo per test
 
             $apartment->latitude = $coordinates['latitude'];
@@ -70,7 +70,7 @@ class ApartmentController extends Controller
             $apartment->slug = Str::slug($request->title);
             $apartment->save();
             return redirect()->route('admin.apartments.show', compact('apartment'));
-        } 
+        }
         //altrimenti ritorno alla pagina del create con tutti i dati (questo poi non dovrebbe essere necessario con il Request Validation)
         else {
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
@@ -81,11 +81,20 @@ class ApartmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Apartment $apartment)
+
+    public function show(Apartment $apartment, ApiController $apiController)
     {
         $services = Service::all();
         $sponsorships = Sponsorship::all();
-        return view('admin.apartments.show', compact('apartment', 'services', 'sponsorships'));
+
+        $response = $apiController->getAddressFromCoordinates($apartment->slug);
+        $data = $response->getData();
+
+        if (isset($data->address)) {
+            $address = $data->address;
+        }
+
+        return view('admin.apartments.show', compact('apartment', 'services', 'sponsorships', 'address'));
     }
 
     /**
@@ -103,12 +112,12 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment, ApiController $apiController)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $apartment->slug = Str::slug($apartment->title);
 
         $address = $request->input('address');
         $coordinates = $apiController->getCoordinatesForAddress($address);
-        
+
         if ($coordinates && isset($coordinates['latitude']) && isset($coordinates['longitude'])) {
             $apartment->slug = Str::slug($apartment->title);
             $apartment->latitude = $coordinates['latitude'];
@@ -116,11 +125,9 @@ class ApartmentController extends Controller
 
             $apartment->update($data);
             return redirect()->route('admin.apartments.show', ['apartment' => $apartment->slug])->with('message', 'apartment ' . $apartment->title . '  è stato modificato');
-        }
-        else {
+        } else {
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
         }
-
 
     }
 

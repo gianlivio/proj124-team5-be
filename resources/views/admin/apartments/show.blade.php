@@ -16,6 +16,7 @@
                     @endforeach
                 </div>
             </div>
+            <p>{{$address}}</p>
             <div class="row">
                 <div class="col-6">
                     <p><span class="fw-bold">Descrizione Appartamento:</span> {{ $apartment->apartment_description }}</p>
