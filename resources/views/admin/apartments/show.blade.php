@@ -23,14 +23,14 @@
             <p>{{$address}}</p>
             <div class="row">
                 <div class="col-6">
-                    <p><span class="fw-bold">Descrizione Appartamento:</span> {{ $apartment->apartment_description }}</p>
+                    <p><span class="fw-bold">Descrizione:</span> {{ $apartment->apartment_description }}</p>
                 </div>
                 <div class="col-6">
-                    <p><span class="fw-bold">Numero stanze:</span> {{ $apartment->rooms }}</p>
+                    <p><span class="fw-bold">Stanze:</span> {{ $apartment->rooms }}</p>
                 </div>
             </div>
             
-            <div class="mt-3"><a class="btn btn-primary" href="{{ route('admin.apartments.index') }}">Back</a></div>
+            <div class="mt-3"><a class="btn btn-primary" href="{{ route('admin.apartments.index') }}">Indietro</a></div>
         </div>
 
     </div>
