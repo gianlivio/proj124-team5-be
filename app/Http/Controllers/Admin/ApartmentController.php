@@ -26,6 +26,15 @@ class ApartmentController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function list_sponsor(Apartment $apartment)
+    {
+        $sponsorships = Sponsorship::all();
+        return view('admin.apartments.sponsor', compact('apartment', 'sponsorships'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

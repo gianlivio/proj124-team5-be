@@ -27,6 +27,9 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('apartments', ApartmentController::class)->parameters(['apartments'=>'apartment:slug']);
+
+        // Rotta personalizzata per list_sponsor
+        Route::get('apartments/{apartment:slug}/list_sponsor', [ApartmentController::class, 'list_sponsor'])->name('apartments.list_sponsor');
     });
 
 require __DIR__ . '/auth.php';

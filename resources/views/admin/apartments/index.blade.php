@@ -44,7 +44,7 @@
                                     <a href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}"
                                         class="btn btn-success fw-bold text-light">Dettagli</a>
                                     <a href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}"
-                                        class="btn btn-warning fw-bold text-light">Modifica</a>
+                                        class="btn btn-primary fw-bold text-light">Modifica</a>
                                     <form
                                         action="{{ route('admin.apartments.destroy', ['apartment' => $curApartment->slug]) }}"
                                         method="POST">
@@ -74,6 +74,10 @@
                                             </div>
                                         </div>
                                     </form>
+                                    <a href="{{ route('admin.apartments.list_sponsor', ['apartment' => $curApartment->slug]) }}"
+                                        class="btn btn-warning fw-bold text-light">
+                                        <i class="fa-solid fa-crown"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
