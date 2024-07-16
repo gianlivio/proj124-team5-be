@@ -22,7 +22,7 @@
             </div>
         @endif
 
-        <form action="{{ route('admin.apartments.update') }}" method="POST">
+        <form action="{{ route('admin.apartments.update', ['apartment' => $apartment->slug]) }}" method="POST">
             @method('PUT')
             @csrf
 
