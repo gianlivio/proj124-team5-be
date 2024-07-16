@@ -92,8 +92,8 @@
                 <p class="fw-bold" id="slug"></p>
             </div> --}}
 
-            <button type="submit" class="btn btn-primary mt-2">Add</button>
-            <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary mt-2">Cancel</a>
+            <button type="submit" class="btn btn-primary mt-2">Aggiungi</button>
+            <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary mt-2">Cancella</a>
 
         </form>
 
