@@ -102,11 +102,17 @@ class ApartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Apartment $apartment)
+    public function edit(Apartment $apartment, ApiController $apiController)
     {
         $services = Service::all();
         $sponsorships = Sponsorship::all();
-        return view('admin.apartments.edit', compact('apartment', 'services', 'sponsorships'));
+        $response = $apiController->getAddressFromCoordinates($apartment->slug);
+        $data = $response->getData();
+
+        if (isset($data->address)) {
+            $address = $data->address;
+        }
+        return view('admin.apartments.edit', compact('apartment', 'services', 'sponsorships','address'));
     }
 
     /**

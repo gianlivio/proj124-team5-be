@@ -33,8 +33,10 @@
 
             <div class="form-group">
                 <label for="address">Indirizzo:</label>
-                <input type="text" class="form-control" id="address" name="address">
+                <input type="text" class="form-control" id="address" name="address" autocomplete="off">
+                <div id="suggestions" class="list-group mt-2"></div>
             </div>
+            
 
             <div class="form-group">
                 <label for="rooms">Stanze:</label>

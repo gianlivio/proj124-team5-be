@@ -4,7 +4,7 @@
 @section('content')
 
     <div class="container">
-        <h1 class="mt-4 fw-bold">Aggiungi Appartamento</h1>
+        <h1 class="mt-4 fw-bold">Modifica Appartamento</h1>
 
         @if (session('success'))
             <div class="alert alert-success">
@@ -33,7 +33,8 @@
 
             <div class="form-group">
                 <label for="address">Indirizzo:</label>
-                <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $apartment->address) }}">
+                <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $address) }}" autocomplete="off">
+                <div id="suggestions" class="list-group mt-2"></div>
             </div>
 
             <div class="form-group">
