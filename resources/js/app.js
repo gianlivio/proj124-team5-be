@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         suggestion.addEventListener('click', function() {
                             addressInput.value = item.address;
                             suggestionsContainer.innerHTML = '';
-                            clearTimeout(timeout);
                         });
                     });
                 })
