@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\Sponsorship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ApartmentController extends Controller
@@ -20,7 +21,7 @@ class ApartmentController extends Controller
     {
 
         $user = Auth::user();
-        $apartments = Apartment::where('user_id',$user->id)->get();
+        $apartments = Apartment::where('user_id', $user->id)->get();
         return view('admin.apartments.index', compact('apartments'));
     }
 
@@ -58,18 +59,24 @@ class ApartmentController extends Controller
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato. Riprova più tardi.']);
         }
 
+        if ($request->hasFile('inp_img')) {
+            $inp_img = Storage::put('apartment_images', $request->file('inp_img')); // Store the image in the storage
+            $data['img_path'] = $inp_img;
+        }
+
+        $apartment = new Apartment();
+        $apartment->fill($data);
+        $apartment->user_id = Auth::id();
+
         //se esistono le coordinate salvo i dati e mostro la show
         if ($coordinates && isset($coordinates['latitude']) && isset($coordinates['longitude'])) {
 
-            $apartment = new Apartment();
-            $apartment->fill($data);
-
-            $apartment->available = true; //solo per test
-
+            $apartment->available = true;
             $apartment->latitude = $coordinates['latitude'];
             $apartment->longitude = $coordinates['longitude'];
             $apartment->user_id = Auth::id();
             $apartment->slug = Str::slug($request->title);
+            $apartment->img_path = $data['img_path']; // Set the image path to the img_path column
             $apartment->save();
             return redirect()->route('admin.apartments.show', compact('apartment'));
         }
@@ -77,7 +84,6 @@ class ApartmentController extends Controller
         else {
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
         }
-
     }
 
     /**
@@ -130,7 +136,6 @@ class ApartmentController extends Controller
         } else {
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
         }
-
     }
 
     /**
