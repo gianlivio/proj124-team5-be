@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('apartment_id');
             $table->foreign('apartment_id')->references('id')->on('apartments')->cascadeOnDelete();
 
-            $table->unsignedBigInteger('sponsorship_id')->nullable();
+            $table->unsignedBigInteger('sponsorship_id');
             $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->cascadeOnDelete();
 
             $table->primary(['apartment_id','sponsorship_id']);
