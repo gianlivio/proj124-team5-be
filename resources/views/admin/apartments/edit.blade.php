@@ -53,14 +53,17 @@
                 <input type="number" class="form-control" id="square_mt" name="square_mt" value="{{ old('square_mt', $apartment->square_mt) }}" required>
             </div>
 
-            <span>Sponsorship:</span>
-            <select class="form-select" name="sponsorship_id" id="sponsorship_id">
-
-                <option value=""></option>
-                @foreach ($sponsorships as $sponsorship)
-                    <option value="{{ $sponsorship->id }}">{{ $sponsorship->type }}</option>
-                @endforeach
-            </select>
+            <div class="form-group">
+                <label for="sponsorship_id">Sponsorship:</label>
+                <select class="form-select" name="sponsorship_id" id="sponsorship_id">
+                    <option value=""></option>
+                    @foreach ($sponsorships as $sponsorship)
+                        <option value="{{ $sponsorship->id }}" {{ old('sponsorship_id') == $sponsorship->id ? 'selected' : '' }}>
+                            {{ $sponsorship->type }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
             <div class="form-group">
                 <label for="description">Description:</label>
@@ -77,12 +80,16 @@
             <div class="mt-2">
                 <span>Servizi offerti:</span>
                 @foreach ($services as $service)
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="services_{{ $service->id }}" name="services[]" {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}>
-                        <label class="form-check-label" for="services_{{ $service->id }}">
-                            {{ $service->title }}
-                        </label>
-                    </div>
+                <div class="form-check">
+                    @if (old('services') !== null)
+                    <input @checked(in_array($service->id, old('services'))) name="services[]" class="form-check-input" type="checkbox" value="{{ $service->id }}" id="service-{{ $service->id }}">
+                    @else
+                    <input @checked($apartment->services->contains($service)) name="services[]" class="form-check-input" type="checkbox" value="{{ $service->id }}" id="service-{{ $service->id }}">
+                    @endif
+                    <label class="form-check-label" for="services">
+                        {{ $service->title }}
+                    </label>
+                </div>
                 @endforeach
             </div>
             
