@@ -100,7 +100,11 @@
             </div> --}}
 
             <button type="submit" class="btn btn-primary mt-2">Aggiungi</button>
+<<<<<<< HEAD
             <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary mt-2">Elimina</a>
+=======
+            <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary mt-2">Cancella</a>
+>>>>>>> d5bd6403a91d154e19a69ebeff974d060666ed88
 
         </form>
 

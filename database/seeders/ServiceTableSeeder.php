@@ -23,7 +23,8 @@ class ServiceTableSeeder extends Seeder
             'Cassaforte',
             'Servizio in camera',
             'Mini-bar o frigorifero',
-            'Macchina per il caffè o bollitore per tè'
+            'Macchina per il caffè',
+            'Bollitore per tè'
 
         ];
 
