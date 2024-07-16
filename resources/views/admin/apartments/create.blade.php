@@ -55,8 +55,8 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Descrizione:</label>
-                <textarea class="form-control" id="description" name="description"></textarea>
+                <label for="apartment_description">Descrizione:</label>
+                <textarea class="form-control" id="apartment_description" name="apartment_description"></textarea>
             </div>
             
             <div>

@@ -55,8 +55,8 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea class="form-control" id="description" name="description">{{ old('apartment_description', $apartment->apartment_description) }}</textarea>
+                <label for="apartment_description">Descrizione:</label>
+                <textarea class="form-control" id="apartment_description" name="apartment_description">{{ old('apartment_description', $apartment->apartment_description) }}</textarea>
             </div>
 
             <div class="form-check">
@@ -88,11 +88,7 @@
             </div> --}}
 
             <button type="submit" class="btn btn-primary mt-2">Aggiungi</button>
-<<<<<<< HEAD
-            <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary mt-2">Elimina</a>
-=======
             <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary mt-2">Cancella</a>
->>>>>>> d5bd6403a91d154e19a69ebeff974d060666ed88
 
         </form>
 

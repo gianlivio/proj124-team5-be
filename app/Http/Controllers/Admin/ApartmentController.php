@@ -73,6 +73,10 @@ class ApartmentController extends Controller
             $data['img_path'] = $inp_img;
         }
 
+        if (!isset($data['sponsorship_id'])) {
+            $data['sponsorship_id'] = 1; 
+        }
+
         $apartment = new Apartment();
         $apartment->fill($data);
         $apartment->user_id = Auth::id();
