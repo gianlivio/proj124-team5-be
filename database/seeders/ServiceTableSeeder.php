@@ -17,7 +17,14 @@ class ServiceTableSeeder extends Seeder
             'Wi-Fi',
             'Parcheggio',
             'Piscina',
-            'TV via cavo'
+            'TV via cavo',
+            'Servizio di pulizia giornaliero',
+            'Balcone o terrazza privata',
+            'Cassaforte',
+            'Servizio in camera',
+            'Mini-bar o frigorifero',
+            'Macchina per il caffè o bollitore per tè'
+
         ];
 
         foreach ($services as $service) {
