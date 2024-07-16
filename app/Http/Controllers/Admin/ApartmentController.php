@@ -69,8 +69,12 @@ class ApartmentController extends Controller
         }
 
         if ($request->hasFile('inp_img')) {
-            $inp_img = Storage::put('apartment_images', $request->file('inp_img')); // Store the image in the storage
+            $inp_img = Storage::put('apartment_images', $request->file('inp_img'));
             $data['img_path'] = $inp_img;
+        }
+
+        if (!isset($data['sponsorship_id'])) {
+            $data['sponsorship_id'] = 1; 
         }
 
         $apartment = new Apartment();
@@ -134,6 +138,14 @@ class ApartmentController extends Controller
 
         $address = $request->input('address');
         $coordinates = $apiController->getCoordinatesForAddress($address);
+
+        if ($request->hasFile('inp_img')) {
+            if ($apartment->img_path) {
+                $inp_img = Storage::delete($apartment->img_path); 
+            }
+            $inp_img = Storage::put('apartment_images', $request->file('inp_img')); 
+            $data['img_path'] = $inp_img;
+        }
 
         if ($coordinates && isset($coordinates['latitude']) && isset($coordinates['longitude'])) {
             $apartment->slug = Str::slug($apartment->title);
