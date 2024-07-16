@@ -104,7 +104,7 @@ class ApartmentController extends Controller
 
         try {
             
-            $response = Http::get($url);
+            // $response = Http::get($url);
             $response = Http::withOptions([
                 'verify' => false, // Disabilita la verifica del certificato SSL
             ])
