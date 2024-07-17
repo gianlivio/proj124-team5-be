@@ -31,17 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
                         suggestion.addEventListener('click', function() {
                             addressInput.value = item.address;
                             suggestionsContainer.innerHTML = '';
+                            clearInterval(timeout);
                         });
                     });
                 })
                 .catch(function(error) {
-                    console.error('Errore durante il recupero dei dati del completamento automatico:', error);
+                    console.error('Errore durante la ricerca:', error);
                 });
-            }, 400);
+            }, 500);
         } else {
             suggestionsContainer.innerHTML = '';
         }
     });
+    
     // Mostra il modale e imposta l'action da eliminare
     $('#confirmModal').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget); 
