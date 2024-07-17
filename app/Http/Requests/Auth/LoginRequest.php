@@ -32,6 +32,17 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'email.required' => "L'email è necessaria!",
+            'email.string' => "L'email non può essere composta da soli numeri!",
+            'email.email' =>"Inserisci una @ nel testo!",
+            'password.required' => "La password è necessaria!",
+            'password.string' => "La password non può essere composta da soli numeri!"
+        ];
+    }
+
     /**
      * Attempt to authenticate the request's credentials.
      *
