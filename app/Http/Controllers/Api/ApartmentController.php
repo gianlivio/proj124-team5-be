@@ -103,5 +103,7 @@ class ApartmentController extends Controller
             "success" => true
         ];
         return response()->json($data);
+
+        //ciao test
     }
 }
