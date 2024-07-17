@@ -35,7 +35,7 @@
                             <td>{{ $curApartment->title }}</td>
                             <td>{{ $curApartment->rooms }}</td>
                             <td>{{ $curApartment->beds }}</td>
-                            <td>{{ $curApartment->bathrooms }}</td>
+                            <td>{{ $curApartment->bathroom }}</td>
                             <td>{{ $curApartment->square_mt }}</td>
                             <td>{{ $curApartment->available ? 'si' : 'no' }}</td>
                             
