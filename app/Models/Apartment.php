@@ -21,6 +21,7 @@ class Apartment extends Model
         'latitude',
         'longitude',
         'sponsorship_id',
+        'services',
         'slug'
     ];
 
