@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ApartmentController;
 use App\Http\Controllers\Api\AutocompleteController;
+use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/apartment/{slug}/address', [ApartmentController::class, 'getAddressFromCoordinates']);
 Route::put('/apartments/{slug}/update-coordinates', [ApartmentController::class, 'updateCoordinates']);
 Route::get('/autocomplete', [AutocompleteController::class, 'search'])->name('autocomplete.search');
+Route::get('/apartments/search', [ApartmentController::class, "searchApartments"]);

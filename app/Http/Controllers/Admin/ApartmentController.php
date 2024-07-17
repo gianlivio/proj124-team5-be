@@ -52,6 +52,8 @@ class ApartmentController extends Controller
 
         $data = $request->all();
 
+
+        // dd($request);
         //? Metto due commenti :-)
 
         // prendo il valore dell'indirizzo dall'input del form
@@ -79,6 +81,8 @@ class ApartmentController extends Controller
 
         $apartment = new Apartment();
         $apartment->fill($data);
+
+
         $apartment->user_id = Auth::id();
 
         //se esistono le coordinate salvo i dati e mostro la show
@@ -90,6 +94,11 @@ class ApartmentController extends Controller
             $apartment->user_id = Auth::id();
             $apartment->slug = Str::slug($request->title);
             $apartment->save();
+
+            if ($request->has("services")){
+                $apartment->services()->attach($request->services);
+            }
+
             return redirect()->route('admin.apartments.show', compact('apartment'));
         }
         //altrimenti ritorno alla pagina del create con tutti i dati (questo poi non dovrebbe essere necessario con il Request Validation)

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Http;
 use App\Models\Apartment;
+use Illuminate\Support\Facades\Request;
 
 class ApartmentController extends Controller
 {
@@ -79,4 +80,20 @@ class ApartmentController extends Controller
         }
     }
 
+
+
+    public function searchApartments() {
+        // $api_key = env('TOMTOM_API_KEY');
+
+
+
+        // $url = "https://api.tomtom.com/search/2/nearbySearch/.json?key={$api_key}&lat={$lat}&lon={$long}";
+        
+        $apartments = Apartment::all();
+        $data = [
+            "results" => $apartments,
+            "success" => true
+        ];
+        return response()->json($data);
+    }
 }
