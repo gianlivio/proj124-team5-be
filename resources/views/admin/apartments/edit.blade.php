@@ -73,7 +73,7 @@
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="available" name="available" {{ old('available', $apartment->available) ? 'checked' : '' }}>
+                <input class="form-check-input" type="checkbox" value="1" id="available" name="available" @checked( old('available', $apartment->available) ? 'checked' : '' )>
                 <label class="form-check-label" for="available">
                     Disponibile
                 </label>

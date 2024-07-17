@@ -68,7 +68,6 @@ class ApartmentController extends Controller
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato. Riprova più tardi.']);
         }
 
-        $data['available'] = $request->has('available') ? 1 : 0;
 
         if ($request->hasFile('inp_img')) {
             $inp_img = Storage::put('apartment_images', $request->file('inp_img'));
@@ -149,7 +148,6 @@ class ApartmentController extends Controller
     {
         $data = $request->all();
         // dd($request);
-        $data['available'] = $request->has('available') ? 1 : 0;
 
         $apartment->slug = Str::slug($apartment->title);
 
