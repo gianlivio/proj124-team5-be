@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     addressInput.addEventListener('input', function() {
         let query = this.value;
 
-        // Clear previous timeout to prevent multiple timeouts
+        
         if (timeout) clearTimeout(timeout);
 
         if (query.length >= 4) {
@@ -36,15 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             suggestionsContainer.innerHTML = '';
                         });
                     })
-                    .catch(function (error) {
-                        console.error("Errore durante la ricerca:", error);
-                    });
+                    
                 })
-                .catch(function(error) {
-                    console.error('Error during search:', error);
-                    // Optionally display an error message to the user
+                .catch(function (error) {
+                    console.error("Errore durante la ricerca:", error);
                 });
-            }, 500); // Debounce time in milliseconds
+            }, 500); 
         } else {
             suggestionsContainer.innerHTML = "";
         }
