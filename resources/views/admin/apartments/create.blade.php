@@ -67,7 +67,7 @@
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="available">
+                <input class="form-check-input" type="checkbox" value="1" id="available" name="available">
                 <label class="form-check-label" for="available">
                     Disponibile
                 </label>

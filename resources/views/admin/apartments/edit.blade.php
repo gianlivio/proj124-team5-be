@@ -22,7 +22,8 @@
             </div>
         @endif
 
-        <form action="{{ route('admin.apartments.update', ['apartment' => $apartment->slug]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.apartments.update', ['apartment' => $apartment->slug]) }}" method="POST"
+            enctype="multipart/form-data">
             @method('PUT')
             @csrf
 
@@ -34,7 +35,8 @@
 
             <div class="form-group">
                 <label for="address">Indirizzo:</label>
-                <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $address) }}" autocomplete="off">
+                <input type="text" class="form-control" id="address" name="address"
+                    value="{{ old('address', $address) }}" autocomplete="off">
                 <div id="suggestions" class="list-group mt-2"></div>
             </div>
 
@@ -71,8 +73,7 @@
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="available" name="available"
-                    {{ old('available') ? 'checked' : '' }}>
+                <input class="form-check-input" type="checkbox" value="1" id="available" name="available" @checked( old('available', $apartment->available) ? 'checked' : '' )>
                 <label class="form-check-label" for="available">
                     Disponibile
                 </label>
@@ -83,11 +84,11 @@
                 @foreach ($services as $service)
                     <div class="form-check">
                         @if (old('services') !== null)
-                            <input @checked(in_array($service->id, old('services'))) name="services[]" class="form-check-input" type="checkbox"
-                                value="{{ $service->id }}" id="service-{{ $service->id }}">
+                            <input @checked(in_array($apartment->service->id, old('services'))) name="services[]" class="form-check-input" type="checkbox"
+                                value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
                         @else
                             <input @checked($apartment->services->contains($service)) name="services[]" class="form-check-input" type="checkbox"
-                                value="{{ $service->id }}" id="service-{{ $service->id }}">
+                                value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
                         @endif
                         <label class="form-check-label" for="services">
                             {{ $service->title }}
