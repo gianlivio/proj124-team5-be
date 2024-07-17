@@ -25,7 +25,8 @@ class AutocompleteController extends Controller
             'limit'=> 6,
             'typeahead' => true,
             'language' => 'it-IT',
-            'idxSet' => 'Str'
+            'idxSet' => 'Str',
+            'countrySet'=> 'IT'
         ]);
 
         $results = $response->json()['results'];
