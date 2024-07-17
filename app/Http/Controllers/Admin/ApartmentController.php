@@ -52,6 +52,7 @@ class ApartmentController extends Controller
 
         $data = $request->all();
 
+        dd($request);
         //? Metto due commenti :-)
 
         // prendo il valore dell'indirizzo dall'input del form
