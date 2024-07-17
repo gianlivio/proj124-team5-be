@@ -26,4 +26,4 @@ Route::get('/apartment/{slug}/address', [ApartmentController::class, 'getAddress
 Route::put('/apartments/{slug}/update-coordinates', [ApartmentController::class, 'updateCoordinates']);
 Route::get('/autocomplete', [AutocompleteController::class, 'search'])->name('autocomplete.search');
 Route::get('/apartments/search', [ApartmentController::class, "searchApartments"]);
-Route::post('/apartments/search/send-location', [ApartmentController::class, 'locationInput']);
+Route::post('/apartments/send-location', [ApartmentController::class, 'searchInput']);
