@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-4">
                     <h4>I nostri servizi</h4>
-                    @foreach ($services as $service)
+                    @foreach ($apartment->services as $service)
                         <p>{{ $service->title }}</p>
                     @endforeach
                 </div>
