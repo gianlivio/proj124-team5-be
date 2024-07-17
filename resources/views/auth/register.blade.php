@@ -18,7 +18,7 @@
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 <div class="invalid-feedback">
-                                    Perfavore inserisci il nome.
+                                    Per favore inserisci il nome.
                                 </div>
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -35,7 +35,7 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 <div class="invalid-feedback">
-                                    Perfavore inserisci l'email.
+                                    Per favore inserisci l'email.
                                 </div>
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
                                 <input id="password" type="password" minlength="8" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 <div id="password_fb" class="invalid-feedback">
-                                    Perfavore inserisci una password.
+                                    Per favore inserisci una password.
                                 </div>
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
