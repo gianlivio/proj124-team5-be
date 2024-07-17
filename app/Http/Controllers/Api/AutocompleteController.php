@@ -25,7 +25,7 @@ class AutocompleteController extends Controller
             'limit'=> 6,
             'typeahead' => true,
             'language' => 'it-IT',
-            'idxSet' => 'Str',
+            'idxSet' => 'PAD',
             'countrySet'=> 'IT'
         ]);
 
