@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Http;
 use App\Models\Apartment;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
@@ -83,8 +82,11 @@ class ApartmentController extends Controller
 
 
     public function searchInput (Request $request) {
-        $location = $request;
-        
+
+        // non funzionava perche:
+        //1) serve il prefisso api/ (errore 404)
+        //2) import scorretto di Request: Illuminate\Support\Facades\Request; (errore 500)
+        $location = $request->all();
         dd($location);
     }
 
