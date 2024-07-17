@@ -51,8 +51,6 @@ class ApartmentController extends Controller
     {
 
         $data = $request->all();
-
-
         // dd($request);
         //? Metto due commenti :-)
 
@@ -70,13 +68,15 @@ class ApartmentController extends Controller
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato. Riprova più tardi.']);
         }
 
+        $data['available'] = $request->has('available') ? 1 : 0;
+
         if ($request->hasFile('inp_img')) {
             $inp_img = Storage::put('apartment_images', $request->file('inp_img'));
             $data['img_path'] = $inp_img;
         }
 
         if (!isset($data['sponsorship_id'])) {
-            $data['sponsorship_id'] = 1; 
+            $data['sponsorship_id'] = 1;
         }
 
         $apartment = new Apartment();
@@ -95,7 +95,7 @@ class ApartmentController extends Controller
             $apartment->slug = Str::slug($request->title);
             $apartment->save();
 
-            if ($request->has("services")){
+            if ($request->has("services")) {
                 $apartment->services()->attach($request->services);
             }
 
@@ -139,7 +139,7 @@ class ApartmentController extends Controller
         if (isset($data->address)) {
             $address = $data->address;
         }
-        return view('admin.apartments.edit', compact('apartment', 'services', 'sponsorships','address'));
+        return view('admin.apartments.edit', compact('apartment', 'services', 'sponsorships', 'address'));
     }
 
     /**
@@ -148,25 +148,32 @@ class ApartmentController extends Controller
     public function update(Request $request, Apartment $apartment, ApiController $apiController)
     {
         $data = $request->all();
+        // dd($request);
+        $data['available'] = $request->has('available') ? 1 : 0;
+
         $apartment->slug = Str::slug($apartment->title);
 
         $address = $request->input('address');
         $coordinates = $apiController->getCoordinatesForAddress($address);
-
-        if ($request->hasFile('inp_img')) {
-            if ($apartment->img_path) {
-                $inp_img = Storage::delete($apartment->img_path); 
-            }
-            $inp_img = Storage::put('apartment_images', $request->file('inp_img')); 
-            $data['img_path'] = $inp_img;
-        }
 
         if ($coordinates && isset($coordinates['latitude']) && isset($coordinates['longitude'])) {
             $apartment->slug = Str::slug($apartment->title);
             $apartment->latitude = $coordinates['latitude'];
             $apartment->longitude = $coordinates['longitude'];
 
+            if ($request->hasFile('inp_img')) {
+                if ($apartment->img_path) {
+                    $inp_img = Storage::delete($apartment->img_path);
+                }
+                $inp_img = Storage::put('apartment_images', $request->file('inp_img'));
+                $data['img_path'] = $inp_img;
+            }
+
+
+
             $apartment->update($data);
+            $apartment->services()->sync($request->services);
+
             return redirect()->route('admin.apartments.show', ['apartment' => $apartment->slug])->with('message', 'apartment ' . $apartment->title . '  è stato modificato');
         } else {
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
