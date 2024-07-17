@@ -82,11 +82,10 @@ class ApartmentController extends Controller
     }
 
 
-    public function locationInput (Request $request) {
-        $location = $request->input('myLocation');
-
-        Log::info($location);
-        return $location;
+    public function searchInput (Request $request) {
+        $location = $request;
+        
+        dd($location);
     }
 
     public function searchApartments() {
