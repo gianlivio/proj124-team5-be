@@ -97,7 +97,7 @@
                 let form = document.getElementById('registerForm');
                 form.addEventListener('submit', function (event) {
                     let passwordInput = document.getElementById('password');
-                    if (passwordInput.value.length < 8 && passwordInput.value.length > 0) {
+                    if ( passwordInput.value.length > 0 && passwordInput.value.length < 8) {
                         let feedback_length = document.getElementById("password_fb")
                         console.log(feedback_length.innerHTML);
                         feedback_length.innerHTML = "La password deve essere di almeno 8 caratteri."
