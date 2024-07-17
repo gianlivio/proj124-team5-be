@@ -7,13 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const addressInput = document.getElementById("address");
     const suggestionsContainer = document.getElementById("suggestions");
     let lastQuery = "";
+    let timeout;
 
     addressInput.addEventListener("input", function () {
         let query = this.value;
         console.log(`Query: ${query}, Last Query: ${lastQuery}`);
         if (query !== lastQuery && query.length >= 4) {
             
-            let timeout = setTimeout(function () {
+            timeout = setTimeout(function () {
                 axios
                     .get("/api/autocomplete", {
                         params: {
