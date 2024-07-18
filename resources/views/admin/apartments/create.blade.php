@@ -26,32 +26,32 @@
             @csrf
 
             <div class="form-group">
-                <label for="title">Titolo:</label>
+                <label for="title">Titolo*:</label>
                 <input type="text" class="form-control" id="title" name="title" required>
             </div>
 
             <div class="form-group">
-                <label for="address">Indirizzo:</label>
+                <label for="address">Indirizzo*:</label>
                 <input type="text" class="form-control" id="address" name="address" autocomplete="off" required>
                 <div id="suggestions" class="list-group mt-2"></div>
             </div>
 
 
             <div class="form-group">
-                <label for="rooms">Stanze:</label>
+                <label for="rooms">Stanze*:</label>
                 <input type="number" class="form-control" id="rooms" name="rooms" required>
             </div>
 
             <div class="form-group">
-                <label for="beds">Posti letto:</label>
+                <label for="beds">Posti letto*:</label>
                 <input type="number" class="form-control" id="beds" name="beds" required>
             </div>
             <div class="form-group">
-                <label for="bathroom">Bagni:</label>
+                <label for="bathroom">Bagni*:</label>
                 <input type="number" class="form-control" id="bathroom" name="bathroom" required>
             </div>
             <div class="form-group">
-                <label for="square_mt">Metri Quadrati:</label>
+                <label for="square_mt">Metri Quadrati*:</label>
                 <input type="number" class="form-control" id="square_mt" name="square_mt" required>
             </div>
 
