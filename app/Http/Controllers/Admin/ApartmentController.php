@@ -98,7 +98,7 @@ class ApartmentController extends Controller
                 $apartment->services()->attach($request->services);
             }
 
-            return redirect()->route('admin.apartments.show', compact('apartment'))->with('message', 'apartment ' . $apartment->title . '  è stato aggiunto');
+            return redirect()->route('admin.apartments.index')->with('success', 'Appartamento ' . $apartment->title . ' è stato aggiunto con successo!');
         }
         //altrimenti ritorno alla pagina del create con tutti i dati (questo poi non dovrebbe essere necessario con il Request Validation)
         else {
@@ -172,7 +172,7 @@ class ApartmentController extends Controller
             $apartment->update($data);
             $apartment->services()->sync($request->services);
 
-            return redirect()->route('admin.apartments.show', ['apartment' => $apartment->slug])->with('message', 'apartment ' . $apartment->title . '  è stato modificato');
+            return redirect()->route('admin.apartments.index', ['apartment' => $apartment->slug])->with('message', 'apartment ' . $apartment->title . '  è stato modificato');
         } else {
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
         }

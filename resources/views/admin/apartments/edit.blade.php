@@ -22,6 +22,7 @@
             </div>
         @endif
 
+
         <form action="{{ route('admin.apartments.update', ['apartment' => $apartment->slug]) }}" method="POST"
             enctype="multipart/form-data">
             @method('PUT')

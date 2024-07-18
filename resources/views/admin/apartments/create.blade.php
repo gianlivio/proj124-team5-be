@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 
-
 @section('content')
 
     <div class="container">
@@ -36,7 +35,7 @@
                 <input type="text" class="form-control" id="address" name="address" autocomplete="off">
                 <div id="suggestions" class="list-group mt-2"></div>
             </div>
-            
+
 
             <div class="form-group">
                 <label for="rooms">Stanze:</label>
@@ -60,7 +59,7 @@
                 <label for="apartment_description">Descrizione:</label>
                 <textarea class="form-control" id="apartment_description" name="apartment_description"></textarea>
             </div>
-            
+
             <div>
                 <label for="inp_img">Immagine appartamento</label>
                 <input type="file" name="inp_img" id="inp_img">
@@ -76,15 +75,16 @@
             <div class="mt-2">
                 <span>Servizi offerti:</span>
                 @foreach ($services as $service)
-                <div class="form-check">
-                    <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}" id="services">
-                    <label class="form-check-label" for="services">
-                        {{ $service->title }}
-                    </label>
-                </div>
+                    <div class="form-check">
+                        <input class="form-check-input" name="services[]" type="checkbox" value="{{ $service->id }}"
+                            id="services">
+                        <label class="form-check-label" for="services">
+                            {{ $service->title }}
+                        </label>
+                    </div>
                 @endforeach
             </div>
-            
+
             {{-- <div>
                 <span>Slug:</span>
                 <p class="fw-bold" id="slug"></p>
