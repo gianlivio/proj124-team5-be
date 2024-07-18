@@ -2,12 +2,27 @@
 
 @section('content')
     <div class="container">
+
+
+        @if (session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        
         <div class="ms-table-container mt-5">
             <div class="d-flex justify-content-between align-items-center">
                 <h1 class="fw-bold">Appartamenti</h1>
 
                 <div class="d-flex flex-column">
-                    <a href="{{ route('admin.apartments.create') }}" class="btn btn-primary fw-bold">Crea nuovo appartamento</a>
+                    <a href="{{ route('admin.apartments.create') }}" class="btn btn-primary fw-bold">Crea nuovo
+                        appartamento</a>
                     <span class="fw-bold">Appartamenti mostrati: {{ count($apartments) }}</span>
                 </div>
             </div>
@@ -37,10 +52,15 @@
                             <td>{{ $curApartment->available ? 'si' : 'no' }}</td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}" class="btn btn-success fw-bold text-light">Dettagli</a>
-                                    <a href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}" class="btn btn-primary fw-bold text-light">Modifica</a>
-                                    <button type="button" class="btn fw-bold btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal" data-action="{{ route('admin.apartments.destroy', ['apartment' => $curApartment->slug]) }}">Elimina</button>
-                                    <a href="{{ route('admin.apartments.list_sponsor', ['apartment' => $curApartment->slug]) }}" class="btn btn-warning fw-bold text-light"><i class="fa-solid fa-crown"></i></a>
+                                    <a href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}"
+                                        class="btn btn-success fw-bold text-light">Dettagli</a>
+                                    <a href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}"
+                                        class="btn btn-primary fw-bold text-light">Modifica</a>
+                                    <button type="button" class="btn fw-bold btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#confirmModal"
+                                        data-action="{{ route('admin.apartments.destroy', ['apartment' => $curApartment->slug]) }}">Elimina</button>
+                                    <a href="{{ route('admin.apartments.list_sponsor', ['apartment' => $curApartment->slug]) }}"
+                                        class="btn btn-warning fw-bold text-light"><i class="fa-solid fa-crown"></i></a>
                                 </div>
                             </td>
                         </tr>
