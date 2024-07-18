@@ -14,6 +14,7 @@ class SearchController extends Controller
     {
         $input = $request->input('input');
 
+        // dd($input);
         // $input = "Milano";
         // Process the input as needed
         return response()->json(['message' => 'Input received successfully', 'input' => $input]);
