@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let query = this.value;
 
             if (query.length === 0) {
-                // Disabilita il pulsante di invio se l'input dell'indirizzo è vuoto
+                // Disable submit button if address input is empty
                 submitButton.disabled = true;
             }
 
@@ -51,15 +51,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 );
 
-                                //se la query non è compresa nelle suggestions disabilita il bottone submit
-                                if(!response.data.includes(query)){
-                                    console.log("errore");
+                                // Disable submit button if the query is not in suggestions
+                                if (!response.data.some(data => data.address === query)) {
+                                    console.log("error");
                                     submitButton.disabled = true;
                                 }
                             });
                         })
                         .catch(function (error) {
-                            console.error("Errore durante la ricerca:", error);
+                            console.error("Error during search:", error);
                         });
                 }, 500);
             } else {
@@ -69,16 +69,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Show modal and set the action to be deleted
-    $("#confirmModal").on("show.bs.modal", function (event) {
-        var button = $(event.relatedTarget);
-        var action = button.data("action");
-        var modal = $(this);
-        modal.find("#deleteButton").attr("href", action);
+    const confirmModal = document.getElementById('confirmModal');
+    confirmModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const action = button.getAttribute('data-action');
+        const form = document.getElementById('deleteForm');
+        form.setAttribute('action', action);
     });
 
     // Handle deletion
-    $("#confirmModal").on("click", "#deleteButton", function (e) {
+    const deleteButton = document.getElementById('deleteButton');
+    deleteButton.addEventListener('click', function (e) {
         e.preventDefault();
-        window.location.href = $(this).attr("href");
+        const form = document.getElementById('deleteForm');
+        form.submit();
     });
 });
