@@ -28,12 +28,12 @@
 
             <div class="form-group">
                 <label for="title">Titolo:</label>
-                <input type="text" class="form-control" id="title" name="title">
+                <input type="text" class="form-control" id="title" name="title" required>
             </div>
 
             <div class="form-group">
                 <label for="address">Indirizzo:</label>
-                <input type="text" class="form-control" id="address" name="address" autocomplete="off">
+                <input type="text" class="form-control" id="address" name="address" autocomplete="off" required>
                 <div id="suggestions" class="list-group mt-2"></div>
             </div>
             
@@ -90,7 +90,7 @@
                 <p class="fw-bold" id="slug"></p>
             </div> --}}
 
-            <button type="submit" class="btn btn-primary mt-2">Aggiungi</button>
+            <button type="submit" id="submit" class="btn btn-primary mt-2" disabled>Aggiungi</button>
             <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary mt-2">Cancella</a>
 
         </form>
