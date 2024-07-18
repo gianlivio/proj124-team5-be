@@ -30,4 +30,3 @@ Route::get('/autocomplete', [AutocompleteController::class, 'search'])->name('au
 
 
 Route::get('/search', [SearchController::class, "searchApartments"]);
-Route::post('/search/user-input', [SearchController::class, 'storeInput']);

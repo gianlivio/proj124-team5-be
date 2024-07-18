@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Api\ApartmentController as ApiController;
+use App\Http\Controllers\Api\AutocompleteController;
 use App\Http\Controllers\Controller;
 use App\Models\Apartment;
 use App\Models\Service;
