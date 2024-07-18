@@ -43,6 +43,7 @@ class SearchController extends Controller
                 // checkare se available
 
                 $locations = DB::table('apartments')
+                ->where('available', 1)
                 ->select('title', 'apartment_description', 'rooms', 'beds', 'bathroom', 'square_mt')
                 ->selectRaw(
                     '(6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance',
