@@ -98,7 +98,7 @@ class ApartmentController extends Controller
                 $apartment->services()->attach($request->services);
             }
 
-            return redirect()->route('admin.apartments.show', compact('apartment'));
+            return redirect()->route('admin.apartments.show', compact('apartment'))->with('message', 'apartment ' . $apartment->title . '  è stato aggiunto');
         }
         //altrimenti ritorno alla pagina del create con tutti i dati (questo poi non dovrebbe essere necessario con il Request Validation)
         else {
