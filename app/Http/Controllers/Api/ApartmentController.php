@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 
-use Illuminate\Support\Facades\Http;
 use App\Models\Apartment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ApartmentController extends Controller
 {
@@ -80,30 +80,4 @@ class ApartmentController extends Controller
         }
     }
 
-
-    public function searchInput (Request $request) {
-
-        // non funzionava perche:
-        //1) serve il prefisso api/ (errore 404)
-        //2) import scorretto di Request: Illuminate\Support\Facades\Request; (errore 500)
-        $location = $request->all();
-        dd($location);
-    }
-
-    public function searchApartments() {
-        // $api_key = env('TOMTOM_API_KEY');
-
-        
-
-        // $url = "https://api.tomtom.com/search/2/nearbySearch/.json?key={$api_key}&lat={$lat}&lon={$long}";
-        
-        $apartments = Apartment::all();
-        $data = [
-            "results" => $apartments,
-            "success" => true
-        ];
-        return response()->json($data);
-
-        //ciao test
-    }
 }
