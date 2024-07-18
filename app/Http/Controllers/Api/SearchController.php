@@ -62,7 +62,6 @@ class SearchController extends Controller
                 ->orderBy('distance')
                 ->get();
 
-                dd($locations);
                 
                 return response()->json($locations);
 
