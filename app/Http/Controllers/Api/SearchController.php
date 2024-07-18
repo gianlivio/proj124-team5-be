@@ -10,25 +10,14 @@ use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
-    public function storeInput(Request $request)
-    {
-        $input = $request->input('input');
-
-        // dd($input);
-        // $input = "Milano";
-        // Process the input as needed
-        return response()->json(['message' => 'Input received successfully', 'input' => $input]);
-    }
-
-
+    
+    
     public function searchApartments(Request $request) {
-
-        $response = $this->storeInput($request);
-        $location = $response->getData()->input;
+        $input = $request->input('input');
 
         $apiKey = env('TOMTOM_API_KEY');
 
-        $encodedAddress = urlencode($location);
+        $encodedAddress = urlencode($input);
 
         $url = "https://api.tomtom.com/search/2/geocode/{$encodedAddress}.json?key={$apiKey}";
         
@@ -51,10 +40,10 @@ class SearchController extends Controller
 
                 $cord = ['latitude' => $latitude, 'longitude' => $longitude ];
 
-                
+                // checkare se available
 
                 $locations = DB::table('apartments')
-                ->select('title', 'latitude', 'longitude')
+                ->select('title', 'apartment_description', 'rooms', 'beds', 'bathroom', 'square_mt')
                 ->selectRaw(
                     '(6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance',
                     [$cord['latitude'], $cord['longitude'], $cord['latitude']]
