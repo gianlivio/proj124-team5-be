@@ -21,9 +21,8 @@
                 <h1 class="fw-bold">Appartamenti</h1>
 
                 <div class="d-flex flex-column">
-                    <a href="{{ route('admin.apartments.create') }}" class="btn btn-primary fw-bold">Crea nuovo
-                        appartamento</a>
-                    <span class="fw-bold">Appartamenti mostrati: {{ count($apartments) }}</span>
+                    <a href="{{ route('admin.apartments.create') }}" class="btn btn-primary fw-bold">Aggiungi</a>
+                    <span class="fw-bold">Attuali: {{ count($apartments) }}</span>
                 </div>
             </div>
             <hr>

@@ -102,7 +102,6 @@
                 @endforeach
             </div>
 
-
             {{-- <div>
                     <span>Slug:</span>
                     <p class="fw-bold" id="slug"></p>

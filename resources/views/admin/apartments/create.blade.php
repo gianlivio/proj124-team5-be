@@ -27,7 +27,13 @@
 
             <div class="form-group">
                 <label for="title">Titolo*:</label>
-                <input type="text" class="form-control" id="title" name="title" required>
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
+                    value="{{ old('title') }}" required>
+                @error('title')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="form-group">
@@ -85,6 +91,10 @@
                 @endforeach
             </div>
 
+            <div class="mt-4">
+                <small>Compila i campi contrassegnati con *.</small>
+            </div>
+
             {{-- <div>
                 <span>Slug:</span>
                 <p class="fw-bold" id="slug"></p>
@@ -96,7 +106,7 @@
         </form>
 
     </div>
-    
+
 
 
 
