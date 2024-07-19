@@ -49,7 +49,7 @@ class SearchController extends Controller
                     '(6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance',
                     [$cord['latitude'], $cord['longitude'], $cord['latitude']]
                 )
-                ->having('distance', '<', 2) // 2km radius
+                ->having('distance', '<=', 30) // 30km radius
                 ->orderBy('distance')
                 ->get();
 
