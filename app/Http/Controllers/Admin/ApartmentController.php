@@ -187,6 +187,6 @@ class ApartmentController extends Controller
         // $apartment->sponsorships()->detach();
         // $apartment->services()->detach();
         $apartment->delete();
-        return redirect()->route('admin.apartments.index')->with('message', 'apartment ' . $apartment->title . ' è stato cancellato');
+        return redirect()->route('admin.apartments.index')->with('message', 'Appartamento ' . $apartment->title . ' eliminato');
     }
 }
