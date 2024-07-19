@@ -97,8 +97,8 @@ class SearchController extends Controller
 
 
     public function fetchSponsored() {
-        $data = Apartment::where("sponsorship_id", '>=', 3)->paginate(8);
+        $apartments = Apartment::where("sponsorship_id", '>=', 3)->paginate(3);
 
-        return response()->json($data);
+        return response()->json($apartments);
     }
 }
