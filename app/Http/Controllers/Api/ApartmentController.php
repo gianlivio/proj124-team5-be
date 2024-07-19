@@ -80,4 +80,77 @@ class ApartmentController extends Controller
         }
     }
 
+    // public function getFilteredData(Request $request){
+    //     $query = Apartment::query();
+
+    //     if ($request->has('bathroom')) {
+    //         $query->where('bathroom', $request->input('bathroom'));
+    //     }
+
+    //     if ($request->has('beds')) {
+    //         $query->where('beds', $request->input('beds'));
+    //     }
+
+    //     if ($request->has('square_mt')) {
+    //         $query->where('square_mt', $request->input('square_mt'));
+    //     }
+
+    //     if ($request->has('rooms')) {
+    //         $query->where('rooms', $request->input('rooms'));
+    //     }
+
+    //     if($request->has('radius')){
+            
+    //     }
+    //     $apartments = $query->get();
+
+    //     return response()->json($apartments);
+    // }
+
+    // public function getFilteredData(Request $request){
+    //     $cord = [
+    //         'latitude' => $request->input('latitude'),
+    //         'longitude' => $request->input('longitude')
+    //     ];
+    //     $defaultRadius = 30; // 30km radius
+    
+    //     $query = Apartment::query()
+    //                 ->where('available', 1)
+    //                 ->selectRaw(
+    //                     '(6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance',
+    //                     [$cord['latitude'], $cord['longitude'], $cord['latitude']]
+    //                 );
+    
+    //     if ($request->has('bathroom')) {
+    //         $query->where('bathroom', $request->input('bathroom'));
+    //     }
+    
+    //     if ($request->has('beds')) {
+    //         $query->where('beds', $request->input('beds'));
+    //     }
+    
+    //     if ($request->has('square_mt')) {
+    //         $query->where('square_mt', $request->input('square_mt'));
+    //     }
+    
+    //     if ($request->has('rooms')) {
+    //         $query->where('rooms', $request->input('rooms'));
+    //     }
+
+    //     if ($request->has('title')) {
+    //         $query->where('title', $request->input('title'));
+    //     }
+    
+    //     $radius = $request->has('radius') ? $request->input('radius') : $defaultRadius;
+    
+    //     $query->having('distance', '<=', $radius)
+    //           ->orderBy('distance');
+    
+    //     $apartments = $query->get();
+    
+    //     return response()->json($apartments);
+    // }
+    
+    
+
 }
