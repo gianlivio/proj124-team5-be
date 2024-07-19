@@ -50,6 +50,12 @@ class ApartmentController extends Controller
      */
     public function store(Request $request, ApiController $apiController)
     {
+        // controllo titolo con nome uguale a titolo esistente
+        $request->validate([
+            'title' => 'required|unique:apartments,title',
+        ], [
+            'title.unique' => 'Il titolo dell\'appartamento esiste già. Si prega di scegliere un titolo diverso.',
+        ]);
 
         $data = $request->all();
         // dd($request);
@@ -99,7 +105,7 @@ class ApartmentController extends Controller
                 $apartment->services()->attach($request->services);
             }
 
-            return redirect()->route('admin.apartments.index')->with('success', 'Appartamento ' . $apartment->title . ' è stato aggiunto con successo!');
+            return redirect()->route('admin.apartments.index')->with('success', 'L\'appartamento ' . $apartment->title . ' è stato aggiunto con successo!');
         }
         //altrimenti ritorno alla pagina del create con tutti i dati (questo poi non dovrebbe essere necessario con il Request Validation)
         else {
@@ -173,7 +179,7 @@ class ApartmentController extends Controller
             $apartment->update($data);
             $apartment->services()->sync($request->services);
 
-            return redirect()->route('admin.apartments.index', ['apartment' => $apartment->slug])->with('message', 'Appartamento ' . $apartment->title . ' modificato con successo');
+            return redirect()->route('admin.apartments.index', ['apartment' => $apartment->slug])->with('message', 'L\'appartamento ' . $apartment->title . ' modificato con successo');
         } else {
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
         }
@@ -187,6 +193,6 @@ class ApartmentController extends Controller
         // $apartment->sponsorships()->detach();
         // $apartment->services()->detach();
         $apartment->delete();
-        return redirect()->route('admin.apartments.index')->with('message', 'apartment ' . $apartment->title . ' è stato cancellato');
+        return redirect()->route('admin.apartments.index')->with('message', 'L\'appartamento ' . $apartment->title . ' è stato eliminato');
     }
 }
