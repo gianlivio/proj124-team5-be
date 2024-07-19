@@ -2,6 +2,7 @@ import "./bootstrap";
 import "~resources/scss/app.scss";
 import.meta.glob(["../img/**"]);
 import * as bootstrap from "bootstrap";
+import axios from "axios";
 
 document.addEventListener("DOMContentLoaded", function () {
     const addressInput = document.getElementById("address");
@@ -84,4 +85,23 @@ document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById('deleteForm');
         form.submit();
     });
+
+    // Logica per il menu a tendina "Servizi offerti"
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    if (dropdown) {
+        dropdown.addEventListener('mouseenter', function () {
+            dropdownMenu.classList.add('show');
+            dropdownToggle.setAttribute('aria-expanded', 'true');
+        });
+
+        dropdown.addEventListener('mouseleave', function () {
+            dropdownMenu.classList.remove('show');
+            dropdownToggle.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+
 });

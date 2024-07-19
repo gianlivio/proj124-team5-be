@@ -1,17 +1,18 @@
 @extends('layouts.admin')
 
-
 @section('content')
 
-    <div class="container">
-        <h1 class="mt-4 fw-bold">Modifica Appartamento</h1>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center fw-bold">Modifica Appartamento</h1>
 
+        <!-- Messaggio di successo se l'appartamento è stato aggiornato con successo -->
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
+        <!-- Messaggi di errore se ci sono problemi con la convalida del modulo -->
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -22,100 +23,122 @@
             </div>
         @endif
 
+        <div class="card shadow-sm rounded border-0">
+            <div class="card-body p-4">
+                <!-- Inizio del modulo per modificare un appartamento -->
+                <form action="{{ route('admin.apartments.update', ['apartment' => $apartment->slug]) }}" method="POST"
+                    enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf <!-- Protezione CSRF per il modulo -->
 
-        <form action="{{ route('admin.apartments.update', ['apartment' => $apartment->slug]) }}" method="POST"
-            enctype="multipart/form-data">
-            @method('PUT')
-            @csrf
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Titolo*:</label>
+                        <input type="text" class="form-control form-control-lg @error('title') is-invalid @enderror"
+                            id="title" name="title" value="{{ old('title', $apartment->title) }}" required>
+                        @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
 
-            <div class="form-group">
-                <label for="title">Titolo*:</label>
-                <input type="text" class="form-control" id="title" name="title"
-                    value="{{ old('title', $apartment->title) }}">
-            </div>
+                    <div class="mb-3">
+                        <label for="apartment_description" class="form-label">Descrizione:</label>
+                        <textarea class="form-control form-control-lg" id="apartment_description" name="apartment_description"
+                            placeholder="Scrivi qualcosa sull'appartamento..." rows="4">{{ old('apartment_description', $apartment->apartment_description) }}</textarea>
+                    </div>
 
-            <div class="form-group">
-                <label for="address">Indirizzo*:</label>
-                <input type="text" class="form-control" id="address" name="address"
-                    value="{{ old('address', $address) }}" autocomplete="off">
-                <div id="suggestions" class="list-group mt-2"></div>
-            </div>
+                    <!-- Sezione con flexbox per disporre i campi in due colonne -->
+                    <div class="d-flex flex-wrap">
+                        <div class="flex-fill p-2">
+                            <div class="form-group mb-3">
+                                <label for="address" class="form-label">Indirizzo*:</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    value="{{ old('address', $address) }}" autocomplete="off" required>
+                                <div id="suggestions" class="list-group mt-2"></div>
+                            </div>
 
-            <div class="form-group">
-                <label for="rooms">Stanze*:</label>
-                <input type="number" class="form-control" id="rooms" name="rooms"
-                    value="{{ old('rooms', $apartment->rooms) }}" required>
-            </div>
+                            <div class="form-group mb-3">
+                                <label for="rooms" class="form-label">Stanze*:</label>
+                                <input type="number" class="form-control" id="rooms" name="rooms"
+                                    value="{{ old('rooms', $apartment->rooms) }}" required>
+                            </div>
 
-            <div class="form-group">
-                <label for="beds">Posti letto*:</label>
-                <input type="number" class="form-control" id="beds" name="beds"
-                    value="{{ old('beds', $apartment->beds) }}" required>
-            </div>
-            <div class="form-group">
-                <label for="bathroom">Bagni*:</label>
-                <input type="number" class="form-control" id="bathroom" name="bathroom"
-                    value="{{ old('bathroom', $apartment->bathroom) }}" required>
-            </div>
-            <div class="form-group">
-                <label for="square_mt">Metri Quadrati*:</label>
-                <input type="number" class="form-control" id="square_mt" name="square_mt"
-                    value="{{ old('square_mt', $apartment->square_mt) }}" required>
-            </div>
+                            <div class="form-group mb-3">
+                                <label for="beds" class="form-label">Posti letto*:</label>
+                                <input type="number" class="form-control" id="beds" name="beds"
+                                    value="{{ old('beds', $apartment->beds) }}" required>
+                            </div>
+                        </div>
+                        <div class="flex-fill p-2">
+                            <div class="form-group mb-4">
+                                <label for="bathroom" class="form-label">Bagni*:</label>
+                                <input type="number" class="form-control" id="bathroom" name="bathroom"
+                                    value="{{ old('bathroom', $apartment->bathroom) }}" required>
+                            </div>
 
-            <div class="form-group">
-                <label for="apartment_description">Descrizione:</label>
-                <textarea class="form-control" id="apartment_description" name="apartment_description">{{ old('apartment_description', $apartment->apartment_description) }}</textarea>
-            </div>
+                            <div class="form-group mb-3">
+                                <label for="square_mt" class="form-label">Metri Quadrati*:</label>
+                                <input type="number" class="form-control" id="square_mt" name="square_mt"
+                                    value="{{ old('square_mt', $apartment->square_mt) }}" required>
+                            </div>
 
-            <div>
-                <label for="inp_img">Immagine appartamento</label>
-                <input type="file" name="inp_img" id="inp_img">
-            </div>
+                            <div class="form-group mb-3">
+                                <label for="inp_img" class="form-label">Immagine appartamento</label>
+                                <input type="file" class="form-control" name="inp_img" id="inp_img">
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="available" name="available" @checked( old('available', $apartment->available) ? 'checked' : '' )>
-                <label class="form-check-label" for="available">
-                    Disponibile
-                </label>
-            </div>
-
-            <div class="mt-2">
-                <span>Servizi offerti:</span>
-                @foreach ($services as $service)
-                    <div class="form-check">
-                        @if (old('services') !== null)
-                            <input @checked(in_array($apartment->service->id, old('services'))) name="services[]" class="form-check-input" type="checkbox"
-                                value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
-                        @else
-                            <input @checked($apartment->services->contains($service)) name="services[]" class="form-check-input" type="checkbox"
-                                value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
-                        @endif
-                        <label class="form-check-label" for="services">
-                            {{ $service->title }}
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="1" id="available" name="available"
+                            @checked(old('available', $apartment->available) ? 'checked' : '')>
+                        <label class="form-check-label" for="available">
+                            Disponibile
                         </label>
                     </div>
-                @endforeach
+
+                    <div class="mb-3">
+                        <div class="dropdown">
+                            <span class="dropdown-toggle form-label" id="servicesDropdown" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Servizi offerti <i class="bi bi-chevron-down"></i>
+                            </span>
+                            <ul class="dropdown-menu p-3" aria-labelledby="servicesDropdown"
+                                style="max-height: 300px; overflow-y: auto;">
+                                @foreach ($services as $service)
+                                    <li>
+                                        <div class="form-check ms-3">
+                                            @if (old('services') !== null)
+                                                <input @checked(in_array($apartment->service->id, old('services'))) name="services[]"
+                                                    class="form-check-input" type="checkbox" value="{{ $service->id }}"
+                                                    id="service-{{ $service->id }}" autocomplete="off">
+                                            @else
+                                                <input @checked($apartment->services->contains($service)) name="services[]"
+                                                    class="form-check-input" type="checkbox" value="{{ $service->id }}"
+                                                    id="service-{{ $service->id }}" autocomplete="off">
+                                            @endif
+                                            <label class="form-check-label" for="service{{ $service->id }}">
+                                                {{ $service->title }}
+                                            </label>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <small class="text-muted">Compila i campi contrassegnati con *.</small>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" id="submit" class="btn btn-primary">Modifica</button>
+                        <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary">Cancella</a>
+                    </div>
+                </form>
             </div>
-
-            <div class="mt-4">
-                <small>Compila i campi contrassegnati con *.</small>
-            </div>
-
-            {{-- <div>
-                <span>Slug:</span>
-                <p class="fw-bold" id="slug"></p>
-            </div> --}}
-
-            <button type="submit" id="submit" class="btn btn-primary mt-2" disabled>Aggiungi</button>
-            <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary mt-2">Cancella</a>
-
-
-        </form>
-
+        </div>
     </div>
-
-
-
 
 @endsection
