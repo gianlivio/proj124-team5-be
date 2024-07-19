@@ -179,7 +179,7 @@ class ApartmentController extends Controller
             $apartment->update($data);
             $apartment->services()->sync($request->services);
 
-            return redirect()->route('admin.apartments.index', ['apartment' => $apartment->slug])->with('message', 'L\'appartamento ' . $apartment->title . ' modificato con successo');
+            return redirect()->route('admin.apartments.index', ['apartment' => $apartment->slug])->with('message', 'L\'appartamento ' . $apartment->title . ' è stato modificato con successo');
         } else {
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
         }
