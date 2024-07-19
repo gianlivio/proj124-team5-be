@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use App\Models\Apartment;
-// use Illuminate\Contracts\Session\Session;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Cache;
 class SearchController extends Controller
 {     
     public function searchApartments(Request $request) {
@@ -53,8 +51,8 @@ class SearchController extends Controller
                 ->orderBy('distance')
                 ->get();
 
-                $locations = "Milano";
-                Session::put('locations', $locations);
+                ;
+                Cache::put('locations', $locations,  500);
                 return response()->json($locations);
 
             } else {
@@ -67,33 +65,66 @@ class SearchController extends Controller
         // return response()->json($location);
     }
 
-    public function getFilteredData(Request $request){
-        // $query = Apartment::query();
-        $query = Session::get('locations');
-        dd($query);
-        if ($request->has('bathroom')) {
-            $query->where('bathroom', $request->input('bathroom'));
-        }
+    // public function getFilteredData(Request $request){
+    //     // $query = Apartment::query();
+    //     $data = Cache::get('location');
+    //     // dd($data);
+    //     $query = collect($data);
+    //     // dd($query);
+    //     if ($request->has('bathroom')) {
+    //         $query->where('bathroom', $request->input('bathroom'));
+    //     }
 
-        if ($request->has('beds')) {
-            $query->where('beds', $request->input('beds'));
-        }
+    //     if ($request->has('beds')) {
+    //         $query->where('beds', $request->input('beds'));
+    //     }
 
-        if ($request->has('square_mt')) {
-            $query->where('square_mt', $request->input('square_mt'));
-        }
+    //     if ($request->has('square_mt')) {
+    //         $query->where('square_mt', $request->input('square_mt'));
+    //     }
 
-        if ($request->has('rooms')) {
-            $query->where('rooms', $request->input('rooms'));
-        }
+    //     if ($request->has('rooms')) {
+    //         $query->where('rooms', $request->input('rooms'));
+    //     }
 
-        if($request->has('radius')){
+    //     if($request->has('radius')){
             
-        }
-        $apartments = $query->get();
+    //     }
+    //     $apartments = $query->all();
 
+    //     return response()->json($apartments);
+    // }
+    public function getFilteredData(Request $request){
+    
+        $data = Cache::get('locations');
+        $query = collect($data);
+    
+        
+        if ($request->has('bathroom')) {
+            $query = $query->where('bathroom', $request->input('bathroom'));
+        }
+    
+        if ($request->has('beds')) {
+            $query = $query->where('beds', $request->input('beds'));
+        }
+    
+        if ($request->has('square_mt')) {
+            $query = $query->where('square_mt', $request->input('square_mt'));
+        }
+    
+        if ($request->has('rooms')) {
+            $query = $query->where('rooms', $request->input('rooms'));
+        }
+    
+        if ($request->has('radius')) {
+           //TO DO 
+        }
+    
+        $apartments = $query->all();
+    
         return response()->json($apartments);
     }
+    
 
 
     public function fetchSponsored() {
