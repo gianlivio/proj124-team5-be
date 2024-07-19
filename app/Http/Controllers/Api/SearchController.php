@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
-{
-    
-    
+{     
     public function searchApartments(Request $request) {
         $input = $request->input('input');
 
@@ -64,5 +62,13 @@ class SearchController extends Controller
         }
         
         // return response()->json($location);
+    }
+
+
+    public function fetchSponsored () {
+        $data = Apartment::all()
+        ->where("sponsorship_id", '>=', 3);
+
+        return response()->json($data);
     }
 }
