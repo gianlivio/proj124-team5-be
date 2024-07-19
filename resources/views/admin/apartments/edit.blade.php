@@ -98,6 +98,10 @@
                 @endforeach
             </div>
 
+            <div class="mt-4">
+                <small>Compila i campi contrassegnati con *.</small>
+            </div>
+
             {{-- <div>
                 <span>Slug:</span>
                 <p class="fw-bold" id="slug"></p>

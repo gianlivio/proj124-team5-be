@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <small>* I campi contrassegnati con asterisco sono obbligatori.</small>
+                            <small>Compila i campi contrassegnati con *.</small>
                         </div>
                     </form>
                 </div>
