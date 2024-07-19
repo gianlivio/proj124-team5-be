@@ -27,8 +27,7 @@ Route::get('/apartment/{slug}/address', [ApartmentController::class, 'getAddress
 Route::put('/apartments/{slug}/update-coordinates', [ApartmentController::class, 'updateCoordinates']);
 Route::get('/getCoord', [ApartmentController::class, 'getCoordinatesForAddress']);
 Route::get('/autocomplete', [AutocompleteController::class, 'search'])->name('autocomplete.search');
+
 Route::get('/filter', [SearchController::class, 'getFilteredData']);
-
 Route::get('/search', [SearchController::class, "searchApartments"]);
-
 Route::get('/featured', [SearchController::class, "fetchSponsored"]);
