@@ -132,4 +132,10 @@ class SearchController extends Controller
 
         return response()->json($apartments);
     }
+
+    public function fetchSponsoredAll() {
+        $allApartments = Apartment::where("sponsorship_id", '>=', 3)->limit(4)->get();
+
+        return response()->json($allApartments);
+    }
 }
