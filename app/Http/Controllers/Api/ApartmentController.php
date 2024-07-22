@@ -81,7 +81,7 @@ class ApartmentController extends Controller
     }
     
             public function showApartment(string $slug) {
-                $apartment = Apartment::where('slug', $slug)->firstOrFail();
+                $apartment = Apartment::with('sponsorships')->where('slug', $slug)->firstOrFail();
 
                 return response()->json($apartment);
             }
