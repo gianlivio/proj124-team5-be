@@ -90,42 +90,27 @@
                         </div>
                     </div>
 
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" value="1" id="available" name="available"
-                            @checked(old('available', $apartment->available) ? 'checked' : '')>
-                        <label class="form-check-label" for="available">
-                            Disponibile
-                        </label>
-                    </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="available" name="available" @checked( old('available', $apartment->available) ? 'checked' : '' )>
+                <label class="form-check-label" for="available">
+                    Disponibile
+                </label>
+            </div>
 
-                    <div class="mb-3">
-                        <div class="dropdown">
-                            <span class="dropdown-toggle form-label" id="servicesDropdown" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Servizi offerti <i class="bi bi-chevron-down"></i>
-                            </span>
-                            <ul class="dropdown-menu p-3" aria-labelledby="servicesDropdown"
-                                style="max-height: 300px; overflow-y: auto;">
-                                @foreach ($services as $service)
-                                    <li>
-                                        <div class="form-check ms-3">
-                                            @if (old('services') !== null)
-                                                <input @checked(in_array($apartment->service->id, old('services'))) name="services[]"
-                                                    class="form-check-input" type="checkbox" value="{{ $service->id }}"
-                                                    id="service-{{ $service->id }}" autocomplete="off">
-                                            @else
-                                                <input @checked($apartment->services->contains($service)) name="services[]"
-                                                    class="form-check-input" type="checkbox" value="{{ $service->id }}"
-                                                    id="service-{{ $service->id }}" autocomplete="off">
-                                            @endif
-                                            <label class="form-check-label" for="service{{ $service->id }}">
-                                                {{ $service->title }}
-                                            </label>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+            <div class="mt-2">
+                <span>Servizi offerti:</span>
+                @foreach ($services as $service)
+                    <div class="form-check">
+                        @if (old('services') !== null)
+                            <input @checked(in_array($apartment->service->id, old('services'))) name="services[]" class="form-check-input" type="checkbox"
+                                value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
+                        @else
+                            <input @checked($apartment->services->contains($service)) name="services[]" class="form-check-input" type="checkbox"
+                                value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
+                        @endif
+                        <label class="form-check-label" for="services">
+                            {{ $service->title }}
+                        </label>
                     </div>
 
                     <div class="mb-3">
