@@ -46,11 +46,15 @@
                                 <td class="pl-3">
                                     <div class="d-flex align-items-center">
 
-                                        <img class="img-fluid"
+                                        <a href="{{route('admin.apartments.show', ['apartment' => $curApartment->slug])}}">
+                                            <img class="img-fluid"
                                             src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png"
                                             alt="{{ $curApartment->title }}">
+                                        </a>
                                         <div class="ps-4">
-                                            <p class="fw-medium m-0">{{ $curApartment->title }}</p>
+                                            <p class="fw-medium m-0">
+                                                <a class="" href="{{route('admin.apartments.show', ['apartment' => $curApartment->slug])}}">{{ $curApartment->title }}</a>
+                                            </p>
                                             <p class="muted m-0">Address</p>
                                             {{-- <p class="fw-bold m-0">125€</p> --}}
                                         </div>
