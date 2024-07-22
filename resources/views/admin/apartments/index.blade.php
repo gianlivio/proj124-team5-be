@@ -59,19 +59,27 @@
                                 <td>{{ $curApartment->beds }}</td>
                                 <td>{{ $curApartment->bathroom }}</td>
                                 <td>{{ $curApartment->square_mt }}</td>
-                                <td>{{ $curApartment->available ? 'si' : 'no' }}</td>
+                                <td>
+                                    {!!
+                                    $curApartment->available 
+                                        ? '<p class="my_chips active">Attivo</p>'
+                                        : '<p class="my_chip deactives">Disattivo</p>'
+                                    !!}
+                                </td>
                                 <td class="text-end px-3">
                                     <div class="dropdown">
-                                        <a  
-                                            class="ellipsis-menu"
-                                            type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a class="ellipsis-menu" type="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
                                             <i class="fa-solid fa-ellipsis-vertical"></i>
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <li><button class="dropdown-item" type="button">Show</button></li>
-                                            <li><button class="dropdown-item" type="button">Edit</button></li>
-                                            <li><button class="dropdown-item" type="button">Delete</button>
+                                            <li><a class="dropdown-item" type="button"
+                                                    href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">Dettagli</a>
+                                            <li><a class="dropdown-item" href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}" type="button">Modifica</a></li>
+                                            <li>
+                                                <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                                    data-bs-target="#confirmModal"
+                                                    data-action="{{ route('admin.apartments.destroy', ['apartment' => $curApartment->slug]) }}">Elimina</button>
                                             </li>
                                         </ul>
                                     </div>
