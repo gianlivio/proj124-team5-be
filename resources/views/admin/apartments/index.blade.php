@@ -46,14 +46,21 @@
                                 <td class="pl-3">
                                     <div class="d-flex align-items-center">
 
-                                        <a href="{{route('admin.apartments.show', ['apartment' => $curApartment->slug])}}">
-                                            <img class="img-fluid"
-                                            src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png"
-                                            alt="{{ $curApartment->title }}">
+                                        <a
+                                            href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">
+                                            @if ($curApartment->img_path)
+                                                <img class="img-fluid" src="{{ asset('storage/' . $curApartment->img_path) }}"
+                                                    alt="{{ $curApartment->title }}">
+                                            @else
+                                                <img class="img-fluid"
+                                                    src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png"
+                                                    alt="{{ $curApartment->title }}">
+                                            @endif
                                         </a>
                                         <div class="ps-4">
                                             <p class="fw-medium m-0">
-                                                <a class="" href="{{route('admin.apartments.show', ['apartment' => $curApartment->slug])}}">{{ $curApartment->title }}</a>
+                                                <a class=""
+                                                    href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">{{ $curApartment->title }}</a>
                                             </p>
                                             <p class="muted m-0">Address</p>
                                             {{-- <p class="fw-bold m-0">125€</p> --}}
@@ -65,11 +72,9 @@
                                 <td>{{ $curApartment->bathroom }}</td>
                                 <td>{{ $curApartment->square_mt }}</td>
                                 <td>
-                                    {!!
-                                    $curApartment->available 
+                                    {!! $curApartment->available
                                         ? '<p class="my_chips active m-0">Si</p>'
-                                        : '<p class="my_chips deactive m-0">No</p>'
-                                    !!}
+                                        : '<p class="my_chips deactive m-0">No</p>' !!}
                                 </td>
                                 <td class="text-end px-3">
                                     <div class="dropdown">
@@ -82,7 +87,9 @@
                                                 <a class="dropdown-item" type="button"
                                                     href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">Dettagli</a>
                                             </li>
-                                            <li><a class="dropdown-item" href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}" type="button">Modifica</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}"
+                                                    type="button">Modifica</a></li>
                                             <li>
                                                 <button type="button" class="dropdown-item" data-bs-toggle="modal"
                                                     data-bs-target="#confirmModal"
