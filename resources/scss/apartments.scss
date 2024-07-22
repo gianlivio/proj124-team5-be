@@ -11,15 +11,18 @@
 .my_chips {
 	padding: 10px 16px;
 	border-radius: 10px;
+	color: black;
+	// font-weight: bold;
+	text-align: center;
 
 	&.active {
 		background-color: #d0f3da;
-		color: #33a54c;
+		// color: #33a54c;
 
 	}
 
 	&.deactive {
-		background-color: red;
-		color: wheat;
+		background-color: rgb(255, 101, 101);
+		// color: rgb(255, 0, 0);
 	}
 }

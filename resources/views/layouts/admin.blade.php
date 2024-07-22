@@ -62,55 +62,51 @@
                     <div class="position-sticky">
                         <ul class="nav flex-column">
                             <div class="separator"></div>
-                            <li class="nav-item">
+                            <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
                                     <span>Dashboard</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.potato' ? 'active' : '' }}"
                                     href="{{ route('admin.apartments.index') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
                                     <span>Messaggi</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <div class="separator"></div>
-                            <p class="muted px-3 py-2 m-0 mx-2">LISTING</p>
-                            <li class="nav-item">
+                            <p class="muted px-3 py-2 m-0 mx-2 fw-bold">LISTING</p>
+                            <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.index' ? 'active' : '' }}"
                                     href="{{ route('admin.apartments.index') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
+                                    <i class="fa-solid fa-house fs-5"></i>
                                     <span>Appartamenti</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-<<<<<<< HEAD
-                                <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}"
-=======
+                            <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.create' ? 'active' : '' }}"
->>>>>>> dashboard-layout
                                     href="{{ route('admin.apartments.create') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
-                                    <span>Nuovo appartamento</span>
+                                    <i class="fa-solid fa-plus fs-5"></i>
+                                    <span>Aggiungi appartamento</span>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.list_sponsor' ? 'active' : '' }}"
-                                    {{-- href="{{ route('admin.apartments.list_sponsor', ['apartment' => $apartment->slug]) }}"> --}}
+                                    href="{{ route('admin.apartments.list_sponsor', ['apartment' => $apartment->slug]) }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
                                     <span>Sponsorship</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <div class="separator"></div>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.potato' ? 'active' : '' }}"
                                     href="{{ route('admin.apartments.index') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
                                     <span>Impostazioni</span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
 
 

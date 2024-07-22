@@ -1,29 +1,45 @@
 @import "partials/variable";
 
 #main_container {
-	background-color: $bg-primary;
+    background-color: $bg-primary;
 }
 
 //INDEX
 #apartment_list_index {
-	& thead th {
-		background-color: black;
-		padding-top: 10px;
-		padding-bottom: 10px;
-		font-weight: lighter;
-		text-transform: uppercase;
-		color: white;
-	}
-	& tbody td {
-		padding-top: 30px;
-		padding-bottom: 30px;
-		border-bottom: 1px solid $border-muted;
+    & thead th {
+        background-color: #fe5d26;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: lighter;
+        text-transform: uppercase;
+        color: white;
+    }
+    & tbody td {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid $border-muted;
 
-		& img {
-			width: 80px;
-			border-radius: 10px;
-			aspect-ratio: 1 / 1;
-			object-fit: cover;
-		}
-	}
+        & img {
+            width: 80px;
+            border-radius: 10px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+    }
+}
+
+.btn-orange {
+    color: white;
+    background-color: #fe5d26 !important;
+	font-weight: bold;
+    &:hover {
+        color: white;
+
+        background-color: #d45f38 !important;
+    }
+}
+
+.text-orange{
+	color: #7EBC89;
+	font-weight: bold;
 }

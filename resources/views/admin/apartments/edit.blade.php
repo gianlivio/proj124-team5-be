@@ -3,9 +3,10 @@
 @section('content')
 
     <div class="container mt-5">
-        <h1 class="mb-4 text-center fw-bold">Modifica Appartamento</h1>
+        <h1 class="mb-4 text-center fw-bold text-white">Modifica Appartamento</h1>
 
         <!-- Messaggio di successo se l'appartamento è stato aggiornato con successo -->
+
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -41,13 +42,11 @@
                             </span>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="apartment_description" class="form-label">Descrizione:</label>
                         <textarea class="form-control form-control-lg" id="apartment_description" name="apartment_description"
                             placeholder="Scrivi qualcosa sull'appartamento..." rows="4">{{ old('apartment_description', $apartment->apartment_description) }}</textarea>
                     </div>
-
                     <!-- Sezione con flexbox per disporre i campi in due colonne -->
                     <div class="d-flex flex-wrap">
                         <div class="flex-fill p-2">
@@ -97,37 +96,35 @@
                             Disponibile
                         </label>
                     </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="available" name="available" @checked( old('available', $apartment->available) ? 'checked' : '' )>
-                <label class="form-check-label" for="available">
-                    Disponibile
-                </label>
-            </div>
 
-            <div class="mt-2">
-                <span>Servizi offerti:</span>
-                @foreach ($services as $service)
-                    <div class="form-check">
-                        @if (old('services') !== null)
-                            <input @checked(in_array($apartment->service->id, old('services'))) name="services[]" class="form-check-input" type="checkbox"
-                                value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
-                        @else
-                            <input @checked($apartment->services->contains($service)) name="services[]" class="form-check-input" type="checkbox"
-                                value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
-                        @endif
-                        <label class="form-check-label" for="services">
-                            {{ $service->title }}
-                        </label>
+                    <div class="mt-2">
+
+                        <span>Servizi offerti:</span>
+                        @foreach ($services as $service)
+                            <div class="form-check">
+                                @if (old('services') !== null)
+                                    <input @checked(in_array($apartment->service->id, old('services'))) name="services[]" class="form-check-input" type="checkbox"
+                                        value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
+                                @else
+                                    <input @checked($apartment->services->contains($service)) name="services[]" class="form-check-input" type="checkbox"
+                                        value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
+                                @endif
+                                <label class="form-check-label" for="services">
+                                    {{ $service->title }}
+                                </label>
+                            </div>
+                    
+                        @endforeach
+                            <div class="mb-3">
+                                <small class="text-muted">Compila i campi contrassegnati con *.</small>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button type="submit" id="submit" class="btn btn-orange">Modifica</button>
+                                <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary">Cancella</a>
+                            </div>
+                    
                     </div>
 
-                    <div class="mb-3">
-                        <small class="text-muted">Compila i campi contrassegnati con *.</small>
-                    </div>
-
-                    <div class="d-flex justify-content-between">
-                        <button type="submit" id="submit" class="btn btn-primary">Modifica</button>
-                        <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary">Cancella</a>
-                    </div>
                 </form>
             </div>
         </div>
