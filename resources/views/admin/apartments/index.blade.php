@@ -21,8 +21,6 @@
                 <h1 class="fw-bold">Appartamenti</h1>
 
                 <div class="d-flex flex-column">
-                    <a href="{{ route('admin.apartments.create') }}" class="btn btn-primary fw-bold">Crea nuovo
-                        appartamento</a>
                     <span class="fw-bold">Appartamenti mostrati: {{ count($apartments) }}</span>
                 </div>
             </div>
@@ -62,7 +60,22 @@
                                 <td>{{ $curApartment->bathroom }}</td>
                                 <td>{{ $curApartment->square_mt }}</td>
                                 <td>{{ $curApartment->available ? 'si' : 'no' }}</td>
-                                <td class="text-end px-3"><i class="fa-solid fa-ellipsis-vertical"></i></td>
+                                <td class="text-end px-3">
+                                    <div class="dropdown">
+                                        <a  
+                                            class="ellipsis-menu"
+                                            type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><button class="dropdown-item" type="button">Show</button></li>
+                                            <li><button class="dropdown-item" type="button">Edit</button></li>
+                                            <li><button class="dropdown-item" type="button">Delete</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

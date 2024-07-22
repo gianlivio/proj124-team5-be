@@ -34,6 +34,7 @@ class ApartmentController extends Controller
     public function list_sponsor(Apartment $apartment)
     {
         $sponsorships = Sponsorship::all();
+        
         return view('admin.apartments.sponsor', compact('apartment', 'sponsorships'));
     }
 
@@ -125,7 +126,7 @@ class ApartmentController extends Controller
             $address = $data->address;
         }
 
-        return view('admin.apartments.show', compact('apartment', 'services', 'sponsorships', 'address'));
+        return view('admin.apartments.show', compact('apartment', 'services', 'sponsorships', 'address',));
     }
 
     /**

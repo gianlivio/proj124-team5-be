@@ -1,0 +1,9 @@
+@import "partials/variable";
+
+.ellipsis-menu{
+	cursor: pointer;
+	color: $muted;
+	&:hover{
+		color: #ff3f25;
+	}
+}
