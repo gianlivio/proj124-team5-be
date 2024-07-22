@@ -15,7 +15,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        
+
         <div class="ms-table-container mt-5">
             <div class="d-flex justify-content-between align-items-center">
                 <h1 class="fw-bold">Appartamenti</h1>
@@ -25,9 +25,50 @@
                     <span class="fw-bold">Attuali: {{ count($apartments) }}</span>
                 </div>
             </div>
-            <hr>
 
-            <table class="table table-striped">
+            <div class="bg-white p-4 rounded-3" id="apartment_list_index">
+                <table class="w-100">
+                    <thead>
+                        <tr>
+                            <th class="ps-3 rounded-start-3 ">Titolo</th>
+                            <th>stanze</th>
+                            <th>letti</th>
+                            <th>bagni</th>
+                            <th>mq</th>
+                            <th>stato</th>
+                            <th class="pe-3 text-end rounded-end-3">azioni</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($apartments as $curApartment)
+                            <tr>
+                                <td class="pl-3">
+                                    <div class="d-flex align-items-center">
+
+                                        <img class="img-fluid"
+                                            src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png"
+                                            alt="{{ $curApartment->title }}">
+                                        <div class="ps-4">
+                                            <p class="fw-medium m-0">{{ $curApartment->title }}</p>
+                                            <p class="muted m-0">Address</p>
+                                            <p class="fw-bold m-0">125€</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ $curApartment->rooms }}</td>
+                                <td>{{ $curApartment->beds }}</td>
+                                <td>{{ $curApartment->bathroom }}</td>
+                                <td>{{ $curApartment->square_mt }}</td>
+                                <td>{{ $curApartment->available ? 'si' : 'no' }}</td>
+                                <td class="text-end px-3"><i class="fa-solid fa-ellipsis-vertical"></i></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -65,7 +106,7 @@
                         </tr>
                     @endforeach
                 </tbody>
-            </table>
+            </table> --}}
         </div>
     </div>
 

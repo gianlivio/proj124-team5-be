@@ -54,6 +54,7 @@ class ApartmentController extends Controller
         $encodedAddress = urlencode($address);
 
         $url = "https://api.tomtom.com/search/2/geocode/{$encodedAddress}.json?key={$apiKey}";
+        
 
         try {
             
