@@ -87,7 +87,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}"
-                                    href="{{ route('admin.dashboard') }}">
+                                    href="{{ route('admin.apartments.create') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
                                     <span>Aggiungi</span>
                                 </a>
