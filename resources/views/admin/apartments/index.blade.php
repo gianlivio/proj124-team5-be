@@ -5,30 +5,30 @@
 
 
         @if (session('message'))
-            <div class="alert alert-success">
+            <div class="alert alert-success mt-2 bg-white text-orange">
                 {{ session('message') }}
             </div>
         @endif
 
         @if (session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success mt-2">
                 {{ session('success') }}
             </div>
         @endif
 
         <div class="ms-table-container mt-5">
             <div class="d-flex justify-content-between align-items-center">
-                <h1 class="fw-bold">Appartamenti</h1>
+                <h1 class="fw-bold text-white">Appartamenti</h1>
 
                 <div class="d-flex flex-column">
-                    <a href="{{ route('admin.apartments.create') }}" class="btn btn-primary fw-bold">Aggiungi</a>
-                    <span class="fw-bold">Attuali: {{ count($apartments) }}</span>
+                    <a href="{{ route('admin.apartments.create') }}" class="btn btn-orange fw-bold">Aggiungi</a>
+                    <span class="fw-bold text-white">Attuali: {{ count($apartments) }}</span>
                 </div>
             </div>
 
-            <div class="bg-white p-4 rounded-3" id="apartment_list_index">
+            <div class="bg-white p-4 rounded-3 mt-2" id="apartment_list_index">
                 <table class="w-100">
-                    <thead>
+                    <thead class="fw-bold">
                         <tr>
                             <th class="ps-3 rounded-start-3 ">Titolo</th>
                             <th>stanze</th>
@@ -52,7 +52,7 @@
                                         <div class="ps-4">
                                             <p class="fw-medium m-0">{{ $curApartment->title }}</p>
                                             <p class="muted m-0">Address</p>
-                                            <p class="fw-bold m-0">125€</p>
+                                            {{-- <p class="fw-bold m-0">125€</p> --}}
                                         </div>
                                     </div>
                                 </td>
@@ -60,8 +60,33 @@
                                 <td>{{ $curApartment->beds }}</td>
                                 <td>{{ $curApartment->bathroom }}</td>
                                 <td>{{ $curApartment->square_mt }}</td>
-                                <td>{{ $curApartment->available ? 'si' : 'no' }}</td>
-                                <td class="text-end px-3"><i class="fa-solid fa-ellipsis-vertical"></i></td>
+                                <td>
+                                    {!!
+                                    $curApartment->available 
+                                        ? '<p class="my_chips active m-0">Si</p>'
+                                        : '<p class="my_chips deactive m-0">No</p>'
+                                    !!}
+                                </td>
+                                <td class="text-end px-3">
+                                    <div class="dropdown">
+                                        <a class="ellipsis-menu" type="button" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <i class="fa-solid fa-ellipsis-vertical fs-4"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" type="button"
+                                                    href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">Dettagli</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}" type="button">Modifica</a></li>
+                                            <li>
+                                                <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                                    data-bs-target="#confirmModal"
+                                                    data-action="{{ route('admin.apartments.destroy', ['apartment' => $curApartment->slug]) }}">Elimina</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

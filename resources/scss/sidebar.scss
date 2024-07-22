@@ -1,26 +1,32 @@
 @import"partials/variable";
 
 #sidebarMenu {
-	color: #000 !important;
+	color: #7EBC89 !important;
 	background-color: white !important;
 	padding-left: 0 !important;
 	padding-right: 0 !important;
 
 	.nav-link {
-		color: #000 !important;
+		color: #7EBC89 !important;
 		font-weight: 600;
 		border-radius: 6px;
 		margin: 0 8px;
 		padding: 14px 20px !important;
 
 		&.active {
-			background-color: black !important;
+			background-color: #FE5D26 !important;
 			color: white !important;
-			text-decoration: underline;
+			text-decoration: none;
+		}
+		&:hover{
+			background-color: #FE5D26;
+			color: white !important;
+
+
 		}
 		
 		&:hover span {
-			text-decoration: underline;
+			text-decoration: none;
 		}
 	}
 

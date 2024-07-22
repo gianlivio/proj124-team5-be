@@ -86,11 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
         form.submit();
     });
 
-    // Logica per il menu a tendina "Servizi offerti"
-    const dropdown = document.querySelector('.dropdown');
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-
     if (dropdown) {
         dropdown.addEventListener('mouseenter', function () {
             dropdownMenu.classList.add('show');

@@ -34,6 +34,7 @@ class ApartmentController extends Controller
     public function list_sponsor(Apartment $apartment)
     {
         $sponsorships = Sponsorship::all();
+        
         return view('admin.apartments.sponsor', compact('apartment', 'sponsorships'));
     }
 
@@ -78,6 +79,7 @@ class ApartmentController extends Controller
         }
 
 
+
         if ($request->hasFile('inp_img')) {
             $inp_img = Storage::put('apartment_images', $request->file('inp_img'));
             $data['img_path'] = $inp_img;
@@ -96,7 +98,7 @@ class ApartmentController extends Controller
         //se esistono le coordinate salvo i dati e mostro la show
         if ($coordinates && isset($coordinates['latitude']) && isset($coordinates['longitude'])) {
 
-            $apartment->available = true;
+            $apartment->available = $request->has('available') ? true : false;
             $apartment->latitude = $coordinates['latitude'];
             $apartment->longitude = $coordinates['longitude'];
             $apartment->user_id = Auth::id();
@@ -131,7 +133,7 @@ class ApartmentController extends Controller
             $address = $data->address;
         }
 
-        return view('admin.apartments.show', compact('apartment', 'services', 'sponsorships', 'address'));
+        return view('admin.apartments.show', compact('apartment', 'services', 'sponsorships', 'address',));
     }
 
     /**
@@ -157,7 +159,7 @@ class ApartmentController extends Controller
     {
         $data = $request->all();
         // dd($request);
-
+        $apartment->available = $request->has('available') ? true : false;
         $apartment->slug = Str::slug($apartment->title);
 
         $address = $request->input('address');

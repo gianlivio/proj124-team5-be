@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container mt-5">
-        <h1 class="mb-4 text-center fw-bold">Aggiungi Appartamento</h1>
+        <h1 class="mb-4 text-center fw-bold text-white">Aggiungi Appartamento</h1>
 
         <!-- Messaggio di successo se l'appartamento è stato aggiunto con successo -->
         @if (session('success'))
@@ -97,27 +97,22 @@
                         </label>
                     </div>
 
-                    <div class="mb-3">
-                        <div class="dropdown">
-                            <span class="dropdown-toggle form-label" id="servicesDropdown" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Servizi offerti <i class="bi bi-chevron-down"></i>
-                            </span>
-                            <ul class="dropdown-menu p-3" aria-labelledby="servicesDropdown"
-                                style="max-height: 300px; overflow-y: auto;">
-                                @foreach ($services as $service)
-                                    <li>
-                                        <div class="form-check ms-3">
-                                            <input class="form-check-input" name="services[]" type="checkbox"
-                                                value="{{ $service->id }}" id="service{{ $service->id }}">
-                                            <label class="form-check-label" for="service{{ $service->id }}">
-                                                {{ $service->title }}
-                                            </label>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                    <div class="mt-2">
+                        <span>
+                            Servizi offerti:
+                        </span>
+                       
+                        @foreach ($services as $service)
+                            
+                                <div class="form-check">
+                                    <input class="form-check-input" name="services[]" type="checkbox"
+                                        value="{{ $service->id }}" id="service{{ $service->id }}">
+                                    <label class="form-check-label" for="service{{ $service->id }}">
+                                        {{ $service->title }}
+                                    </label>
+                                </div>
+                            
+                        @endforeach
                     </div>
 
                     <div class="mb-3">
@@ -125,7 +120,7 @@
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <button type="submit" id="submit" class="btn btn-primary">Aggiungi</button>
+                        <button type="submit" id="submit" class="btn btn-orange">Aggiungi</button>
                         <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary">Cancella</a>
                     </div>
                 </form>
