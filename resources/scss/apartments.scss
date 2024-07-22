@@ -1,0 +1,25 @@
+@import "partials/variable";
+
+.ellipsis-menu{
+	cursor: pointer;
+	color: $muted;
+	&:hover{
+		color: #ff3f25;
+	}
+}
+
+.my_chips {
+	padding: 10px 16px;
+	border-radius: 10px;
+
+	&.active {
+		background-color: #d0f3da;
+		color: #33a54c;
+
+	}
+
+	&.deactive {
+		background-color: red;
+		color: wheat;
+	}
+}

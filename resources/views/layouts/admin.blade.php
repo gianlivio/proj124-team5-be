@@ -57,13 +57,13 @@
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div>
                         <a href="http://localhost:5174">
-                          <img class="w-100" src="{{url('boolbnb_logo.png')}}" alt=""></a>
+                            <img class="w-100" src="{{ url('boolbnb_logo.png') }}" alt=""></a>
                     </div>
                     <div class="position-sticky">
                         <ul class="nav flex-column">
                             <div class="separator"></div>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.dashboard' ? 'active'  : '' }}"
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
                                     <span>Dashboard</span>
@@ -86,15 +86,19 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+<<<<<<< HEAD
                                 <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}"
-                                    href="{{ route('admin.dashboard') }}">
+=======
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.create' ? 'active' : '' }}"
+>>>>>>> dashboard-layout
+                                    href="{{ route('admin.apartments.create') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
-                                    <span>Aggiungi</span>
+                                    <span>Nuovo appartamento</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.potato' ? 'active' : '' }}"
-                                    href="{{ route('admin.apartments.index') }}">
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.list_sponsor' ? 'active' : '' }}"
+                                    {{-- href="{{ route('admin.apartments.list_sponsor', ['apartment' => $apartment->slug]) }}"> --}}
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
                                     <span>Sponsorship</span>
                                 </a>
