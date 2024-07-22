@@ -77,7 +77,7 @@
                                 </a>
                             </li>
                             <div class="separator"></div>
-                            <p class="muted px-3 py-2 m-0 mx-2">LISTING</p>
+                            
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.index' ? 'active' : '' }}"
                                     href="{{ route('admin.apartments.index') }}">
