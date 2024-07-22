@@ -54,7 +54,6 @@ class ApartmentController extends Controller
         $encodedAddress = urlencode($address);
 
         $url = "https://api.tomtom.com/search/2/geocode/{$encodedAddress}.json?key={$apiKey}";
-        
 
         try {
             
@@ -80,6 +79,12 @@ class ApartmentController extends Controller
             return null;
         }
     }
+    
+            public function showApartment(string $slug) {
+                $apartment = Apartment::where('slug', $slug)->firstOrFail();
+
+                return response()->json($apartment);
+            }
 
     // public function getFilteredData(Request $request){
     //     $query = Apartment::query();

@@ -42,7 +42,7 @@ class SearchController extends Controller
 
                 $locations = DB::table('apartments')
                 ->where('available', 1)
-                ->select('title', 'apartment_description', 'rooms', 'beds', 'bathroom', 'square_mt', 'slug')
+                ->select('title', 'apartment_description', 'rooms', 'beds', 'bathroom', 'square_mt', 'slug', 'img_path', 'id')
                 ->selectRaw(
                     '(6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance',
                     [$cord['latitude'], $cord['longitude'], $cord['latitude']]
