@@ -30,5 +30,9 @@ Route::get('/autocomplete', [AutocompleteController::class, 'search'])->name('au
 
 Route::get('/filter', [SearchController::class, 'getFilteredData']);
 Route::get('/search', [SearchController::class, "searchApartments"]);
+<<<<<<< HEAD
 Route::get('/featured', [SearchController::class, "fetchSponsored"]);
 Route::get('/featured-mobile', [SearchController::class, "fetchSponsoredAll"]);
+=======
+
+>>>>>>> dashboard-layout
