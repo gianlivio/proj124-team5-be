@@ -1,11 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
+    <div class="container d-flex justify-content-end">
+        <a href="http://localhost:5174">
+            <button type="button" class="btn btn-primary mt-3 btn-orange">Torna alla pagina home</button>
+        </a>
+    </div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 mt-4">
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
+
 
                     <div class="card-body">
                         @if (session('status'))
