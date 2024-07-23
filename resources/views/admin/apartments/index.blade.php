@@ -16,11 +16,7 @@
             </div>
         @endif
 
-        <div class="container d-flex justify-content-end">
-            <a href="http://localhost:5174">
-                <button type="button" class="btn btn-primary mt-3 btn-orange">Torna alla pagina home</button>
-            </a>
-        </div>
+        
         
         <div class="ms-table-container mt-5">
             <div class="d-flex justify-content-between align-items-center">

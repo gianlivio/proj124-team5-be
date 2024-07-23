@@ -55,10 +55,6 @@
         aggiungere i link necessari giorno per giorno
         -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
-                    <div>
-                        <a href="http://localhost:5174">
-                            <img class="w-100" src="{{ url('boolbnb_logo.png') }}" alt=""></a>
-                    </div>
                     <div class="position-sticky">
                         <ul class="nav flex-column">
                             <div class="separator"></div>
