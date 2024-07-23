@@ -199,4 +199,18 @@ class ApartmentController extends Controller
         $apartment->delete();
         return redirect()->route('admin.apartments.index')->with('message', 'L\'appartamento ' . $apartment->title . ' è stato eliminato');
     }
+
+    public function sponsorship_menu() {
+        $user = Auth::user();
+        $apartments = Apartment::where('user_id', $user->id)->get();
+        
+        return view('admin.apartments.sponsorship_menu', compact('apartments'));
+    }
+
+    public function showSponsorshipPage (String $slug) {
+        $apartment = Apartment::where("slug", $slug)->firstOrFail();
+
+        $sponsorships = Sponsorship::all();
+        return view("admin.apartments.sponsorship_selector", compact("apartment", "sponsorships"));
+    }
 }
