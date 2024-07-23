@@ -6,14 +6,14 @@
         <div class="container">
             <h1><span class="fw-bold"></span> {{ $apartment->title }}</h1>
             <div class="row">
-                <div class="col-8">
+                <div class="col-6 image-container">
                     @if ($apartment->img_path)
                     <img class="img-fluid" src="{{ asset('storage/' . $apartment->img_path) }}" alt="{{ $apartment->title }}">                 
                     @else
                     <img class="img-fluid" src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png" alt="{{ $apartment->title }}">                 
                     @endif
                 </div>
-                <div class="col-4">
+                <div class="col-6">
                     <h4>I nostri servizi</h4>
                     @foreach ($apartment->services as $service)
                         <p>{{ $service->title }}</p>
