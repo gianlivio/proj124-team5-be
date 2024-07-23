@@ -4,6 +4,11 @@
     <div class="container mt-3" style="background-color: white">
         <h1>Seleziona l'appartamento che vuoi sponsorizzare!</h1>
 
+        @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
         <ul class="list-group">
             <div class="list-group ms-list" style="cursor: pointer">
                 @foreach ($apartments as $apartment)
