@@ -6,6 +6,7 @@ use App\Models\Apartment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchController;
+use App\Http\Controllers\Api\LeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,6 @@ Route::get('/filter', [SearchController::class, 'getFilteredData']);
 Route::get('/search', [SearchController::class, "searchApartments"]);
 Route::get('/featured', [SearchController::class, "fetchSponsored"]);
 Route::get('/featured-mobile', [SearchController::class, "fetchSponsoredAll"]);
+
+
+Route::post('/leads', [LeadController::class, 'store']);
