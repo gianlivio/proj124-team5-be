@@ -36,6 +36,7 @@ class SponsorshipController extends Controller
         // Find the apartment and sponsorship type
         $apartment = Apartment::findOrFail($apartmentId);
         $sponsorshipType = Sponsorship::findOrFail($sponsorshipTypeId);
+        // dd('Sponsorship Type:', $sponsorshipType->toArray());
 
         //Convert Decimal to String
         $amount = number_format($sponsorshipType->price, 2, '.', '');
@@ -58,10 +59,12 @@ class SponsorshipController extends Controller
                 // If there's an existing record, calculate the new end date based on the existing end date
                 if ($currentEndDate) {
                     $currentEndDate = Carbon::parse($currentEndDate);
-                    $newEndDate = $currentEndDate->add(Carbon::parse($sponsorshipType->duration)->diffAsCarbonInterval());
+                    $durationDays = Carbon::parse($sponsorshipType->duration)->diffInDays(Carbon::now());
+                    $newEndDate = $currentEndDate->addDays($durationDays);
                 } else {
                     // If no existing record, set the end date from now
-                    $newEndDate = Carbon::now()->add(Carbon::parse($sponsorshipType->duration)->diffAsCarbonInterval());
+                    $durationDays = Carbon::parse($sponsorshipType->duration)->diffInDays(Carbon::now());
+                    $newEndDate = Carbon::now()->addDays($durationDays);
                 }
 
                 // Update or insert the record
@@ -70,6 +73,8 @@ class SponsorshipController extends Controller
                     ['end_date' => $newEndDate->format('Y-m-d H:i:s')]
                 );
             });
+
+            
 
             return redirect()->route('admin.sponsorship')->with('success', 'Sponsorizzazione aggiunta corretamente.');
         } else {
