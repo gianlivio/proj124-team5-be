@@ -16,10 +16,15 @@
             </div>
         @endif
 
+        <div class="container d-flex justify-content-end">
+            <a href="http://localhost:5174">
+                <button type="button" class="btn btn-primary mt-3 btn-orange">Torna alla pagina home</button>
+            </a>
+        </div>
+        
         <div class="ms-table-container mt-5">
             <div class="d-flex justify-content-between align-items-center">
                 <h1 class="fw-bold text-white">Appartamenti</h1>
-
                 <div class="d-flex flex-column">
                     <a href="{{ route('admin.apartments.create') }}" class="btn btn-orange fw-bold">Aggiungi</a>
                     <span class="fw-bold text-white">Attuali: {{ count($apartments) }}</span>
@@ -49,7 +54,8 @@
                                         <a
                                             href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">
                                             @if ($curApartment->img_path)
-                                                <img class="img-fluid" src="{{ asset('storage/' . $curApartment->img_path) }}"
+                                                <img class="img-fluid"
+                                                    src="{{ asset('storage/' . $curApartment->img_path) }}"
                                                     alt="{{ $curApartment->title }}">
                                             @else
                                                 <img class="img-fluid"
