@@ -2,6 +2,12 @@
 
 @section('content')
     {{-- @include('partials.message-success') --}}
+    
+    <div class="container d-flex justify-content-end">
+        <a href="http://localhost:5174">
+            <button type="button" class="btn btn-primary mt-3 btn-orange">Torna alla pagina home</button>
+        </a>
+    </div>
     <div class="mt-4">
         <div class="container mt-5">
             {{-- <h1 class="text-white"> {{ $apartment->title }}</h1> --}}

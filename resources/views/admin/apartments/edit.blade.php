@@ -2,6 +2,12 @@
 
 @section('content')
 
+    <div class="container d-flex justify-content-end">
+        <a href="http://localhost:5174">
+            <button type="button" class="btn btn-primary mt-3 btn-orange">Torna alla pagina home</button>
+        </a>
+    </div>
+
     <div class="container mt-5 mb-4">
         <h1 class="mb-4 text-center fw-bold text-white">Modifica Appartamento</h1>
 
@@ -110,26 +116,27 @@
                         @foreach ($services as $service)
                             <div class="form-check">
                                 @if (old('services') !== null)
-                                    <input @checked(in_array($apartment->service->id, old('services'))) name="services[]" class="form-check-input" type="checkbox"
-                                        value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
+                                    <input @checked(in_array($apartment->service->id, old('services'))) name="services[]" class="form-check-input"
+                                        type="checkbox" value="{{ $service->id }}" id="service-{{ $service->id }}"
+                                        autocomplete="off">
                                 @else
-                                    <input @checked($apartment->services->contains($service)) name="services[]" class="form-check-input" type="checkbox"
-                                        value="{{ $service->id }}" id="service-{{ $service->id }}" autocomplete="off">
+                                    <input @checked($apartment->services->contains($service)) name="services[]" class="form-check-input"
+                                        type="checkbox" value="{{ $service->id }}" id="service-{{ $service->id }}"
+                                        autocomplete="off">
                                 @endif
                                 <label class="form-check-label" for="services">
                                     {{ $service->title }}
                                 </label>
                             </div>
-                    
                         @endforeach
-                            <div class="mb-3">
-                                <small class="text-muted">Compila i campi contrassegnati con *.</small>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button type="submit" id="submit" class="btn btn-orange">Modifica</button>
-                                <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary">Cancella</a>
-                            </div>
-                    
+                        <div class="mb-3">
+                            <small class="text-muted">Compila i campi contrassegnati con *.</small>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" id="submit" class="btn btn-orange">Modifica</button>
+                            <a href="{{ route('admin.apartments.index') }}" class="btn btn-secondary">Cancella</a>
+                        </div>
+
                     </div>
                 </form>
             </div>
