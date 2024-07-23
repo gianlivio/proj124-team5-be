@@ -82,10 +82,17 @@
                                     value="{{ old('square_mt', $apartment->square_mt) }}" required>
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label for="inp_img" class="form-label">Immagine appartamento</label>
-                                <input type="file" class="form-control" name="inp_img" id="inp_img">
+                            <div class="form-group mb-3 d-flex container">
+                                <div class="row">
+                                    <div class="col-12 col-md-12 col-sm-12 d-flex align-items-center">
+                                        <label for="inp_img" class="form-label">Immagine appartamento</label>
+                                        <input type="file" class="form-control" name="inp_img" id="inp_img">
+                                    </div>
+                                    <div class="col-12 col-md-12 col-sm-12 col-lg-12"><img src="{{ asset('storage/' . $apartment->img_path) }}" alt="" class="container-fluid"></div>
+                                </div>
                             </div>
+
+
                         </div>
                     </div>
 
@@ -124,7 +131,6 @@
                             </div>
                     
                     </div>
-
                 </form>
             </div>
         </div>
