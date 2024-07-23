@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Braintree\Gateway as BraintreeGateway;
 
 class ApartmentController extends Controller
 {
@@ -198,5 +199,35 @@ class ApartmentController extends Controller
         // $apartment->services()->detach();
         $apartment->delete();
         return redirect()->route('admin.apartments.index')->with('message', 'L\'appartamento ' . $apartment->title . ' è stato eliminato');
+    }
+
+    public function sponsorship_menu() {
+        $user = Auth::user();
+        $apartments = Apartment::where('user_id', $user->id)->get();
+        
+        return view('admin.apartments.sponsorship_menu', compact('apartments'));
+    }
+
+    protected $gateway;
+
+    public function __construct()
+    {
+        $this->gateway = new BraintreeGateway([
+            'environment' => config('braintree.environment'),
+            'merchantId' => config('braintree.merchantId'),
+            'publicKey' => config('braintree.publicKey'),
+            'privateKey' => config('braintree.privateKey'),
+        ]);
+    }
+
+
+    public function showSponsorshipPage (String $slug) {
+        $apartment = Apartment::where("slug", $slug)->firstOrFail();
+
+        $sponsorships = Sponsorship::all();
+
+        $clientToken = $this->gateway->clientToken()->generate();
+        
+        return view("admin.apartments.sponsorship_selector", compact("apartment", "sponsorships", "clientToken"));
     }
 }

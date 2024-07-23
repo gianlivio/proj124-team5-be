@@ -88,13 +88,13 @@
                                     <span>Aggiungi appartamento</span>
                                 </a>
                             </li>
-                            {{-- <li class="nav-item mt-1 mb-1">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.list_sponsor' ? 'active' : '' }}"
-                                    href="{{ route('admin.apartments.list_sponsor', ['apartment' => $apartment->slug]) }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
+                            <li class="nav-item mt-1 mb-1">
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.sponsorship' ? 'active' : '' }}"
+                                    href="{{ route('admin.sponsorship') }}">
+                                    <i class="fa-solid fa-money-bill-trend-up"></i>
                                     <span>Sponsorship</span>
                                 </a>
-                            </li> --}}
+                            </li>
                             <div class="separator"></div>
                             {{-- <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.potato' ? 'active' : '' }}"
