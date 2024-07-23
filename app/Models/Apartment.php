@@ -31,7 +31,9 @@ class Apartment extends Model
 
 
     public function sponsorships(){
-        return $this->belongsToMany(Sponsorship::class);
+        return $this->belongsToMany(Sponsorship::class, "apartment_sponsorship")
+        ->withPivot("end_date")
+        ->withTimestamps();
 
 
     }
