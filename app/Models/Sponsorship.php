@@ -10,7 +10,9 @@ class Sponsorship extends Model
     use HasFactory;
 
     public function apartments(){
-        return $this->belongsToMany(Apartment::class);
+        return $this->belongsToMany(Apartment::class, "apartment_sponsorship")
+        ->withPivot("end_date")
+        ->withTimestamps();
     }
 
     protected $fillable = [
