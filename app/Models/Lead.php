@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Lead extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'lastname', 'email', 'phone_number', 'message'];
+    protected $fillable = ['name', 'lastname', 'mail', 'phone_number', 'message', "apartment_id"];
+
     public function apartment(){
         return $this->belongsTo(Apartment::class);
-
     }
 }
