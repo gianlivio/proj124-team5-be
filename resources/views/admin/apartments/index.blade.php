@@ -72,13 +72,13 @@
                                             : '<p class="my_chips deactive m-0">No</p>' !!}
                                     </td>
                                     <td class="d-flex border-0">
-                                        <a href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}" class="btn btn-sm btn-info rounded-circle me-1">
+                                        <a href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}" class="btn btn-sm btn-show rounded-circle me-1">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}" class="btn btn-sm btn-warning rounded-circle me-1">
+                                        <a href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}" class="btn btn-sm btn-edit rounded-circle me-1">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button type="button" class="btn btn-sm btn-danger rounded-circle" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-sm btn-delete rounded-circle" data-bs-toggle="modal"
                                                 data-bs-target="#confirmModal"
                                                 data-action="{{ route('admin.apartments.destroy', ['apartment' => $curApartment->slug]) }}">
                                             <i class="fa fa-trash"></i>
