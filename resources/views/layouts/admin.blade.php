@@ -107,7 +107,7 @@
                             {{-- LOGOOUT --}}
                             <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fa-solid fa-right-from-bracket fs-5"></i>
+                                    <i class="fa-solid fa-right-from-bracket fa-fw fs-5"></i>
                                     <span class="fs-5 ps-2"> {{ __('Logout') }} </span> 
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
