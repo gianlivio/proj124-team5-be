@@ -7,7 +7,7 @@
 //INDEX
 #apartment_list_index {
     max-height: 85vh;
-    overflow: scroll;
+    overflow: auto;
     & thead th {
         background-color: #fe5d26;
         padding-top: 10px;
