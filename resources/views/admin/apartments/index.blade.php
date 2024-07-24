@@ -58,7 +58,7 @@
                                                     <a class=""
                                                         href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">{{ $curApartment->title }}</a>
                                                 </p>
-                                                <p class="muted m-0">Address</p>
+                                                <p class="muted m-0">{{ $curApartment->address }}</p>
                                             </div>
                                         </div>
                                     </td>

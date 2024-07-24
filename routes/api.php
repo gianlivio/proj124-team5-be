@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/apartment/{slug}/address', [ApartmentController::class, 'getAddressFromCoordinates']);
+Route::get('/apartment/{lat}/{lon}/address', [ApartmentController::class, 'getAddressFromCoordinates']);
 Route::put('/apartments/{slug}/update-coordinates', [ApartmentController::class, 'updateCoordinates']);
 Route::get('/getCoord', [ApartmentController::class, 'getCoordinatesForAddress']);
 Route::get('/autocomplete', [AutocompleteController::class, 'search'])->name('autocomplete.search');

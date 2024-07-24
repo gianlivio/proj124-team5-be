@@ -66,7 +66,7 @@ class ApartmentController extends Controller
         //? Metto due commenti :-)
 
         // prendo il valore dell'indirizzo dall'input del form
-        $address = $request->input('address');
+        $addressInput = $request->input('address');
 
         //chiamo la funzione dell'api che ho creato in Api/ApartmentController
         //restituisce le coordinate utilizzando l'indirizzo
@@ -74,10 +74,12 @@ class ApartmentController extends Controller
 
         try {
             // Chiamata alla funzione che restituisce le coordinate utilizzando l'indirizzo
-            $coordinates = $apiController->getCoordinatesForAddress($address);
+            $coordinates = $apiController->getCoordinatesForAddress($addressInput);
         } catch (\Exception $e) {
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato. Riprova più tardi.']);
         }
+
+        
 
 
 
@@ -102,6 +104,8 @@ class ApartmentController extends Controller
             $apartment->available = $request->has('available') ? true : false;
             $apartment->latitude = $coordinates['latitude'];
             $apartment->longitude = $coordinates['longitude'];
+                // Chiamata alla funzione che restituisce le coordinate utilizzando l'indirizzo
+           
             $apartment->user_id = Auth::id();
             $apartment->slug = Str::slug($request->title);
             $apartment->save();
@@ -127,14 +131,7 @@ class ApartmentController extends Controller
         $services = Service::all();
         $sponsorships = Sponsorship::all();
 
-        $response = $apiController->getAddressFromCoordinates($apartment->slug);
-        $data = $response->getData();
-
-        if (isset($data->address)) {
-            $address = $data->address;
-        }
-
-        return view('admin.apartments.show', compact('apartment', 'services', 'sponsorships', 'address',));
+        return view('admin.apartments.show', compact('apartment', 'services', 'sponsorships'));
     }
 
     /**
@@ -144,13 +141,8 @@ class ApartmentController extends Controller
     {
         $services = Service::all();
         $sponsorships = Sponsorship::all();
-        $response = $apiController->getAddressFromCoordinates($apartment->slug);
-        $data = $response->getData();
 
-        if (isset($data->address)) {
-            $address = $data->address;
-        }
-        return view('admin.apartments.edit', compact('apartment', 'services', 'sponsorships', 'address'));
+        return view('admin.apartments.edit', compact('apartment', 'services', 'sponsorships'));
     }
 
     /**
@@ -171,6 +163,10 @@ class ApartmentController extends Controller
             $apartment->latitude = $coordinates['latitude'];
             $apartment->longitude = $coordinates['longitude'];
 
+            $response = $apiController->getAddressFromCoordinates($apartment->latitude, $apartment->longitude);
+            $data = json_decode($response->getContent(), true);
+            $apartment->address = $data['address'];
+            
             if ($request->hasFile('inp_img')) {
                 if ($apartment->img_path) {
                     $inp_img = Storage::delete($apartment->img_path);

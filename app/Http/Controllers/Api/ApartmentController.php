@@ -12,16 +12,16 @@ class ApartmentController extends Controller
 {
     
 
-    public function getAddressFromCoordinates($slug)
+    public function getAddressFromCoordinates($lat,$lon)
     {
-        $apartment = Apartment::where('slug', $slug)->first();
+        // $apartment = Apartment::where('slug', $slug)->first();
 
-        if (!$apartment) {
-            return response()->json(['error' => 'Appartamento non trovato'], 404);
-        }
+        // if (!$apartment) {
+        //     return response()->json(['error' => 'Appartamento non trovato'], 404);
+        // }
 
-        $lat = $apartment->latitude;
-        $lon = $apartment->longitude;
+        // $lat = $apartment->latitude;
+        // $lon = $apartment->longitude;
         $apiKey = env('TOMTOM_API_KEY');
 
         $url = "https://api.tomtom.com/search/2/reverseGeocode/{$lat},{$lon}.json?key={$apiKey}";
