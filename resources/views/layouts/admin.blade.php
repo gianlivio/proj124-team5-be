@@ -26,86 +26,97 @@
 <body>
     <div id="app">
 
-        {{-- <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
-      <div class="row justify-content-between">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolBnB</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <div class="navbar-nav">
-        <div class="nav-item text-nowrap ms-2">
-          <a class="nav-link" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-          </a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-          </form>
-        </div>
-      </div>
-    </header> --}}
+        <header class="navbar sticky-top bg-light p-2 shadow d-md-none">
+            <div class="container d-flex justify-content-between align-items-center">
+                <div class="w-25">
+                    <a href="{{ route('admin.apartments.index') }}">
+                        <img class="w-100" src="{{ asset('boolbnb_logo.png') }}" alt="Logo">
+                    </a>
+                </div>
+                <div>
+                    <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
 
         <div class="container-fluid vh-100">
             <div class="row h-100">
                 <!-- Definire solo parte del menu di navigazione inizialmente per poi
         aggiungere i link necessari giorno per giorno
         -->
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
                     <div class="position-sticky">
-                        <a href="{{ route('admin.apartments.index') }}"><img src="{{ asset('boolbnb_logo.png') }}" alt="" class="container-fluid"></a>
-                        {{-- <img src="https://st2.depositphotos.com/1810600/5838/v/450/depositphotos_58387439-stock-illustration-abstract-vector-logo.jpg" alt="" class=""> --}}
+                        {{-- LOGO-HOME --}}
+                        <a class="d-none d-md-block" href="{{ route('admin.apartments.index') }}">
+                            <img src="{{ asset('boolbnb_logo.png') }}" alt="" class="container-fluid">
+                        </a>
+
+                        <div class="separator d-none d-md-block"></div>
+
+                        {{-- NAV ITEMS --}}
                         <ul class="nav flex-column">
-                            <div class="separator"></div>
+
+                            {{-- DASHBOARD WELCOME --}}
                             <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
-                                    <span>Dashboard</span>
+                                    <i class="fa-solid fa-tachometer-alt fs-5 fa-fw"></i>
+                                    <span class="fs-5 ps-2">Dashboard</span>
                                 </a>
                             </li>
-                            {{-- <li class="nav-item mt-1 mb-1">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.potato' ? 'active' : '' }}"
-                                    href="{{ route('admin.apartments.index') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
-                                    <span>Messaggi</span>
-                                </a>
-                            </li> --}}
+                            {{-- DASHBOARD WELCOME --}}
+
+
                             <div class="separator"></div>
-                            
+
+                            {{-- INDEX --}}
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.index' ? 'active' : '' }}"
                                     href="{{ route('admin.apartments.index') }}">
-                                    <i class="fa-solid fa-house fs-5"></i>
-                                    <span>Appartamenti</span>
+                                    <i class="fa-solid fa-house fa-fw fs-5"></i>
+                                    <span class="fs-5 ps-2">  Appartamenti</span>
                                 </a>
                             </li>
+                            {{-- INDEX --}}
+
+                            {{-- ADD --}}
                             <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.create' ? 'active' : '' }}"
                                     href="{{ route('admin.apartments.create') }}">
-                                    <i class="fa-solid fa-plus fs-5"></i>
-                                    <span>Aggiungi appartamento</span>
+                                    <i class="fa-solid fa-plus fa-fw fs-5"></i>
+                                    <span class="fs-5 ps-2">  Aggiungi</span>
                                 </a>
                             </li>
+                            {{-- ADD --}}
+
+                            {{-- SPONSORSHIP --}}
                             <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.sponsorship' ? 'active' : '' }}"
                                     href="{{ route('admin.sponsorship') }}">
-                                    <i class="fa-solid fa-money-bill-trend-up"></i>
-                                    <span>Sponsorship</span>
+                                    <i class="fa-solid fa-money-bill-trend-up fa-fw fs-5"></i>
+                                    <span class="fs-5 ps-2"> Sponsorizza</span>
                                 </a>
                             </li>
+                            {{-- SPONSORSHIP --}}
+
                             <div class="separator"></div>
-                            {{-- <li class="nav-item mt-1 mb-1">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.potato' ? 'active' : '' }}"
-                                    href="{{ route('admin.apartments.index') }}">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
-                                    <span>Impostazioni</span>
+
+                            {{-- LOGOOUT --}}
+                            <li class="nav-item mt-1 mb-1">
+                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fa-solid fa-right-from-bracket fs-5"></i>
+                                    <span class="fs-5 ps-2"> {{ __('Logout') }} </span> 
                                 </a>
-                            </li> --}}
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                            {{-- LOGOOUT --}}
                         </ul>
+
 
 
                     </div>
