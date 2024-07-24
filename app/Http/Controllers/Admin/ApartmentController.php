@@ -109,7 +109,7 @@ class ApartmentController extends Controller
             $response = $apiController->getAddressFromCoordinates($apartment->latitude, $apartment->longitude);
             $data = json_decode($response->getContent(), true);
             $apartment->address = $data['address'];
-            
+
             $apartment->user_id = Auth::id();
             $apartment->slug = Str::slug($request->title);
             $apartment->save();
@@ -155,7 +155,7 @@ class ApartmentController extends Controller
     public function update(Request $request, Apartment $apartment, ApiController $apiController)
     {
         $data = $request->all();
-        // dd($request);
+        $apartment->title = $request->input('title');
         $apartment->available = $request->has('available') ? true : false;
         $apartment->slug = Str::slug($apartment->title);
 
