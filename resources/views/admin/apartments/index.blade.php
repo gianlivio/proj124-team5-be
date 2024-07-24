@@ -37,7 +37,7 @@
                                 <th class="ps-3 rounded-end-3 text-center">azioni</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="scroll-box">
                             @foreach ($apartments as $curApartment)
                                 <tr>
                                     <td class="pl-3">
