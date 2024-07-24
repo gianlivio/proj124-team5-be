@@ -61,26 +61,26 @@
 
                             <div class="form-group mb-3">
                                 <label for="rooms" class="form-label">Stanze*:</label>
-                                <input type="number" placeholder="Numero camere.." class="form-control" id="rooms"
+                                <input type="number" min="0" step="1" placeholder="Numero camere.." class="form-control" id="rooms"
                                     name="rooms" required>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="beds" class="form-label">Posti letto*:</label>
-                                <input type="number" placeholder="Numero di posti letto.." class="form-control"
+                                <input type="number" min="0" step="1" placeholder="Numero di posti letto.." class="form-control"
                                     id="beds" name="beds" required>
                             </div>
                         </div>
                         <div class="flex-fill p-2">
                             <div class="form-group mb-4">
                                 <label for="bathroom" class="form-label">Bagni*:</label>
-                                <input type="number" placeholder="Quanti bagni a disposizione dell'ospite.."
+                                <input type="number" min="0" step="1" placeholder="Quanti bagni a disposizione dell'ospite.."
                                     class="form-control" id="bathroom" name="bathroom" required>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="square_mt" class="form-label">Metri Quadrati*:</label>
-                                <input type="number" placeholder="Superficie camera.." class="form-control" id="square_mt"
+                                <input type="number" min="0" step="1" placeholder="Superficie camera.." class="form-control" id="square_mt"
                                     name="square_mt" required>
                             </div>
 
