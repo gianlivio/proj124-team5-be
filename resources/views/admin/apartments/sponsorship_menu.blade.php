@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-5">
-    <h1 class="text-white fw-bold m-3 mb-md-0">Seleziona l'appartamento da sponsorizzare</h1>  
+    <h1 class="text-white fw-bold mt-5 mb-md-0">Seleziona l'appartamento da sponsorizzare</h1>  
     
     @if (session('success'))
         <div class="alert alert-success">
@@ -50,7 +50,7 @@
                     {{-- FOOTER --}}
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Chiudi</button>
-                        <a href="{{ route('admin.apartment.sponsor', ['slug' => $apartment->slug]) }}" class="btn btn-danger">Conferma</a>
+                        <a href="{{ route('admin.apartment.sponsor', ['slug' => $apartment->slug]) }}" class="btn btn-edit">Conferma</a>
                     </div>
                 </div>
             </div>
