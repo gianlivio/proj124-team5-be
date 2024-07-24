@@ -155,11 +155,17 @@ class ApartmentController extends Controller
     public function update(Request $request, Apartment $apartment, ApiController $apiController)
     {
         $data = $request->all();
-        $apartment->title = $request->input('title');
+        $apartment->title = $data['title'];
+        $apartment->rooms = $data['rooms'];
+        $apartment->bathroom = $data['bathroom'];
+        $apartment->beds = $data['beds'];
+        $apartment->square_mt = $data['square_mt'];
+        $apartment->apartment_description = $data['apartment_description'];
+
         $apartment->available = $request->has('available') ? true : false;
         $apartment->slug = Str::slug($apartment->title);
 
-        $address = $request->input('address');
+        $address = $data['address'];
         $coordinates = $apiController->getCoordinatesForAddress($address);
 
         if ($coordinates && isset($coordinates['latitude']) && isset($coordinates['longitude'])) {
@@ -183,7 +189,7 @@ class ApartmentController extends Controller
 
             $apartment->update($data);
             $apartment->services()->sync($request->services);
-
+            // dd($data);
             return redirect()->route('admin.apartments.index', ['apartment' => $apartment->slug])->with('message', 'L\'appartamento ' . $apartment->title . ' è stato modificato con successo');
         } else {
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato']);
