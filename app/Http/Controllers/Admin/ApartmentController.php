@@ -106,7 +106,10 @@ class ApartmentController extends Controller
             $apartment->latitude = $coordinates['latitude'];
             $apartment->longitude = $coordinates['longitude'];
                 // Chiamata alla funzione che restituisce le coordinate utilizzando l'indirizzo
-           
+            $response = $apiController->getAddressFromCoordinates($apartment->latitude, $apartment->longitude);
+            $data = json_decode($response->getContent(), true);
+            $apartment->address = $data['address'];
+            
             $apartment->user_id = Auth::id();
             $apartment->slug = Str::slug($request->title);
             $apartment->save();
