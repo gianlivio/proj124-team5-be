@@ -91,7 +91,7 @@
                         </div>
                     </div>
 
-                    <div class="form-check mb-3">
+                    <div class="form-check mb-3 d-flex align-items-center gap-1">
                         <input class="form-check-input" type="checkbox" value="1" id="available" name="available">
                         <label class="form-check-label ms-label" for="available">
                             Disponibile
