@@ -29,12 +29,12 @@
                         <thead class="fw-bold">
                             <tr>
                                 <th class="ps-3 rounded-start-3">Titolo</th>
-                                <th>stanze</th>
-                                <th>letti</th>
-                                <th>bagni</th>
-                                <th>mq</th>
-                                <th>stato</th>
-                                <th>azioni</th>
+                                <th class="text-center">stanze</th>
+                                <th class="text-center">letti</th>
+                                <th class="text-center">bagni</th>
+                                <th class="text-center">mq</th>
+                                <th class="text-center">disponibilità</th>
+                                <th class="ps-3 rounded-end-3 text-center">azioni</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,16 +62,16 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ $curApartment->rooms }}</td>
-                                    <td>{{ $curApartment->beds }}</td>
-                                    <td>{{ $curApartment->bathroom }}</td>
-                                    <td>{{ $curApartment->square_mt }}</td>
-                                    <td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $curApartment->rooms }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $curApartment->beds }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $curApartment->bathroom }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $curApartment->square_mt }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">
                                         {!! $curApartment->available
-                                            ? '<p class="my_chips active m-0">Si</p>'
-                                            : '<p class="my_chips deactive m-0">No</p>' !!}
+                                            ? '<i class="fa-solid fa-circle-check fs-2 fw-bold" style="color: #63E6BE;"></i>'
+                                            : '<i class="fa-solid fa-circle-xmark fs-2 fw-bold" style="color: #ff0000;"></i>' !!}
                                     </td>
-                                    <td class="d-flex border-0">
+                                    <td class="text-center" style="vertical-align: middle;">
                                         <a href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}" class="btn btn-sm btn-show rounded-circle me-1">
                                             <i class="fa fa-eye"></i>
                                         </a>
