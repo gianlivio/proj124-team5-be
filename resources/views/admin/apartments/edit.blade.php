@@ -52,7 +52,7 @@
                             <div class="form-group mb-3">
                                 <label for="address" class="form-label">Indirizzo*:</label>
                                 <input type="text" class="form-control" id="address" name="address"
-                                    value="{{ old('address', $address) }}" autocomplete="off" required>
+                                    value="{{ old('address', $apartment->address) }}" autocomplete="off" required>
                                 <div id="suggestions" class="list-group mt-2"></div>
                             </div>
 
