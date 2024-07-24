@@ -56,6 +56,8 @@
         -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky">
+                        <a href="{{ route('admin.apartments.index') }}"><img src="{{ asset('storage/' . 'boolbnb_logo.png') }}" alt="" class="container-fluid"></a>
+                        {{-- <img src="https://st2.depositphotos.com/1810600/5838/v/450/depositphotos_58387439-stock-illustration-abstract-vector-logo.jpg" alt="" class=""> --}}
                         <ul class="nav flex-column">
                             <div class="separator"></div>
                             <li class="nav-item mt-1 mb-1">

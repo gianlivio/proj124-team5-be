@@ -93,7 +93,7 @@
 
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="checkbox" value="1" id="available" name="available">
-                        <label class="form-check-label" for="available">
+                        <label class="form-check-label ms-label" for="available">
                             Disponibile
                         </label>
                     </div>
