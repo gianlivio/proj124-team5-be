@@ -27,8 +27,8 @@
         <div class="form-group">
             <label for="sponsorship_type">Select Sponsorship Type:</label>
             <select name="sponsorship_id" id="sponsorship_type" class="form-control" required>
-                @foreach($sponsorships as $sponsorship)
-                    <option value="{{ $sponsorship->id }}">{{ $sponsorship->type }}</option>
+                @foreach($sponsorships as $index => $sponsorship)
+                    <option value="{{ $sponsorship->id }}" @if($index === 0) disabled @endif>{{ $sponsorship->type }} - {{ $sponsorship->price }}€</option>
                 @endforeach
             </select>
         </div>
