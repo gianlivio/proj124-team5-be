@@ -7,14 +7,14 @@
         <h1 class="mb-4 text-center fw-bold text-white">Aggiungi Appartamento</h1>
 
         <!-- Messaggio di successo se l'appartamento è stato aggiunto con successo -->
-        @if (session('success'))
+        {{-- @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
-        @endif
+        @endif --}}
 
         <!-- Messaggi di errore se ci sono problemi con la convalida del modulo -->
-        @if ($errors->any())
+        {{-- @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -22,7 +22,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif --}}
 
         <div class="card shadow-sm rounded border-0">
             <div class="card-body p-4">
@@ -46,7 +46,7 @@
                     <div class="mb-3">
                         <label for="apartment_description" class="form-label">Descrizione:</label>
                         <textarea class="form-control form-control-lg" id="apartment_description" name="apartment_description"
-                            placeholder="Scrivi qualcosa sull'appartamento..." rows="4"></textarea>
+                            placeholder="Scrivi qualcosa sull'appartamento..." rows="4">{{ old('apartment_description') }}</textarea>
                     </div>
 
                     <!-- Sezione flexbox per disporre i campi in due colonne -->
@@ -55,45 +55,45 @@
                             <div class="form-group mb-3">
                                 <label for="address" class="form-label">Indirizzo*:</label>
                                 <input type="text" placeholder="Inserisci l'indirizzo.." class="form-control"
-                                    id="address" name="address" autocomplete="off" required>
+                                    id="address" name="address" autocomplete="off" value="{{ old('address') }}" required>
                                 <div id="suggestions" class="list-group mt-2"></div>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="rooms" class="form-label">Stanze*:</label>
                                 <input type="number" min="0" step="1" placeholder="Numero camere.." class="form-control" id="rooms"
-                                    name="rooms" required>
+                                    name="rooms" value="{{ old('rooms') }}" required>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="beds" class="form-label">Posti letto*:</label>
                                 <input type="number" min="0" step="1" placeholder="Numero di posti letto.." class="form-control"
-                                    id="beds" name="beds" required>
+                                    id="beds" name="beds" value="{{ old('beds') }}" required>
                             </div>
                         </div>
                         <div class="flex-fill p-2">
                             <div class="form-group mb-4">
                                 <label for="bathroom" class="form-label">Bagni*:</label>
                                 <input type="number" min="0" step="1" placeholder="Quanti bagni a disposizione dell'ospite.."
-                                    class="form-control" id="bathroom" name="bathroom" required>
+                                    class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="square_mt" class="form-label">Metri Quadrati*:</label>
                                 <input type="number" min="0" step="1" placeholder="Superficie camera.." class="form-control" id="square_mt"
-                                    name="square_mt" required>
+                                    name="square_mt" value="{{ old('square_mt') }}" required>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="inp_img" class="form-label">Immagine appartamento</label>
-                                <input type="file" class="form-control" name="inp_img" id="inp_img">
+                                <input type="file" class="form-control" name="inp_img" id="inp_img" value="{{ old('inp_img') }}">
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-check mb-3 d-flex align-items-center gap-1">
-                        <input class="form-check-input" type="checkbox" value="1" id="available" name="available">
-                        <label class="form-check-label ms-label" for="available">
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="1" id="available" name="available" @checked(old('available', []) ? 'checked' : '')>
+                        <label class="form-check-label" for="available">
                             Disponibile
                         </label>
                     </div>
@@ -105,7 +105,7 @@
 
                         @foreach ($services as $service)
                             <div class="form-check">
-                                <input class="form-check-input" name="services[]" type="checkbox"
+                                <input @checked(in_array($service->id, old('services', []))) class="form-check-input" name="services[]" type="checkbox"
                                     value="{{ $service->id }}" id="service{{ $service->id }}">
                                 <label class="form-check-label" for="service{{ $service->id }}">
                                     {{ $service->title }}

@@ -95,11 +95,11 @@
                         </div>
                     </div>
 
-                    <div class="form-check mb-3 d-flex align-items-center gap-1">
+                    <div class="form-check mb-3">
 
                             <input class="form-check-input" type="checkbox" value="1" id="available" name="available"
                                 @checked(old('available', $apartment->available) ? 'checked' : '')>
-                            <label class="form-check-label ms-label" for="available">
+                            <label class="form-check-label" for="available">
                                 Disponibile
                             </label>
                     </div>
