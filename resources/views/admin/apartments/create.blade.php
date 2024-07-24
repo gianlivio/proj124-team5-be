@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <h1 class="mb-4 text-center fw-bold text-white">Aggiungi Appartamento</h1>
 
         <!-- Messaggio di successo se l'appartamento è stato aggiunto con successo -->

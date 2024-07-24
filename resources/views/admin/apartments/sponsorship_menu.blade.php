@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <h1 class="text-white fw-bold mt-5 mb-md-0">Seleziona l'appartamento da sponsorizzare</h1>  
     
     @if (session('success'))

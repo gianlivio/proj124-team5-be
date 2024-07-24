@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <h1 class="text-white fw-bold">Sponsorizzazione per <i>{{ $apartment->title }}</i></h1>
 
     @if ($errors->any())

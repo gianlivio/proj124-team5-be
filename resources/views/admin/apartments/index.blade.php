@@ -29,10 +29,10 @@
                         <thead class="fw-bold">
                             <tr>
                                 <th class="ps-3 rounded-start-3">Titolo</th>
-                                <th class="text-center">stanze</th>
-                                <th class="text-center">letti</th>
-                                <th class="text-center">bagni</th>
-                                <th class="text-center">mq</th>
+                                <th class="text-center d-none d-lg-table-cell">stanze</th>
+                                <th class="text-center d-none d-lg-table-cell">letti</th>
+                                <th class="text-center d-none d-lg-table-cell">bagni</th>
+                                <th class="text-center d-none d-lg-table-cell">mq</th>
                                 <th class="text-center">disponibilità</th>
                                 <th class="ps-3 rounded-end-3 text-center">azioni</th>
                             </tr>
@@ -62,10 +62,10 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center" style="vertical-align: middle;">{{ $curApartment->rooms }}</td>
-                                    <td class="text-center" style="vertical-align: middle;">{{ $curApartment->beds }}</td>
-                                    <td class="text-center" style="vertical-align: middle;">{{ $curApartment->bathroom }}</td>
-                                    <td class="text-center" style="vertical-align: middle;">{{ $curApartment->square_mt }}</td>
+                                    <td class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->rooms }}</td>
+                                    <td class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->beds }}</td>
+                                    <td class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->bathroom }}</td>
+                                    <td class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->square_mt }}</td>
                                     <td class="text-center" style="vertical-align: middle;">
                                         {!! $curApartment->available
                                             ? '<i class="fa-solid fa-circle-check fs-2 fw-bold" style="color: #63E6BE;"></i>'

@@ -4,7 +4,7 @@
     {{-- @include('partials.message-success') --}}
     
     <div class="mt-4">
-        <div class="container mt-5">
+        <div class="container mt-5 mb-5">
             {{-- <h1 class="text-white"> {{ $apartment->title }}</h1> --}}
             <h1 class="mb-4 fw-bold text-white">{{ $apartment->title }}</h1>
 

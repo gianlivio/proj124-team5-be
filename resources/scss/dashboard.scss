@@ -2,12 +2,16 @@
 
 #main_container {
     background-color: $bg-primary;
+    max-height: 100vh;
+    overflow: auto;
 }
+
+
 
 //INDEX
 #apartment_list_index {
     max-height: 85vh;
-    overflow: auto;
+    overflow-x: auto;
     & thead th {
         background-color: #fe5d26;
         padding-top: 10px;
