@@ -32,6 +32,7 @@ Route::get('/apartment/{slug}/apartment-details', [ApartmentController::class, "
 
 Route::get('/filter', [SearchController::class, 'getFilteredData']);
 Route::get('/search', [SearchController::class, "searchApartments"]);
+Route::post('/radius{radius}', [SearchController::class, "apartmentRadius"]);
 Route::get('/featured', [SearchController::class, "fetchSponsored"]);
 Route::get('/featured-mobile', [SearchController::class, "fetchSponsoredAll"]);
 

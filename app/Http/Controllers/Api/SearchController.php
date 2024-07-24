@@ -12,57 +12,46 @@ class SearchController extends Controller
 {     
     public function searchApartments(Request $request) {
         $input = $request->input('input');
+        $radius = $request->input('radius', 15); // Default radius to 30 if not provided
 
         $apiKey = env('TOMTOM_API_KEY');
-
         $encodedAddress = urlencode($input);
-
         $url = "https://api.tomtom.com/search/2/geocode/{$encodedAddress}.json?key={$apiKey}";
-        
 
         try {
-            
-            // $response = Http::get($url);
             $results = Http::withOptions([
-                'verify' => false, 
-            ])
-            ->get($url);
+                'verify' => false,
+            ])->get($url);
 
             if ($results->successful()) {
-                $defaultRadius = 30; 
                 $data = $results->json();
 
                 // Estrai le coordinate dalla risposta
                 $latitude = $data['results'][0]['position']['lat'];
                 $longitude = $data['results'][0]['position']['lon'];
 
-                $cord = ['latitude' => $latitude, 'longitude' => $longitude ];
+                $cord = ['latitude' => $latitude, 'longitude' => $longitude];
 
                 // checkare se available
-
                 $locations = DB::table('apartments')
-                ->where('available', 1)
-                ->select('title', 'apartment_description', 'rooms', 'beds', 'bathroom', 'square_mt', 'slug', 'img_path', 'id')
-                ->selectRaw(
-                    '(6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance',
-                    [$cord['latitude'], $cord['longitude'], $cord['latitude']]
-                )
-                ->having('distance', '<=', $defaultRadius) // 30km radius
-                ->orderBy('distance')
-                ->get();
+                    ->where('available', 1)
+                    ->select('title', 'apartment_description', 'rooms', 'beds', 'bathroom', 'square_mt', 'slug', 'img_path', 'id')
+                    ->selectRaw(
+                        '(6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude)))) AS distance',
+                        [$cord['latitude'], $cord['longitude'], $cord['latitude']]
+                    )
+                    ->having('distance', '<=', $radius) // Use the radius from the request
+                    ->orderBy('distance')
+                    ->get();
 
-                ;
-                Cache::put('locations', $locations,  500);
+                Cache::put('locations', $locations, 500);
                 return response()->json($locations);
-
             } else {
                 throw new \Exception('Errore nella richiesta all\'API di TomTom');
             }
         } catch (\Exception $e) {
-            return null;
+            return response()->json(['error' => $e->getMessage()], 500);
         }
-        
-        // return response()->json($location);
     }
 
     // public function getFilteredData(Request $request){
