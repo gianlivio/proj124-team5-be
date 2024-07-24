@@ -24,7 +24,7 @@
             </div>
 
             <div class="bg-white p-4 rounded-3 mt-2" id="apartment_list_index">
-                <div class="table-responsive"> <!-- Aggiungere questa classe per rendere la tabella scrollabile su dispositivi mobili -->
+                <div class="table-responsive">
                     <table class="table">
                         <thead class="fw-bold">
                             <tr>
@@ -34,7 +34,7 @@
                                 <th>bagni</th>
                                 <th>mq</th>
                                 <th>stato</th>
-                                <th class="pe-3 text-end rounded-end-3">azioni</th>
+                                <th>azioni</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -71,27 +71,18 @@
                                             ? '<p class="my_chips active m-0">Si</p>'
                                             : '<p class="my_chips deactive m-0">No</p>' !!}
                                     </td>
-                                    <td class="text-end px-3">
-                                        <div class="dropdown">
-                                            <a class="ellipsis-menu" type="button" data-bs-toggle="dropdown"
-                                                aria-expanded="false">
-                                                <i class="fa-solid fa-ellipsis-vertical fs-4"></i>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a class="dropdown-item" type="button"
-                                                        href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">Dettagli</a>
-                                                </li>
-                                                <li><a class="dropdown-item"
-                                                        href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}"
-                                                        type="button">Modifica</a></li>
-                                                <li>
-                                                    <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                        data-bs-target="#confirmModal"
-                                                        data-action="{{ route('admin.apartments.destroy', ['apartment' => $curApartment->slug]) }}">Elimina</button>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <td class="d-flex border-0">
+                                        <a href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}" class="btn btn-sm btn-info rounded-circle me-1">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('admin.apartments.edit', ['apartment' => $curApartment->slug]) }}" class="btn btn-sm btn-warning rounded-circle me-1">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-danger rounded-circle" data-bs-toggle="modal"
+                                                data-bs-target="#confirmModal"
+                                                data-action="{{ route('admin.apartments.destroy', ['apartment' => $curApartment->slug]) }}">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
