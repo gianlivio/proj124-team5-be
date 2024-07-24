@@ -69,20 +69,36 @@
     border-color: #FE5D26;
 }
 
+.btn-show,
+.btn-edit,
+.btn-delete {
+    color: white !important;
+}
+
 .btn-show {
-    background-color:  #7EBC89; 
+    background-color: #7EBC89;
     border-color: #7EBC89;
-    color: white;
+
+    &:hover {
+        background-color: lighten(#7EBC89, 20%);
+    }
 }
 
 .btn-edit {
-    background-color: #FE5D26; 
+    background-color: #FE5D26;
     border-color: #FE5D26;
-    color: white;
+
+    &:hover {
+        background-color: lighten(#FE5D26, 20%);
+    }
 }
 
 .btn-delete {
-    background-color: rgb(255, 101, 101); 
+    background-color: rgb(255, 101, 101);
     border-color: rgb(255, 101, 101);
-    color: white;
+
+    &:hover {
+        background-color: lighten(rgb(255, 101, 101), 20%);
+    }
+
 }
