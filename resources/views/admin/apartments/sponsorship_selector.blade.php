@@ -21,7 +21,7 @@
                 <div class="col-12 col-md-6 col-lg-3 py-2">
                     <div class="card h-100 mx-1 mb-2">
                         <div class="card-header">
-                            <h5 class="card-title">{{$sponsor->type}}</h5>
+                            <h5 class="card-title mb-0">{{$sponsor->type}}</h5>
                         </div>
                         <div class="card-body d-flex flex-column justify-between">
                             <p class="card-text flex-grow-1">{{$sponsor->sponsorship_description}}</p>
