@@ -13,7 +13,7 @@
     <div class="bg-white p-4 rounded-3 mt-2" id="apartment_list_index">
         <div class="list-group ms-list" >
             @foreach ($apartments as $apartment)
-            <div class="d-flex mb-2 p-3 list-group-item-action align-items-center border rounded shadow-sm" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#{{ $apartment->id }}">
+            <div id="sponsor_ap" class="d-flex mb-2 p-3 list-group-item-action align-items-center border rounded shadow-sm" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#{{ $apartment->id }}">
                 @if ($apartment->img_path)
                     <img class="img-fluid w-25 rounded"
                         src="{{ asset('storage/' . $apartment->img_path) }}"
