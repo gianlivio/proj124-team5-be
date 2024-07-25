@@ -13,7 +13,7 @@ class DashboardController extends Controller
 public function index()
 {
     $user = Auth::user();
-
+    $totalViews = View::where('user_id', $user->id)->count();
     $viewsCountByApartment = View::select('apartment_id','title', DB::raw('count(*) as total_views'))
         ->groupBy('apartment_id','title')
         ->where('user_id', $user->id)
