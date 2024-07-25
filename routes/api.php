@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\LeadController;
+use App\Http\Controllers\Api\ViewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +37,6 @@ Route::post('/radius{radius}', [SearchController::class, "apartmentRadius"]);
 Route::get('/featured', [SearchController::class, "fetchSponsored"]);
 Route::get('/featured-mobile', [SearchController::class, "fetchSponsoredAll"]);
 
+Route::post('/view', [ViewController::class, 'store']);
 
 Route::post('/leads', [LeadController::class, 'store']);
