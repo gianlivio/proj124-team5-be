@@ -122,4 +122,20 @@
         })();
 </script>
 
+<style>
+    .btn {
+       background-color:  #FE5D26;
+       border-color: #FE5D26
+    }
+
+    .btn:hover {
+       background-color:  #f78660;
+       border-color: #FE5D26
+    }
+
+    a {
+        color: #FE5D26;
+    }
+</style>
+
 @endsection
