@@ -21,7 +21,7 @@
                                 <th style="vertical-align: middle" class="d-none d-lg-table-cell" scope="col">Data</th>
                                 <th style="vertical-align: middle" class="d-none d-sm-table-cell" scope="col">
                                     Ricontattato</th>
-                                <th style="vertical-align: middle" class="ps-3 rounded-end-3" scope="col">Azioni</th>
+                                <th style="vertical-align: middle" class="ps-3 rounded-end-3" scope="col">Info</th>
                             </tr>
                         </thead>
                         <tbody>
