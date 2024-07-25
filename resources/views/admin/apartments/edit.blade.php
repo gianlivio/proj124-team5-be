@@ -71,20 +71,20 @@
                                 <label for="square_mt" class="form-label">Metri Quadrati*:</label>
                                 <input type="number" class="form-control" min="1" step="1" id="square_mt" name="square_mt"
                                     value="{{ old('square_mt', $apartment->square_mt) }}" required>
-                            </div>
-
-                            <div class="form-group mb-3 d-flex container">
-                                <div class="row">
-                                    <div class="col-12 col-md-12 col-sm-12 d-flex align-items-center">
-                                        <label for="inp_img" class="form-label">Immagine appartamento</label>
-                                        <input type="file" class="form-control" name="inp_img" id="inp_img">
-                                    </div>
-                                    <div class="col-12 col-md-12 col-sm-12 col-lg-12"><img src="{{ asset('storage/' . $apartment->img_path) }}" alt="" class="container-fluid"></div>
                                 </div>
+                                
+                                <div class="form-group mb-3 d-flex container p-0">
+                                    
+                                        <div class="w-100 d-flex flex-column align-items-start">
+                                            <label for="inp_img" class="form-label">Immagine appartamento</label>
+                                            <input type="file" class="form-control" name="inp_img" id="inp_img">
+                                        </div>
+                                    
+                                </div>
+                                
+                                
                             </div>
-
-
-                        </div>
+                            <div class="col-12 col-md-12 col-sm-12 col-lg-12 mb-2 mt-2 mb-2 "><img src="{{ asset('storage/' . $apartment->img_path) }}" alt="" id="preview" class="container-fluid"></div>
                     </div>
 
                     <div class="form-check mb-3">

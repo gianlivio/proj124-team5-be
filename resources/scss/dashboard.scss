@@ -116,4 +116,26 @@
 .chart{
     background-color: white;
     padding: 1.5rem;
+    margin: - 10px;
+}
+
+/* Mobile */
+@media (max-width: 767px) { /* 768px è un punto di interruzione comune per mobile, ma puoi ajustarlo secondo le tue esigenze */
+    #preview {
+        width: 100%;
+    }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1024px) { /* 1024px è un punto di interruzione comune per tablet, ma puoi ajustarlo secondo le tue esigenze */
+    #preview {
+        width: 75%;
+    }
+}
+
+/* Laptop */
+@media (min-width: 1025px) {
+    #preview {
+        width: 60%;
+    }
 }
