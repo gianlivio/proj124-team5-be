@@ -118,6 +118,18 @@
 
                             {{-- LOGOOUT --}}
                             <li class="nav-item mt-1 mb-1">
+                                <a class="nav-link" href="http://localhost:5174/">
+                                    <i class="fa-solid fa-magnifying-glass fa-fw fs-5"></i>
+                                    <span class="fs-5 ps-2"> Cerca </span> 
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                            {{-- LOGOOUT --}}
+
+                            {{-- LOGOOUT --}}
+                            <li class="nav-item mt-1 mb-1">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fa-solid fa-right-from-bracket fa-fw fs-5"></i>
                                     <span class="fs-5 ps-2"> {{ __('Logout') }} </span> 

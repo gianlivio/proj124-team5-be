@@ -1,15 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container d-flex justify-content-end">
-        <a href="http://localhost:5174">
-            <button type="button" class="btn btn-primary mt-3 btn-orange">Torna alla pagina home</button>
-        </a>
-    </div>
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8 mt-4">
-                <div class="card" id="status-alert">
+            <div class="col-12 col-md-8 mt-4" id="status-alert">
+                <div class="card" >
                     <div class="card-body text-center">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -28,13 +23,15 @@
                 </div>
             </div>
 
+            <h2 class="fw-bold text-white mt-3">Ecco come vanno i tuoi appartamenti {{ Auth::user()->name }}</h2>
+
             @if ($viewsCountByApartment->isNotEmpty())
                 <div class="row justify-content-between chart-spacing">
-                    <div class="col-6 d-flex flex-column mt-5 chart mb-5 rounded">
+                    <div class="col-12 mt-3 chart mb-3 rounded">
                         <h2 class="text-center p-3">Visite agli appartamenti</h2>
                         <canvas class="align-self-baseline" id="viewsChart"></canvas>
                     </div>
-                    <div class="col-6 mt-5 chart mb-5 rounded">
+                    <div class="col-12 chart mb-3 rounded">
                             <h2 class="text-center p-3">Contatti per appartamento</h2>
                             <canvas id="leadsChart"></canvas>
                     </div>
