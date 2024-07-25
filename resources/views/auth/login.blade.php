@@ -53,12 +53,12 @@
 
                         <div class="mb-4 row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary me-4">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a href="{{ route('password.request') }}">
                                     {{ __('Hai dimenticato la password?') }}
                                 </a>
                                 @endif
@@ -70,4 +70,20 @@
         </div>
     </div>
 </div>
+
+<style>
+    .btn {
+       background-color:  #FE5D26;
+       border-color: #FE5D26
+    }
+
+    .btn:hover {
+       background-color:  #f78660;
+       border-color: #FE5D26
+    }
+
+    a {
+        color: #FE5D26;
+    }
+</style>
 @endsection

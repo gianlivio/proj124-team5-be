@@ -11,9 +11,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
 
+    <!-- Fontawesome 6 cdn -->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'
+        integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=='
+        crossorigin='anonymous' referrerpolicy='no-referrer' />
+
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -22,30 +29,20 @@
 <body>
     <div id="app">
 
-
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand align-items-center" href="{{ url('/') }}">
-                    <div class="logo_laravel">
-                        <img class="w-25" src="{{url('boolbnb_logo.png')}}" alt="">                     
-                    </div>
-                    {{-- config('app.name', 'Laravel') --}}
-                </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img class="w-25" src="{{url('boolbnb_logo.png')}}" alt="">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
-                        </li>
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -84,12 +81,66 @@
             </div>
         </nav>
 
-        <main class="">
+        <main class="ms_main_cont">
             @yield('content')
         </main>
+
+        <div class="container_ft">
+            <div class="container">
+                <footer class="fsSmall footer mt-auto">
+                    <div class="links d-flex justify-content-between border-bottom">
+                        <ul class="nav justify-content-center">
+                            <li class="nav-item"><a href="https://youtu.be/dQw4w9WgXcQ?si=EfCJJohZbHcWNRAC" class="nav-link px-2">Termini</a></li>
+                            <li class="nav-item"><a href="https://youtu.be/dQw4w9WgXcQ?si=EfCJJohZbHcWNRAC" class="nav-link px-2">Privacy</a></li>
+                            <li class="nav-item"><a href="https://youtu.be/dQw4w9WgXcQ?si=EfCJJohZbHcWNRAC" class="nav-link px-2">FAQs</a></li>
+                            <li class="nav-item"><a href="https://youtu.be/dQw4w9WgXcQ?si=EfCJJohZbHcWNRAC" class="nav-link px-2">About</a></li>
+                        </ul>
+            
+                        <ul class="nav justify-content-center">
+                            <li class="nav-item">
+                                <a href="https://youtu.be/dQw4w9WgXcQ?si=EfCJJohZbHcWNRAC" class="nav-link px-2"><i class="fa-brands fa-instagram"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://youtu.be/dQw4w9WgXcQ?si=EfCJJohZbHcWNRAC" class="nav-link px-2"><i class="fa-brands fa-facebook"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://youtu.be/dQw4w9WgXcQ?si=EfCJJohZbHcWNRAC" class="nav-link px-2"><i class="fa-brands fa-x-twitter"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="text-center py-2 ">© 2024 BoolBnB, Inc</p>
+                </footer>
+            </div>
+        </div>
     </div>
 
+    <style>
+            .container_ft {
+                background-color: #7EBC89;
+                min-width: 100%;
+                footer {
+                    padding: 5px;
+                    color: #FFFDFD !important;
+                    p {
+                        margin: 0;
+                    }
+        
+                    a {
+                        color: inherit
+                    }
 
+                    a:hover {
+                        color: #FE5D26
+                    }
+                }
+            }
+        
+            .fsSmall {
+                font-size: 0.8rem !important;
+            }
+        </style>
+
+    
 </body>
 
 </html>
