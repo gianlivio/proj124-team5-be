@@ -12,9 +12,9 @@
                 <div class="row">
                     <div class="col-6 image-container">
                         @if ($apartment->img_path)
-                        <img class="img-fluid" src="{{ asset('storage/' . $apartment->img_path) }}" alt="{{ $apartment->title }}">                 
+                        <img class="img-fluid" src="{{ asset('storage/' . $apartment->img_path) }}" alt="{{ $apartment->title }}" style="max-width: 300px; max-height: 300px; min-width: 150px; min-height: 150px; object-fit: cover;">                 
                         @else
-                        <img class="img-fluid" src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png" alt="{{ $apartment->title }}">                 
+                        <img class="img-fluid" src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png" alt="{{ $apartment->title }}" style="max-width: 300px; max-height: 300px; min-width: 150px; min-height: 150px; object-fit: cover;">                 
                         @endif
                     </div>
                     <div class="col-5">
