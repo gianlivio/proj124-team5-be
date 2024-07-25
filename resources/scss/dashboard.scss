@@ -120,14 +120,14 @@
 }
 
 /* Mobile */
-@media (max-width: 767px) { /* 768px è un punto di interruzione comune per mobile, ma puoi ajustarlo secondo le tue esigenze */
+@media (max-width: 767px) { 
     #preview {
         width: 100%;
     }
 }
 
 /* Tablet */
-@media (min-width: 768px) and (max-width: 1024px) { /* 1024px è un punto di interruzione comune per tablet, ma puoi ajustarlo secondo le tue esigenze */
+@media (min-width: 768px) and (max-width: 1024px) { 
     #preview {
         width: 75%;
     }
