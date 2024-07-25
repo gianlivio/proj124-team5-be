@@ -14,8 +14,8 @@ public function index()
 {
     $user = Auth::user();
 
-    $viewsCountByApartment = View::select('apartment_id', DB::raw('count(*) as total_views'))
-        ->groupBy('apartment_id')
+    $viewsCountByApartment = View::select('apartment_id','title', DB::raw('count(*) as total_views'))
+        ->groupBy('apartment_id','title')
         ->where('user_id', $user->id)
         ->get();
     // dd($viewsCountByApartment);

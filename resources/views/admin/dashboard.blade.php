@@ -22,7 +22,10 @@
                     </div>
                 </div>
             </div>
-
+            {{-- @foreach ($viewsCountByApartment as $view)
+                
+            @dd($view)
+            @endforeach --}}
             {{-- chartjs --}}
             <div>
                 <canvas id="myChart"></canvas>
@@ -31,8 +34,7 @@
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
             <script>
-                // Prepare the data in PHP and pass it to JavaScript
-                const labels = @json($viewsCountByApartment->pluck('apartment_id'));
+                const labels = @json($viewsCountByApartment->pluck('title'));
                 const data = @json($viewsCountByApartment->pluck('total_views'));
 
                 const ctx = document.getElementById('myChart');
@@ -45,6 +47,7 @@
                             label: 'Andamento visite ai tuoi appartamenti',
                             data: data,
                             borderWidth: 1
+                            
                         }]
                     },
                     options: {

@@ -12,6 +12,7 @@ class ViewController extends Controller
         $view = new View();
         $view->user_ip = $request->ip();
         $view->user_id = $request->user_id;
+        $view->title = $request->title;
         $view->apartment_id = $request->apartment_id;
         $view->save();
 
