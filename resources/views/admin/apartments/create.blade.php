@@ -7,14 +7,14 @@
         <h1 class="mb-4 text-center fw-bold text-white">Aggiungi Appartamento</h1>
 
         <!-- Messaggio di successo se l'appartamento è stato aggiunto con successo -->
-        {{-- @if (session('success'))
+        @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
-        @endif --}}
+        @endif
 
         <!-- Messaggi di errore se ci sono problemi con la convalida del modulo -->
-        {{-- @if ($errors->any())
+        @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -22,7 +22,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif --}}
+        @endif
 
         <div class="card shadow-sm rounded border-0">
             <div class="card-body p-4">
