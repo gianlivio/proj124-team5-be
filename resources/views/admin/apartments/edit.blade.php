@@ -84,7 +84,7 @@
                                 
                                 
                             </div>
-                            <div class="col-12 col-md-12 col-sm-12 col-lg-12 mb-2 mt-2 mb-2 "><img src="{{ asset('storage/' . $apartment->img_path) }}" alt="" id="preview" class="container-fluid"></div>
+                            <div class="col-12 col-md-12 col-sm-12 col-lg-12 mb-2 mt-2 mb-2 "><img src="{{ asset('storage/' . $apartment->img_path) }}" alt="" id="preview" class="container-fluid" style="max-width: 300px; max-height: 300px; min-width: 150px; min-height: 150px; object-fit: cover;"></div>
                     </div>
 
                     <div class="form-check mb-3">
