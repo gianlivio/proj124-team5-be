@@ -6,24 +6,6 @@
     <div class="container mt-5 mb-5">
         <h1 class="mb-4 text-center fw-bold text-white">Aggiungi Appartamento</h1>
 
-        <!-- Messaggio di successo se l'appartamento è stato aggiunto con successo -->
-        {{-- @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif --}}
-
-        <!-- Messaggi di errore se ci sono problemi con la convalida del modulo -->
-        {{-- @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif --}}
-
         <div class="card shadow-sm rounded border-0">
             <div class="card-body p-4">
                 <!-- Inizio del modulo per aggiungere un appartamento -->

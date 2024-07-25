@@ -7,14 +7,14 @@
         <!-- Messaggio di successo se l'appartamento è stato aggiornato con successo -->
 
         @if (session('success'))
-            <div class="alert alert-success">
+            <div id="success-alert" class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
         <!-- Messaggi di errore se ci sono problemi con la convalida del modulo -->
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div id="error-alert" class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -137,4 +137,17 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let successAlert = document.getElementById('success-alert');
+            if (successAlert) {
+                setTimeout(function() {
+                    successAlert.style.opacity = 0;
+                    setTimeout(function() {
+                        successAlert.style.display = 'none';
+                    }, 600); // Extra timeout to allow fade-out effect
+                }, 4000); // Adjust the time as needed
+            }
+        });
+    </script>
 @endsection

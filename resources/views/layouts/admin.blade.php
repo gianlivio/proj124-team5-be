@@ -17,8 +17,8 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
 
     <!-- Usando Vite -->
@@ -104,6 +104,16 @@
                             </li>
                             {{-- SPONSORSHIP --}}
 
+                            {{-- CONTACTS --}}
+                            <li class="nav-item mt-1 mb-1">
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.leads' ? 'active' : '' }}"
+                                    href="{{ route('admin.leads.index') }}">
+                                    <i class="fa-solid fa-envelope fa-fw fs-5"></i>
+                                    <span class="fs-5 ps-2"> Contatti</span>
+                                </a>
+                            </li>
+                            {{-- CONTACTS --}}
+
                             <div class="separator"></div>
 
                             {{-- LOGOOUT --}}
@@ -131,6 +141,8 @@
         </div>
 
     </div>
+
+
 </body>
 
 </html>
