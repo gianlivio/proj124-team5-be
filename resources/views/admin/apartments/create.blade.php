@@ -6,6 +6,17 @@
     <div class="container mt-5 mb-5">
         <h1 class="mb-4 text-center fw-bold text-white">Aggiungi Appartamento</h1>
 
+        <!-- Messaggi di errore se ci sono problemi con la convalida del modulo -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li style="list-style-type: none">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="card shadow-sm rounded border-0">
             <div class="card-body p-4">
                 <!-- Inizio del modulo per aggiungere un appartamento -->
@@ -43,27 +54,27 @@
 
                             <div class="form-group mb-3">
                                 <label for="rooms" class="form-label">Stanze*:</label>
-                                <input type="number" min="0" step="1" placeholder="Numero camere.." class="form-control" id="rooms"
-                                    name="rooms" value="{{ old('rooms') }}" required>
+                                <input type="number" placeholder="Numero camere.." class="form-control" id="rooms"
+                                    name="rooms" min="1" step="1" value="{{ old('rooms') }}" required>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="beds" class="form-label">Posti letto*:</label>
-                                <input type="number" min="0" step="1" placeholder="Numero di posti letto.." class="form-control"
-                                    id="beds" name="beds" value="{{ old('beds') }}" required>
+                                <input type="number" placeholder="Numero di posti letto.." class="form-control"
+                                    id="beds" name="beds" min="1" step="1" value="{{ old('beds') }}" required>
                             </div>
                         </div>
                         <div class="flex-fill p-2">
                             <div class="form-group mb-4">
                                 <label for="bathroom" class="form-label">Bagni*:</label>
-                                <input type="number" min="0" step="1" placeholder="Quanti bagni a disposizione dell'ospite.."
-                                    class="form-control" id="bathroom" name="bathroom" value="{{ old('bathroom') }}" required>
+                                <input type="number" placeholder="Quanti bagni a disposizione dell'ospite.."
+                                    class="form-control" id="bathroom" name="bathroom" min="1" step="1" value="{{ old('bathroom') }}" required>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="square_mt" class="form-label">Metri Quadrati*:</label>
-                                <input type="number" min="0" step="1" placeholder="Superficie camera.." class="form-control" id="square_mt"
-                                    name="square_mt" value="{{ old('square_mt') }}" required>
+                                <input type="number" placeholder="Superficie camera.." class="form-control" id="square_mt"
+                                    name="square_mt" min="1" step="1" value="{{ old('square_mt') }}" required>
                             </div>
 
                             <div class="form-group mb-3">

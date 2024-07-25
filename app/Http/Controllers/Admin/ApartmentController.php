@@ -80,6 +80,9 @@ class ApartmentController extends Controller
             return back()->withInput()->withErrors(['address' => 'Impossibile ottenere le coordinate per l\'indirizzo specificato. Riprova più tardi.']);
         }
 
+        if (!$data['beds'] >= 0 or !$data['rooms'] >= 0 or !$data['bathroom'] >= 0 or !$data['square_mt'] >= 0) {
+            return back()->withInput()->withErrors(['Non inserire numeri negativi']);
+        }
         
 
 
@@ -155,6 +158,11 @@ class ApartmentController extends Controller
     public function update(Request $request, Apartment $apartment, ApiController $apiController)
     {
         $data = $request->all();
+
+        if ($data['beds'] < 1 or $data['rooms'] < 1 or $data['bathroom'] < 1 or $data['square_mt'] < 1) {
+            return back()->withInput()->withErrors(['Inserisci un numero maggiore di zero.']);
+        }
+
         $apartment->title = $data['title'];
         $apartment->rooms = $data['rooms'];
         $apartment->bathroom = $data['bathroom'];

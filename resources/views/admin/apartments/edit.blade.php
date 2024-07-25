@@ -50,26 +50,26 @@
 
                             <div class="form-group mb-3">
                                 <label for="rooms" class="form-label">Stanze*:</label>
-                                <input type="number" min="0" step="1" class="form-control" id="rooms" name="rooms"
+                                <input type="number" class="form-control" min="1" step="1" id="rooms" name="rooms"
                                     value="{{ old('rooms', $apartment->rooms) }}" required>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="beds" class="form-label">Posti letto*:</label>
-                                <input type="number" min="0" step="1" class="form-control" id="beds" name="beds"
+                                <input type="number" class="form-control" min="1" step="1" id="beds" name="beds"
                                     value="{{ old('beds', $apartment->beds) }}" required>
                             </div>
                         </div>
                         <div class="flex-fill p-2">
                             <div class="form-group mb-4">
                                 <label for="bathroom" class="form-label">Bagni*:</label>
-                                <input type="number" min="0" step="1" class="form-control" id="bathroom" name="bathroom"
+                                <input type="number" class="form-control" min="1" step="1" id="bathroom" name="bathroom"
                                     value="{{ old('bathroom', $apartment->bathroom) }}" required>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="square_mt" class="form-label">Metri Quadrati*:</label>
-                                <input type="number" min="0" step="1" class="form-control" id="square_mt" name="square_mt"
+                                <input type="number" class="form-control" min="1" step="1" id="square_mt" name="square_mt"
                                     value="{{ old('square_mt', $apartment->square_mt) }}" required>
                             </div>
 
@@ -101,12 +101,12 @@
                         <span>Servizi offerti:</span>
                         @foreach ($services as $service)
                             <div class="form-check">
-                                @if (old('services') !== null)
-                                    <input @checked(in_array($apartment->service->id, old('services'))) name="services[]" class="form-check-input"
-                                        type="checkbox" value="{{ $service->id }}" id="service-{{ $service->id }}"
-                                        autocomplete="off">
-                                @else
+                                @if (old('services') === null)
                                     <input @checked($apartment->services->contains($service)) name="services[]" class="form-check-input"
+                                    type="checkbox" value="{{ $service->id }}" id="service-{{ $service->id }}"
+                                    autocomplete="off">
+                                @else
+                                        <input @checked(in_array($service->id, old('services'))) name="services[]" class="form-check-input"
                                         type="checkbox" value="{{ $service->id }}" id="service-{{ $service->id }}"
                                         autocomplete="off">
                                 @endif
