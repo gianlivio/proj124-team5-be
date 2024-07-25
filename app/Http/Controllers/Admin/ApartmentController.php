@@ -157,6 +157,12 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment, ApiController $apiController)
     {
+        $request->validate([
+            'title' => 'required|unique:apartments,title',
+        ], [
+            'title.unique' => 'Il titolo dell\'appartamento esiste già. Si prega di scegliere un titolo diverso.',
+        ]);
+        
         $data = $request->all();
 
         if ($data['beds'] < 1 or $data['rooms'] < 1 or $data['bathroom'] < 1 or $data['square_mt'] < 1) {
