@@ -106,7 +106,7 @@
 
                             {{-- CONTACTS --}}
                             <li class="nav-item mt-1 mb-1">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.leads' ? 'active' : '' }}"
+                                <a class="nav-link {{ Route::currentRouteName() == 'admin.leads.index' ? 'active' : '' }}"
                                     href="{{ route('admin.leads.index') }}">
                                     <i class="fa-solid fa-envelope fa-fw fs-5"></i>
                                     <span class="fs-5 ps-2"> Contatti</span>
