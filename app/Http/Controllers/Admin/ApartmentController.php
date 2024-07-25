@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Braintree\Gateway as BraintreeGateway;
+use Illuminate\Validation\Rule;
 
 class ApartmentController extends Controller
 {
@@ -157,11 +158,23 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment, ApiController $apiController)
     {
+        // $request->validate([
+        //     'title' => 'required|unique:apartments,title',
+        // ], [
+        //     'title.unique' => 'Il titolo dell\'appartamento esiste già. Si prega di scegliere un titolo diverso.',
+        // ]);
+        $apartmentId = $apartment->id;
+        // dd($apartmentId);
         $request->validate([
-            'title' => 'required|unique:apartments,title',
+            'title' => Rule::unique('apartments')
+                        ->ignore($apartmentId) // Assumi che $request->apartment_id contenga l'ID dell'appartamento corrente
+                        ->where(function ($query) use ($apartmentId) {
+                            return $query->where('id', '<>',$apartmentId);
+                        }),
         ], [
             'title.unique' => 'Il titolo dell\'appartamento esiste già. Si prega di scegliere un titolo diverso.',
         ]);
+
         
         $data = $request->all();
 
