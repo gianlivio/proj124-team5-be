@@ -23,13 +23,13 @@
             </div>
 
             @if ($viewsCountByApartment->isNotEmpty())
-                <div class="row justify-content-between">
-                    <div class="col-5 mt-5 chart mb-5">
-                        <h2 class="text-center p-3">Visite agli appartamenti</h2>
+                <div class="row chart mt-5 mb-5 justify-content-around">
+                    <div class="col-6 d-flex flex-column justify-content-center">
+                        <h4 class="text-center p-3">Visite agli appartamenti</h4>
                         <canvas id="viewsChart"></canvas>
                     </div>
-                    <div class="col-5 mt-5 chart mb-5">
-                        <h2 class="text-center p-3">Contatti per appartamento</h2>
+                    <div class="col-5 d-flex flex-column justify-content-center">
+                        <h4 class="text-center p-3">Contatti per appartamento</h4>
                         <canvas id="leadsChart"></canvas>
                     </div>
                 </div>
