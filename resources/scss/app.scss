@@ -17,3 +17,23 @@
 * {
     font-family: "Quicksand", sans-serif;
 }
+
+.container-nav {
+    background-color: #7EBC89;
+    min-width: 100%;
+    footer {
+        padding: 5px;
+        color: $white !important;
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit
+        }
+    }
+}
+
+.fsSmall {
+    font-size: 0.8rem !important;
+}
