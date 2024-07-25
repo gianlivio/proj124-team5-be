@@ -6,7 +6,7 @@
             <button type="button" class="btn btn-primary mt-3 btn-orange">Torna alla pagina home</button>
         </a>
     </div>
-    <div class="container">
+    <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 mt-4">
                 <div class="card" id="status-alert">
@@ -29,18 +29,18 @@
             </div>
 
             @if ($viewsCountByApartment->isNotEmpty())
-                <div class="row chart mt-5 mb-5 justify-content-around">
-                    <div class="col-6 d-flex flex-column justify-content-center">
-                        <h4 class="text-center p-3">Visite agli appartamenti</h4>
-                        <canvas id="viewsChart"></canvas>
+                <div class="row justify-content-between chart-spacing">
+                    <div class="col-6 d-flex flex-column mt-5 chart mb-5 rounded">
+                        <h2 class="text-center p-3">Visite agli appartamenti</h2>
+                        <canvas class="align-self-baseline" id="viewsChart"></canvas>
                     </div>
-                    <div class="col-5 d-flex flex-column justify-content-center">
-                        <h4 class="text-center p-3">Contatti per appartamento</h4>
-                        <canvas id="leadsChart"></canvas>
+                    <div class="col-6 mt-5 chart mb-5 rounded">
+                            <h2 class="text-center p-3">Contatti per appartamento</h2>
+                            <canvas id="leadsChart"></canvas>
                     </div>
                 </div>
             @else
-                <div class="col-12 mt-5 chart mb-5">
+                <div class="col-12 mt-5 chart mb-5 rounded">
                     <h2 class="text-center p-3">Nessuna statistica disponibile</h2>
                 </div>
             @endif
@@ -133,4 +133,14 @@
             </script>
         </div>
     </div>
+
+    <style>
+        .chart-spacing {
+            gap: 30px
+        }
+
+        .ms_width {
+            width: 50%
+        }
+    </style>
 @endsection
