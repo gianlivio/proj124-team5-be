@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ApartmentController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\SponsorshipController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::middleware('auth')
         Route::get('/sponsorship', [ApartmentController::class, 'sponsorship_menu'])->name("sponsorship");
         Route::get('/apartment/{slug}/sponsor', [ApartmentController::class, 'showSponsorshipPage'])->name('apartment.sponsor');
         Route::post('/sponsorship', [SponsorshipController::class, 'store'])->name('sponsorship.store');
+        Route::resource('/leads', LeadController::class)->except(['create', 'store', 'edit']);
     });
 
 require __DIR__ . '/auth.php';
