@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('views', function (Blueprint $table) {
-            $table->dropColumn(['user_id', 'view_date']);
+            $table->dropColumn(['view_date']);
         });
     }
 
@@ -22,7 +22,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('views', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
             $table->date('view_date');
         });
     }
