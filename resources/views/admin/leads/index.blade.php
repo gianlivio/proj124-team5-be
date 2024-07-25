@@ -4,7 +4,7 @@
     <h1>Lista di richieste di contatti</h1>
 
     @if (session('success'))
-            <div id="success-alert" class="alert alert-success">
+            <div id="success-alert" class="alert alert-success mt-2 bg-white text-orange">
                 {{ session('success') }}
             </div>
     @endif

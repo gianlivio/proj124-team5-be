@@ -5,7 +5,7 @@
     <h1 class="text-white fw-bold mt-5 mb-md-0">Seleziona l'appartamento da sponsorizzare</h1>  
     
     @if (session('success'))
-        <div id="success-alert" class="alert alert-success">
+        <div id="success-alert" class="alert alert-success mt-2 bg-white text-orange">
             {{ session('success') }}
         </div>
     @endif

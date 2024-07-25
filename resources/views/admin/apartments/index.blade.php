@@ -3,13 +3,13 @@
 @section('content')
     <div class="container mb-4">
         @if (session('message'))
-            <div class="alert alert-success mt-2 bg-white text-orange">
+            <div id="success-alert" class="alert alert-success mt-2 bg-white text-orange">
                 {{ session('message') }}
             </div>
         @endif
 
         @if (session('success'))
-            <div class="alert alert-success mt-2">
+            <div id="success-alert-2" class="alert alert-success mt-2 mt-2 bg-white text-orange">
                 {{ session('success') }}
             </div>
         @endif
@@ -115,4 +115,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let successAlert = document.getElementById('success-alert');
+            if (successAlert) {
+                setTimeout(function() {
+                    successAlert.style.opacity = 0;
+                    setTimeout(function() {
+                        successAlert.style.display = 'none';
+                    }, 600); // Extra timeout to allow fade-out effect
+                }, 4000); // Adjust the time as needed
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let successAlert = document.getElementById('success-alert-2');
+            if (successAlert) {
+                setTimeout(function() {
+                    successAlert.style.opacity = 0;
+                    setTimeout(function() {
+                        successAlert.style.display = 'none';
+                    }, 600); // Extra timeout to allow fade-out effect
+                }, 4000); // Adjust the time as needed
+            }
+        });
+    </script>
 @endsection
