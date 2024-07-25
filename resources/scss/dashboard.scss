@@ -100,11 +100,11 @@
 }
 
 .btn-delete {
-    background-color: rgb(255, 101, 101);
-    border-color: rgb(255, 101, 101);
+    background-color: red;
+    border-color: red;
 
     &:hover {
-        background-color: lighten(rgb(255, 101, 101), 20%);
+        background-color: lighten(red, 20%);
     }
 
 }

@@ -28,19 +28,19 @@
                     <table class="table">
                         <thead class="fw-bold">
                             <tr>
-                                <th class="ps-3 rounded-start-3">Titolo</th>
-                                <th class="text-center d-none d-lg-table-cell">stanze</th>
-                                <th class="text-center d-none d-lg-table-cell">letti</th>
-                                <th class="text-center d-none d-lg-table-cell">bagni</th>
-                                <th class="text-center d-none d-lg-table-cell">mq</th>
-                                <th class="text-center">disponibilità</th>
-                                <th class="ps-3 rounded-end-3 text-center">azioni</th>
+                                <th style="vertical-align: middle" class="ps-3 rounded-start-3">Titolo</th>
+                                <th style="vertical-align: middle" class="text-center d-none d-lg-table-cell">stanze</th>
+                                <th style="vertical-align: middle" class="text-center d-none d-lg-table-cell">letti</th>
+                                <th style="vertical-align: middle" class="text-center d-none d-lg-table-cell">bagni</th>
+                                <th style="vertical-align: middle" class="text-center d-none d-lg-table-cell">mq</th>
+                                <th style="vertical-align: middle" class="text-center">disponibilità</th>
+                                <th style="vertical-align: middle" class="ps-3 rounded-end-3 text-center">azioni</th>
                             </tr>
                         </thead>
                         <tbody class="scroll-box">
                             @foreach ($apartments as $curApartment)
                                 <tr>
-                                    <td class="pl-3">
+                                    <td style="vertical-align: middle" class="pl-3">
                                         <div class="d-flex align-items-center">
                                             <a href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">
                                                 @if ($curApartment->img_path)
@@ -62,16 +62,16 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->rooms }}</td>
-                                    <td class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->beds }}</td>
-                                    <td class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->bathroom }}</td>
-                                    <td class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->square_mt }}</td>
-                                    <td class="text-center" style="vertical-align: middle;">
+                                    <td style="vertical-align: middle" class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->rooms }}</td>
+                                    <td style="vertical-align: middle" class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->beds }}</td>
+                                    <td style="vertical-align: middle" class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->bathroom }}</td>
+                                    <td style="vertical-align: middle" class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->square_mt }}</td>
+                                    <td style="vertical-align: middle" class="text-center" style="vertical-align: middle;">
                                         {!! $curApartment->available
-                                            ? '<i class="fa-solid fa-circle-check fs-2 fw-bold" style="color: #63E6BE;"></i>'
+                                            ? '<i class="fa-solid fa-circle-check fs-2 fw-bold" style="color: #00c524;"></i>'
                                             : '<i class="fa-solid fa-circle-xmark fs-2 fw-bold" style="color: #ff0000;"></i>' !!}
                                     </td>
-                                    <td class="text-center" style="vertical-align: middle;">
+                                    <td style="vertical-align: middle" class="text-center" style="vertical-align: middle;">
                                         <a href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}" class="btn btn-sm btn-show rounded-circle me-1">
                                             <i class="fa fa-eye"></i>
                                         </a>
