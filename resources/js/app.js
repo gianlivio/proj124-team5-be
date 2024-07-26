@@ -7,15 +7,13 @@ import axios from "axios";
 document.addEventListener("DOMContentLoaded", function () {
     const addressInput = document.getElementById("address");
     const suggestionsContainer = document.getElementById("suggestions");
-    let timeout;
-    let submitButton = document.getElementById("submit");
+    const submitButton = document.getElementById("submit");
 
-    if (submitButton) {
+    if (addressInput && suggestionsContainer && submitButton) {
         addressInput.addEventListener("input", function () {
             let query = this.value;
 
             if (query.length === 0) {
-                // Disable submit button if address input is empty
                 submitButton.disabled = true;
             }
 
@@ -52,9 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     }
                                 );
 
-                                // Disable submit button if the query is not in suggestions
                                 if (!response.data.some(data => data.address === query)) {
-                                    console.log("error");
                                     submitButton.disabled = true;
                                 }
                             });
@@ -69,24 +65,30 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Show modal and set the action to be deleted
     const confirmModal = document.getElementById('confirmModal');
-    confirmModal.addEventListener('show.bs.modal', function (event) {
-        const button = event.relatedTarget;
-        const action = button.getAttribute('data-action');
-        const form = document.getElementById('deleteForm');
-        form.setAttribute('action', action);
-    });
+    if (confirmModal) {
+        confirmModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const action = button.getAttribute('data-action');
+            const form = document.getElementById('deleteForm');
+            form.setAttribute('action', action);
+        });
+    }
 
-    // Handle deletion
     const deleteButton = document.getElementById('deleteButton');
-    deleteButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        const form = document.getElementById('deleteForm');
-        form.submit();
-    });
+    if (deleteButton) {
+        deleteButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            const form = document.getElementById('deleteForm');
+            form.submit();
+        });
+    }
 
-    if (dropdown) {
+    const dropdown = document.getElementById('dropdown');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const dropdownToggle = document.getElementById('dropdownToggle');
+
+    if (dropdown && dropdownMenu && dropdownToggle) {
         dropdown.addEventListener('mouseenter', function () {
             dropdownMenu.classList.add('show');
             dropdownToggle.setAttribute('aria-expanded', 'true');
@@ -97,5 +99,4 @@ document.addEventListener("DOMContentLoaded", function () {
             dropdownToggle.setAttribute('aria-expanded', 'false');
         });
     }
-
 });
