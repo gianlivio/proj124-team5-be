@@ -89,7 +89,7 @@
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.create' ? 'active' : '' }}"
                                     href="{{ route('admin.apartments.create') }}">
                                     <i class="fa-solid fa-plus fa-fw fs-5"></i>
-                                    <span class="fs-5 ps-2">  Aggiungi</span>
+                                    <span class="fs-5 ps-2">  Aggiungi Appartamento</span>
                                 </a>
                             </li>
                             {{-- ADD --}}
