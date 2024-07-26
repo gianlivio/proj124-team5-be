@@ -72,6 +72,22 @@ class SponsorshipController extends Controller
                     ['apartment_id' => $apartmentId, 'sponsorship_id' => $sponsorshipTypeId],
                     ['end_date' => $newEndDate->format('Y-m-d H:i:s')]
                 );
+
+                $now = Carbon::now();
+                // Determine the highest priority sponsorship
+                // For example, select the most expensive sponsorship
+                $activeSponsorship = DB::table('apartment_sponsorship')
+                ->where('apartment_id', $apartmentId)
+                ->where('end_date', '>', $now)
+                ->join('sponsorships', 'apartment_sponsorship.sponsorship_id', '=', 'sponsorships.id')
+                ->orderBy('sponsorships.price', 'desc') // Use 'desc' for most expensive
+                ->first();
+
+                // Update the apartment's sponsorship_id
+                if ($activeSponsorship) {
+                    Apartment::where('id', $apartmentId)
+                        ->update(['sponsorship_id' => $activeSponsorship->sponsorship_id]);
+                }
             });
 
             
