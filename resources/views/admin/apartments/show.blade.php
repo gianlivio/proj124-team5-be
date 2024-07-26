@@ -31,6 +31,8 @@
                     </div>
                     <div class="col-6">
                         <p><span class="fw-bold">Stanze:</span> {{ $apartment->rooms }}</p>
+                        <p><span class="fw-bold">Bagni:</span> {{ $apartment->bathroom }}</p>
+                        <p><span class="fw-bold">Dimensione:</span> {{ $apartment->square_mt }}</p>
                     </div>
                 </div>
                 
