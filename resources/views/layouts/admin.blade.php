@@ -62,8 +62,8 @@
                         <ul class="nav flex-column">
 
                             {{-- DASHBOARD WELCOME --}}
-                            <li class="nav-item mt-1 mb-1">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
+                            <li class="nav-item mt-1 mb-1 px-2">
+                                <a class="nav-link fw-bold p-3 {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fs-5 fa-fw"></i>
                                     <span class="fs-5 ps-2">Dashboard</span>
@@ -75,8 +75,8 @@
                             <div class="separator"></div>
 
                             {{-- INDEX --}}
-                            <li class="nav-item">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.index' ? 'active' : '' }}"
+                            <li class="nav-item px-2">
+                                <a class="nav-link fw-bold p-3 {{ Route::currentRouteName() == 'admin.apartments.index' ? 'active' : '' }}"
                                     href="{{ route('admin.apartments.index') }}">
                                     <i class="fa-solid fa-house fa-fw fs-5"></i>
                                     <span class="fs-5 ps-2">  Appartamenti</span>
@@ -85,8 +85,8 @@
                             {{-- INDEX --}}
 
                             {{-- ADD --}}
-                            <li class="nav-item mt-1 mb-1">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.apartments.create' ? 'active' : '' }}"
+                            <li class="nav-item mt-1 mb-1 px-2">
+                                <a class="nav-link fw-bold p-3 {{ Route::currentRouteName() == 'admin.apartments.create' ? 'active' : '' }}"
                                     href="{{ route('admin.apartments.create') }}">
                                     <i class="fa-solid fa-plus fa-fw fs-5"></i>
                                     <span class="fs-5 ps-2">  Aggiungi Appartamento</span>
@@ -95,8 +95,8 @@
                             {{-- ADD --}}
 
                             {{-- SPONSORSHIP --}}
-                            <li class="nav-item mt-1 mb-1">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.sponsorship' ? 'active' : '' }}"
+                            <li class="nav-item mt-1 mb-1 px-2">
+                                <a class="nav-link fw-bold p-3 {{ Route::currentRouteName() == 'admin.sponsorship' ? 'active' : '' }}"
                                     href="{{ route('admin.sponsorship') }}">
                                     <i class="fa-solid fa-money-bill-trend-up fa-fw fs-5"></i>
                                     <span class="fs-5 ps-2"> Sponsorizza</span>
@@ -105,8 +105,8 @@
                             {{-- SPONSORSHIP --}}
 
                             {{-- CONTACTS --}}
-                            <li class="nav-item mt-1 mb-1">
-                                <a class="nav-link {{ Route::currentRouteName() == 'admin.leads.index' ? 'active' : '' }}"
+                            <li class="nav-item mt-1 mb-1 px-2">
+                                <a class="nav-link fw-bold p-3 {{ Route::currentRouteName() == 'admin.leads.index' ? 'active' : '' }}"
                                     href="{{ route('admin.leads.index') }}">
                                     <i class="fa-solid fa-envelope fa-fw fs-5"></i>
                                     <span class="fs-5 ps-2"> Contatti</span>
@@ -117,8 +117,8 @@
                             <div class="separator"></div>
 
                             {{-- LOGOOUT --}}
-                            <li class="nav-item mt-1 mb-1">
-                                <a class="nav-link" href="http://localhost:5174/">
+                            <li class="nav-item mt-1 mb-1 px-2">
+                                <a class="nav-link fw-bold p-3" href="http://localhost:5174/">
                                     <i class="fa-solid fa-magnifying-glass fa-fw fs-5"></i>
                                     <span class="fs-5 ps-2"> Cerca </span> 
                                 </a>
@@ -129,8 +129,8 @@
                             {{-- LOGOOUT --}}
 
                             {{-- LOGOOUT --}}
-                            <li class="nav-item mt-1 mb-1">
-                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <li class="nav-item mt-1 mb-1 px-2">
+                                <a class="nav-link fw-bold p-3" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fa-solid fa-right-from-bracket fa-fw fs-5"></i>
                                     <span class="fs-5 ps-2"> {{ __('Logout') }} </span> 
                                 </a>
