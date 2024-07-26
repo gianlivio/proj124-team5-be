@@ -16,46 +16,48 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
-        $totalViews = View::where('user_id', $user->id)->count();
-
-        $apartmentLeads = Lead::select('apartment_id', DB::raw('count(*) as generated_leads'), 'apartments.title')
-            ->leftJoin('apartments', 'leads.apartment_id', '=', 'apartments.id')
-            ->groupBy('leads.apartment_id', 'apartments.title')
-            ->where('apartments.user_id', $user->id)
-            ->get();
-
-
-        // $viewsCountByApartment = View::select('apartment_id', DB::raw('count(*) as total_views'), 'apartments.title')
-        // ->leftJoin('apartments', 'views.apartment_id', '=', 'apartments.id')
-        // ->groupBy('views.apartment_id', 'apartments.title')
-        // ->where('views.user_id', $user->id)
-        // ->get();
-
+        // Subquery per ottenere solo le prime 5 visualizzazioni per user_ip per appartamento in ogni giorno
         $subquery = DB::table('views as v1')
             ->select('v1.id', 'v1.apartment_id', 'v1.user_ip', 'v1.created_at')
             ->whereRaw('(
-        SELECT COUNT(*) 
-        FROM views as v2 
-        WHERE v2.apartment_id = v1.apartment_id 
-        AND DATE(v2.created_at) = DATE(v1.created_at) 
-        AND v2.user_ip = v1.user_ip 
-        AND v2.created_at <= v1.created_at
-    ) <= 5')
+                SELECT COUNT(*) 
+                FROM views as v2 
+                WHERE v2.apartment_id = v1.apartment_id 
+                AND DATE(v2.created_at) = DATE(v1.created_at) 
+                AND v2.user_ip = v1.user_ip 
+                AND v2.created_at <= v1.created_at
+            ) <= 5')
             ->toSql();
 
-        // Query principale
+        // Query principale per ottenere le visualizzazioni mensili per ogni appartamento
         $viewsCountByApartment = DB::table(DB::raw("($subquery) as sub"))
             ->join('views', 'views.id', '=', 'sub.id')
             ->join('apartments', 'views.apartment_id', '=', 'apartments.id')
-            ->select('views.apartment_id', DB::raw('count(*) as total_views'), 'apartments.title')
+            ->select(
+                'views.apartment_id',
+                'apartments.title',
+                DB::raw('YEAR(views.created_at) as year'),
+                DB::raw('MONTH(views.created_at) as month'),
+                DB::raw('count(*) as total_views')
+            )
             ->where('apartments.user_id', $user->id)
-            ->groupBy('views.apartment_id', 'apartments.title')
+            ->groupBy('views.apartment_id', 'year', 'month', 'apartments.title')
+            ->orderBy('views.apartment_id')
+            ->orderBy('year')
+            ->orderBy('month')
+            ->get()
+            ->groupBy('apartment_id');
+
+        // Query per ottenere il numero di lead per appartamento
+        $apartmentLeads = Lead::select('apartment_id', DB::raw('count(*) as generated_leads'), 'apartments.title')
+            ->leftJoin('apartments', 'leads.apartment_id', '=', 'apartments.id')
+            ->where('apartments.user_id', $user->id)
+            ->groupBy('leads.apartment_id', 'apartments.title')
             ->get();
 
-        return view(
-            'admin.dashboard',
-            ['viewsCountByApartment' => $viewsCountByApartment],
-            ['apartmentLeads' => $apartmentLeads]
-        );
+        return view('admin.dashboard', [
+            'viewsCountByApartment' => $viewsCountByApartment,
+            'apartmentLeads' => $apartmentLeads
+        ]);
     }
 }
