@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Braintree\Gateway as BraintreeGateway;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class ApartmentController extends Controller
@@ -238,6 +240,26 @@ class ApartmentController extends Controller
         $user = Auth::user();
         $apartments = Apartment::where('user_id', $user->id)->get();
         
+        $apartmentsWithSponsorship = $apartments->map(function ($apartment) {
+            $activeSponsorship = DB::table('apartment_sponsorship')
+                ->where('apartment_id', $apartment->id)
+                ->where('end_date', '>', Carbon::now())
+                ->join('sponsorships', 'apartment_sponsorship.sponsorship_id', '=', 'sponsorships.id')
+                ->select('sponsorships.*', 'apartment_sponsorship.end_date')
+                ->orderBy('sponsorships.price', 'desc')
+                ->first();
+    
+            if ($activeSponsorship) {
+                $apartment->sponsorship_type = $activeSponsorship->type;
+                $apartment->sponsorship_end_date = Carbon::parse($activeSponsorship->end_date);
+            } else {
+                $apartment->sponsorship_type = 'None';
+                $apartment->sponsorship_end_date = null;
+            }
+    
+            return $apartment;
+        });
+
         return view('admin.apartments.sponsorship_menu', compact('apartments'));
     }
 

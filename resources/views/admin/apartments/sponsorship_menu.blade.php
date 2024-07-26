@@ -31,6 +31,12 @@
                             <small class="text-muted">
                                 Stanze: {{ $apartment->rooms }} - Bagni: {{ $apartment->bathroom }} - Letti: {{ $apartment->beds }} - Mq: {{ $apartment->square_mt }}
                             </small>
+
+                            @if ($apartment->sponsorship_end_date)
+                                <p class="my-4 fw-bold" style="color: #FE5D26">Ti rimangono {{ $apartment->sponsorship_end_date->diffInDays(Carbon\Carbon::now()) }} giorni di sponsorizzazione.</p>
+                            @else
+                                <p class="my-4 fw-bold" style="color: #FE5D26">Questo appartamento non è sponsorizzato.</p>
+                            @endif
                         </a>
                     </span>
                 </div>
