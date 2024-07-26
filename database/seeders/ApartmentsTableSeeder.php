@@ -14,9 +14,10 @@ class ApartmentsTableSeeder extends Seeder
     public function run(): void
     {
         $apartmentsData = config('seeder-data');
-        foreach ($apartmentsData as $apartmentData) {
+        foreach ($apartmentsData as $index => $apartmentData) {
             $newApartment = new Apartment();
             $newApartment->fill($apartmentData);
+            $newApartment->img_path = 'apartment_images/p' . ($index + 1) . '.webp';
             $newApartment->save();
         }
     }

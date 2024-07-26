@@ -5,26 +5,26 @@ use Carbon\Carbon;
 return [
     [
         'type' => 'Free',
-        'duration' => Carbon::now()->addDays(7)->toDateTimeString(), // 7 giorni
+        'duration' => Carbon::now(),
         'price' => 0.00,
         'sponsorship_description' => 'Nessuna sponsorizzazione attiva, non avrai nessun vantaggio'
     ],
     [
         'type' => 'Basic',
-        'duration' => Carbon::now()->addDays(7)->toDateTimeString(), // 7 giorni
+        'duration' => Carbon::now()->addDays(1)->toDateTimeString(),
         'price' => 2.99,
-        'sponsorship_description' => 'Sponsorizzazione di base per 7 giorni, ideale per chi vuole testare la visibilità aggiuntiva.'
+        'sponsorship_description' => 'Sponsorizzazione di base per un giorno, ideale per chi vuole testare la visibilità aggiuntiva.'
     ],
     [
         'type' => 'Standard',
-        'duration' => Carbon::now()->addDays(14)->toDateTimeString(), // 14 giorni
+        'duration' => Carbon::now()->addDays(3)->toDateTimeString(), 
         'price' => 5.99,
-        'sponsorship_description' => 'Sponsorizzazione standard per 14 giorni, offre maggiore visibilità e attrattiva per il tuo appartamento.'
+        'sponsorship_description' => 'Sponsorizzazione standard per 3 giorni, offre maggiore visibilità e attrattiva per il tuo appartamento.'
     ],
     [
         'type' => 'Premium',
-        'duration' => Carbon::now()->addDays(30)->toDateTimeString(), // 30 giorni
+        'duration' => Carbon::now()->addDays(6)->toDateTimeString(), 
         'price' => 9.99,
-        'sponsorship_description' => 'Sponsorizzazione premium per 30 giorni, massima visibilità e priorità nelle ricerche per attrarre più ospiti.'
+        'sponsorship_description' => 'Sponsorizzazione premium per 6 giorni, massima visibilità e priorità nelle ricerche per attrarre più ospiti.'
     ]
 ];
