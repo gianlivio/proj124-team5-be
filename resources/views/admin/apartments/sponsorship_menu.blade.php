@@ -15,11 +15,11 @@
             @foreach ($apartments as $apartment)
             <div id="sponsor_ap" class="d-flex mb-2 p-3 list-group-item-action align-items-center border rounded shadow-sm" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#{{ $apartment->id }}">
                 @if ($apartment->img_path)
-                    <img class="img-fluid w-25 rounded"
+                    <img class="img-fluid w-25 rounded d-none d-lg-flex"
                         src="{{ asset('storage/' . $apartment->img_path) }}"
                         alt="{{ $apartment->title }}">
                 @else
-                    <img class="img-fluid w-25 rounded"
+                    <img class="img-fluid w-25 rounded d-none d-lg-flex"
                         src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png"
                         alt="{{ $apartment->title }}">
                 @endif

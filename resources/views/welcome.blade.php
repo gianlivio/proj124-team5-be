@@ -39,4 +39,10 @@
     </div>
 </div>
 
+<style>
+    .nav-link:hover {
+        color: #FE5D26
+    }
+</style>
+
 @endsection

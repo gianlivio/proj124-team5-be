@@ -33,7 +33,7 @@
                                 <th style="vertical-align: middle" class="text-center d-none d-lg-table-cell">letti</th>
                                 <th style="vertical-align: middle" class="text-center d-none d-lg-table-cell">bagni</th>
                                 <th style="vertical-align: middle" class="text-center d-none d-lg-table-cell">mq</th>
-                                <th style="vertical-align: middle" class="text-center">disponibilità</th>
+                                <th style="vertical-align: middle" class="text-center d-none d-lg-table-cell">disponibilità</th>
                                 <th style="vertical-align: middle" class="ps-3 rounded-end-3 text-center">azioni</th>
                             </tr>
                         </thead>
@@ -42,13 +42,13 @@
                                 <tr>
                                     <td style="vertical-align: middle" class="pl-3">
                                         <div class="d-flex align-items-center">
-                                            <a href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">
+                                            <a class="d-none d-md-table-cell" href="{{ route('admin.apartments.show', ['apartment' => $curApartment->slug]) }}">
                                                 @if ($curApartment->img_path)
-                                                    <img class="img-fluid"
+                                                    <img style="min-width: 80px" class="img-fluid"
                                                         src="{{ asset('storage/' . $curApartment->img_path) }}"
                                                         alt="{{ $curApartment->title }}">
                                                 @else
-                                                    <img class="img-fluid"
+                                                    <img style="min-width: 80px" class="img-fluid"
                                                         src="https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png"
                                                         alt="{{ $curApartment->title }}">
                                                 @endif
@@ -66,7 +66,7 @@
                                     <td style="vertical-align: middle" class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->beds }}</td>
                                     <td style="vertical-align: middle" class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->bathroom }}</td>
                                     <td style="vertical-align: middle" class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">{{ $curApartment->square_mt }}</td>
-                                    <td style="vertical-align: middle" class="text-center" style="vertical-align: middle;">
+                                    <td style="vertical-align: middle" class="text-center d-none d-lg-table-cell" style="vertical-align: middle;">
                                         {!! $curApartment->available
                                             ? '<i class="fa-solid fa-circle-check fs-2 fw-bold" style="color: #00c524;"></i>'
                                             : '<i class="fa-solid fa-circle-xmark fs-2 fw-bold" style="color: #ff0000;"></i>' !!}

@@ -15,9 +15,9 @@
                     <table class="table">
                         <thead class="fw-bold">
                             <tr>
-                                <th style="vertical-align: middle" class="ps-3 rounded-start-3 d-none d-lg-table-cell"
+                                <th style="vertical-align: middle" class="ps-lg-3 rounded-start-3"
                                     scope="col">Nome</th>
-                                <th style="vertical-align: middle" scope="col">Email</th>
+                                <th style="vertical-align: middle" class="d-none d-md-table-cell">Email</th>
                                 <th style="vertical-align: middle" class="d-none d-lg-table-cell" scope="col">Data</th>
                                 <th style="vertical-align: middle" class="d-none d-sm-table-cell" scope="col">
                                     Ricontattato</th>
@@ -27,9 +27,9 @@
                         <tbody>
                             @foreach ($leads as $lead)
                                 <tr>
-                                    <td style="vertical-align: middle" class="d-none d-lg-table-cell">{{ $lead->name }}
+                                    <td style="vertical-align: middle" class="">{{ $lead->name }}
                                     </td>
-                                    <td style="vertical-align: middle">{{ $lead->mail }}</td>
+                                    <td style="vertical-align: middle" class="d-none d-lg-table-cell">{{ $lead->mail }}</td>
                                     <td style="vertical-align: middle" class="d-none d-lg-table-cell">
                                         {{ $lead->created_at }}</td>
                                     <td style="vertical-align: middle" class="d-none d-sm-table-cell">
