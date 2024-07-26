@@ -60,6 +60,38 @@
         </div>
     </div>
 </div>
+<style>
+    .btn {
+       background-color:  #FE5D26;
+       border-color: #FE5D26
+    }
+
+    .btn:hover {
+       background-color:  #f78660;
+       border-color: #FE5D26
+    }
+
+    a {
+        color: #FE5D26;
+    }
+
+    .btn:first-child:active {
+        border-color: #f78660;
+        background-color:  #f78660;
+    }
+
+    .form-control:focus {
+    color: var(--bs-body-color);
+    background-color: #f5eeeb;
+    border-color: #f78660;
+    outline: 0;
+    box-shadow: 0 0 5px 0.5px #f78660;
+    }
+
+    .form-check-input:focus {
+    box-shadow: 0 0 5px 0.5px #f78660;
+    }
+</style>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.33.7/js/dropin.min.js"></script>
 <script>
