@@ -117,7 +117,7 @@
                             <div class="separator"></div>
 
                             {{-- LOGOOUT --}}
-                            <li class="nav-item mt-1 mb-1 px-2">
+                            {{-- <li class="nav-item mt-1 mb-1 px-2">
                                 <a class="nav-link fw-bold p-3" href="http://localhost:5174/">
                                     <i class="fa-solid fa-magnifying-glass fa-fw fs-5"></i>
                                     <span class="fs-5 ps-2"> Cerca </span> 
@@ -125,7 +125,7 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-                            </li>
+                            </li> --}}
                             {{-- LOGOOUT --}}
 
                             {{-- LOGOOUT --}}

@@ -19,6 +19,7 @@
                                     scope="col">Nome</th>
                                 <th style="vertical-align: middle" class="d-none d-md-table-cell">Email</th>
                                 <th style="vertical-align: middle" class="d-none d-lg-table-cell" scope="col">Data</th>
+                                <th style="vertical-align: middle" class="d-none d-lg-table-cell" scope="col">Appartmento</th>
                                 <th style="vertical-align: middle" class="d-none d-sm-table-cell" scope="col">
                                     Ricontattato</th>
                                 <th style="vertical-align: middle" class="ps-3 rounded-end-3" scope="col">Info</th>
@@ -32,6 +33,7 @@
                                     <td style="vertical-align: middle" class="d-none d-lg-table-cell">{{ $lead->mail }}</td>
                                     <td style="vertical-align: middle" class="d-none d-lg-table-cell">
                                         {{ $lead->created_at }}</td>
+                                        <td style="vertical-align: middle" class="d-none d-lg-table-cell">{{ $lead->apartment->title  }}</td>
                                     <td style="vertical-align: middle" class="d-none d-sm-table-cell">
                                         <form id="leadForm-{{ $lead->id }}"
                                             action="{{ route('admin.leads.update', ['lead' => $lead->id]) }}"
