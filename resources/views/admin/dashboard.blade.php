@@ -4,23 +4,19 @@
     <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 mt-4" id="status-alert">
-                <div class="card">
-                    <div class="card-body text-center">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('Login eseguito con successo!') }}
-
-                        <script>
-                            setTimeout(function() {
-                                document.getElementById('status-alert').style.display = 'none';
-                            }, 5000); // Hide after 5 seconds (5000 milliseconds)
-                        </script>
+                
+                @if (session('status') && !session('first_login'))
+                    <div class="alert alert-success bg-light" role="alert">
+                        {{ session('status') }}
                     </div>
-                </div>
+                    @endif
+                    
+                    <script>
+                        setTimeout(function() {
+                           
+                        document.getElementById('status-alert').style.display = 'none';
+                    }, 5000); // Hide after 5 seconds (5000 milliseconds)
+                </script>
             </div>
 
             <h2 class="fw-bold text-white mt-3">Ecco come vanno i tuoi appartamenti {{ Auth::user()->name }}</h2>

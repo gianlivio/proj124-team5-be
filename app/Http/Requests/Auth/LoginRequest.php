@@ -37,9 +37,9 @@ class LoginRequest extends FormRequest
         return [
             'email.required' => "L'email è necessaria!",
             'email.string' => "L'email non può essere composta da soli numeri!",
-            'email.email' =>"Inserisci una @ nel testo!",
+            'email.email' => "Inserisci una @ nel testo!",
             'password.required' => "La password è necessaria!",
-            'password.string' => "La password non può essere composta da soli numeri!"
+            'password.string' => "La password non può essere composta da soli numeri!",
         ];
     }
 
@@ -52,7 +52,7 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -61,6 +61,12 @@ class LoginRequest extends FormRequest
         }
 
         RateLimiter::clear($this->throttleKey());
+
+        // Check if it's the first login
+        if (!session()->has('first_login')) {
+            session(['first_login' => false]);
+            session()->flash('status', 'Login eseguito con successo!');
+        }
     }
 
     /**
@@ -70,7 +76,7 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -91,6 +97,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->string('email')) . '|' . $this->ip());
     }
 }
