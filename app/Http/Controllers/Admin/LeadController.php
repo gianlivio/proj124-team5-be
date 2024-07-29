@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Apartment;
 use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class LeadController extends Controller
         $apartmentIds = $user->apartments()->pluck("id");
 
         $leads = Lead::whereIn('apartment_id', $apartmentIds)
+            ->with('apartment')
             ->orderByDesc('created_at')
             ->paginate(10);
 
@@ -32,7 +34,8 @@ class LeadController extends Controller
      */
     public function show(Lead $lead)
     {
-        return view('admin.leads.show', compact('lead'));
+        $apartment = $lead->apartment;
+        return view('admin.leads.show', compact('lead', 'apartment'));
     }
 
     /**
@@ -46,7 +49,7 @@ class LeadController extends Controller
         $lead = Lead::find($lead->id);
         $lead->replied = $request->has('replied') ? 1 : 0;
         $lead->save();
-        
+
         return redirect()->route('admin.leads.index')->with('success', 'Hai cambiato lo stato del messaggio con successo.');;
     }
 }
