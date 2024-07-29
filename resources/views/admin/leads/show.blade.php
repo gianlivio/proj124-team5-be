@@ -35,6 +35,8 @@
             <p class="p-3 fs-5 mt-3 fw-light border rounded-start rounded-end">{{ $lead->mail }}</p>
             <h3 class="mt-4 mb-2">Messaggio</h3>
             <p class="p-3 fs-5 fw-light mt-3 border rounded-start rounded-end">{{ $lead->message }}</p>
+            <h3 class="mt-4 mb-2">Appartamento contattato</h3>
+            <p class="p-3 fs-5 fw-light mt-3 border rounded-start rounded-end">{{ $apartment->title }}</p>
 
         
         </div>
