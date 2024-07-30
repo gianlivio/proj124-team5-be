@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sponsorships', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->dateTime('duration');
+            $table->integer('duration');
             $table->decimal('price');
             $table->timestamps();
         });

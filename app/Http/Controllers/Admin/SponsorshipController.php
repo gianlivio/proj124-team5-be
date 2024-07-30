@@ -51,6 +51,7 @@ class SponsorshipController extends Controller
         ]);
         if ($result->success) {
             DB::transaction(function () use ($apartmentId, $sponsorshipTypeId, $sponsorshipType) {
+                $now = Carbon::now();
                 $currentEndDate = DB::table('apartment_sponsorship')
                     ->where('apartment_id', $apartmentId)
                     ->where('sponsorship_id', $sponsorshipTypeId)
@@ -59,21 +60,18 @@ class SponsorshipController extends Controller
                 // If there's an existing record, calculate the new end date based on the existing end date
                 if ($currentEndDate) {
                     $currentEndDate = Carbon::parse($currentEndDate);
-                    $durationDays = Carbon::parse($sponsorshipType->duration)->diffInDays(Carbon::now());
-                    $newEndDate = $currentEndDate->addDays($durationDays);
+                    $endDate = $currentEndDate->copy()->addHours($sponsorshipType->duration);
                 } else {
                     // If no existing record, set the end date from now
-                    $durationDays = Carbon::parse($sponsorshipType->duration)->diffInDays(Carbon::now());
-                    $newEndDate = Carbon::now()->addDays($durationDays);
+                    $endDate = $now->copy()->addHours($sponsorshipType->duration);
                 }
 
                 // Update or insert the record
                 DB::table('apartment_sponsorship')->updateOrInsert(
                     ['apartment_id' => $apartmentId, 'sponsorship_id' => $sponsorshipTypeId],
-                    ['end_date' => $newEndDate->format('Y-m-d H:i:s')]
+                    ['end_date' => $endDate]
                 );
 
-                $now = Carbon::now();
                 // Determine the highest priority sponsorship
                 // For example, select the most expensive sponsorship
                 $activeSponsorship = DB::table('apartment_sponsorship')
@@ -87,6 +85,10 @@ class SponsorshipController extends Controller
                 if ($activeSponsorship) {
                     Apartment::where('id', $apartmentId)
                         ->update(['sponsorship_id' => $activeSponsorship->sponsorship_id]);
+                } else {
+                    // If no active sponsorship is found, set to default sponsorship (assuming ID 1 is default)
+                    Apartment::where('id', $apartmentId)
+                        ->update(['sponsorship_id' => 1]);
                 }
             });
 
