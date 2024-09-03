@@ -1,63 +1,48 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏠 Backend Project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Overview
+This backend project, meticulously architected with the Laravel framework, forms the nucleus of the application. It efficiently orchestrates data processing, business logic, and the provision of API endpoints. The backend is designed to seamlessly handle user authentication, facilitate the management of property listings, and support a suite of sophisticated functionalities tailored to meet both guest and registered user needs.
 
-## About Laravel
+![Dashboard](<welcome_dashboard.png>)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🔒 User Authentication
+- **Secure Registration and Login**: Employing robust security protocols, the system allows users to register and log in, ensuring that their credentials and personal information remain secure.
+- **Role-based Access Control**: The backend enforces a strict role-based access control mechanism, which selectively exposes functionalities based on user roles, thereby enhancing security and user experience.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![Login](<login.png>)
+![Register](<register.png>)
 
-## Learning Laravel
+### 🌐 Guest User Capabilities
+- **Interactive Apartment Search**: Leveraging the TomTom API, guests can conduct comprehensive searches for available apartments. The intuitive search interface allows for refined filtering options, ensuring users find precisely what they are looking for.
+- **Direct Communication with Property Owners**: Guests can contact property owners directly via the application, simplifying the process of inquiry and negotiation.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![Search Listings](<apartments_list.png>)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 📝 Registered User Capabilities
+- **Comprehensive Listing Management**: Registered users enjoy the privilege of creating, modifying, and deleting their apartment listings. This functionality is designed to offer maximum flexibility and control over property advertisements.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+![Edit Listing](<apartments_edit.png>)
+![Create Listing](<apartments_create.png>)
 
-## Laravel Sponsors
+- **Advanced Analytics and Statistics**: Users have access to detailed analytics, providing insights into listing performance, including metrics such as view counts and user interactions. These analytics are critical for users to optimize their listings and improve visibility.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+![View Statistics](<views_stat.png>)
 
-### Premium Partners
+- **Streamlined Messaging System**: The integrated messaging system allows registered users to maintain effective communication with potential renters. Users can keep track of all communications, ensuring timely and organized responses.
+- **Enhanced Sponsorship and Payment Options**: The backend supports listing sponsorship, enabling users to increase their property’s visibility. The sponsorship process is complemented by a secure payment gateway that ensures transactions are handled safely.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+![Sponsor Listing](<sponsorship_selection.png>)
+![Payment](<sponsorship_payment.png>)
 
-## Contributing
+## Technologies Utilized
+- **Laravel**: Chosen for its elegance and robust features, Laravel serves as the backbone of the application, providing a scalable and maintainable framework for development.
+- **MySQL**: This relational database management system is employed for its reliability and efficiency in handling complex queries and large datasets.
+- **TomTom API**: Integrated to offer sophisticated location services, enhancing the user experience with dynamic and interactive map-based searches.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
+## API Documentation
+The backend exposes a well-documented RESTful API, which facilitates seamless interaction between the frontend and backend systems. This API provides endpoints for a variety of operations, including user authentication, listing management, messaging, and payment processing.
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
